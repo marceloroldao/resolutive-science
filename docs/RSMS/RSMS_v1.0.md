@@ -2,7 +2,7 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft.3
+**Version:** 1.0-draft.4  
 **Status:** In development  
 **Author:** Marcelo Roldão Matos  
 **ORCID:** 0009-0003-6075-4680  
@@ -25,6 +25,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | 1.0-draft.1 | 2026-08-06 | Draft | Initial introduction, scope, documentation hierarchy, and scientific principles. |
 | 1.0-draft.2 | 2026-08-06 | Draft | Added mathematical conventions and notation. |
 | 1.0-draft.3 | 2026-08-06 | Draft | Added Chapter 3, Primitive Objects and Resolutive State Space. |
+| 1.0-draft.4 | 2026-08-06 | Normative draft | Added Chapter 4 geometric and bundle structures without physical hypotheses or dynamics. |
 
 ---
 
@@ -239,7 +240,7 @@ The planned structure of RSMS v1.0 is:
 1. [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles);
 2. [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md);
 3. [Primitive Objects and Resolutive State Space](chapters/03_primitive_objects_and_resolutive_state_space.md);
-4. Geometric and Bundle Structure;
+4. [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md);
 5. Fundamental Fields and Operators;
 6. Dynamics and Variational Principles;
 7. Observables, Projection, and Measurement;
@@ -253,15 +254,13 @@ This organization may evolve during the draft phase. Once RSMS v1.0 is released,
 
 ## 1.12 Chapter status
 
-| Criterion | Status |
-|---|---|
-| Scientific scope defined | Draft complete |
-| Documentation hierarchy defined | Draft complete |
-| Methodological axioms defined | Draft complete |
-| Mathematical axioms introduced | Not yet |
-| Dimensional consistency applicable | Not yet |
-| Computational implementation applicable | Partially |
-| Empirical tests defined | Not yet |
+| Chapter | Title | Status |
+|---:|---|---|
+| 1 | [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles) | Draft complete |
+| 2 | [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md) | Normative draft |
+| 3 | [Primitive Objects and Resolutive State Space](chapters/03_primitive_objects_and_resolutive_state_space.md) | Normative draft complete |
+| 4 | [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md) | Normative draft complete |
+| 5–12 | Planned chapters | Not yet |
 
 ---
 
