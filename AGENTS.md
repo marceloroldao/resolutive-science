@@ -1,0 +1,8 @@
+- Never merge directly into main.
+- Treat the RSMS as the normative source of truth.
+- Do not introduce physical claims without explicit status labels.
+- Preserve stable identifiers.
+- Separate established physics, resolutive hypotheses, and validated results.
+- Write one logical chapter per pull request.
+- Use English for normative specifications.
+- Do not change an approved chapter without documenting the reason.
