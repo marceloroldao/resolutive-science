@@ -2,7 +2,7 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft  
+**Version:** 1.0-draft.4
 **Status:** In development  
 **Author:** Marcelo Roldão Matos  
 **ORCID:** 0009-0003-6075-4680  
@@ -23,6 +23,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | Version | Date | Status | Description |
 |---|---:|---|---|
 | 1.0-draft.1 | 2026-08-06 | Draft | Initial introduction, scope, documentation hierarchy, and scientific principles. |
+| 1.0-draft.4 | 2026-08-06 | Normative draft | Added Chapter 4 geometric and bundle structures without physical hypotheses or dynamics. |
 
 ---
 
@@ -234,10 +235,10 @@ The project shall report favorable, neutral, and unfavorable results with the sa
 
 The planned structure of RSMS v1.0 is:
 
-1. Introduction, Scope, and Scientific Principles;
-2. Mathematical Conventions and Notation;
+1. [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles);
+2. [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md);
 3. Primitive Objects and Resolutive State Space;
-4. Geometric and Bundle Structure;
+4. [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md);
 5. Fundamental Fields and Operators;
 6. Dynamics and Variational Principles;
 7. Observables, Projection, and Measurement;
@@ -248,6 +249,16 @@ The planned structure of RSMS v1.0 is:
 12. Appendices and Symbol Registry.
 
 This organization may evolve during the draft phase. Once RSMS v1.0 is released, incompatible structural changes shall require a new major version.
+
+### Chapter index and status
+
+| Chapter | Title | Status |
+|---:|---|---|
+| 1 | [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles) | Draft complete |
+| 2 | [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md) | Normative draft |
+| 3 | Primitive Objects and Resolutive State Space | Not present in this repository revision |
+| 4 | [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md) | Normative draft complete |
+| 5–12 | Planned chapters | Not yet |
 
 ## 1.12 Chapter status
 
