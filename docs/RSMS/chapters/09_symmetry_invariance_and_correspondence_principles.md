@@ -152,19 +152,16 @@ Failure to reproduce an existing theory outside the intended compatibility regio
 
 ### RS-COR007 — Reduction map
 
-A **reduction map** is a declared map from a source resolutive description \(\mathcal R\) to a target effective description \(\mathcal E\),
+A **reduction map** is a declared map from a source-description space \(\mathcal X_{\mathrm{source}}\) to a target-description space \(\mathcal X_{\mathrm{target}}\),
 
 \[
-\begin{array}{c}
-\mathcal R\\
-\big\downarrow\scriptstyle{R\;\text{(projection)}}\\
-\mathcal E
-\end{array}
-\qquad\text{or equivalently}\qquad
-R:\mathcal R\longrightarrow\mathcal E.
+\operatorname{Red}:
+\mathcal X_{\mathrm{source}}
+\longrightarrow
+\mathcal X_{\mathrm{target}}.
 \]
 
-The map \(R\) shall state its domain, codomain, compatibility region, dependence on parameters or scales, retained and discarded structure, injectivity or surjectivity when known, approximation error, and composition with observable projections. It need not be invertible. Multiple inequivalent reduction maps may be declared when their domains, targets, and comparison criteria are distinguished. This abstract projection specifies no physical realization.
+The map \(\operatorname{Red}\) is distinct from the resolutive state \(R\), the internal resolutive space \(\mathcal R\), and the observable projection \(\Pi\). The map \(\operatorname{Red}\) shall state its domain, codomain, compatibility region, dependence on parameters or scales, retained and discarded structure, injectivity or surjectivity when known, approximation error, and composition with observable projections such as \(\Pi\). It need not be invertible. Multiple inequivalent reduction maps may be declared when their domains, targets, and comparison criteria are distinguished. This abstract projection specifies no physical realization.
 
 ## 9.7 Required specialization declaration
 
