@@ -2,7 +2,7 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft.6
+**Version:** 1.0-draft.7
 **Status:** In development
 **Author:** Marcelo Roldão Matos
 **ORCID:** 0009-0003-6075-4680
@@ -28,6 +28,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | 1.0-draft.4 | 2026-08-06 | Normative draft | Added Chapter 4 geometric and bundle structures without physical hypotheses or dynamics. |
 | 1.0-draft.5 | 2026-08-06 | Normative draft | Added Chapter 5 fundamental fields, operators, functional spaces, and algebraic structures without dynamics or physical interpretation. |
 | 1.0-draft.6 | 2026-08-06 | Normative draft | Added Chapter 6 admissible dynamics, variational principles, evolution, constraints, conservation, and computational conformance without selecting a universal physical law. |
+| 1.0-draft.7 | 2026-08-06 | Normative draft | Added Chapter 7 observable definitions, projection and measurement separation, inverse-problem requirements, normative epistemic hierarchies, and computational conformance without asserting experimental validation. |
 
 ---
 
@@ -245,7 +246,7 @@ The planned structure of RSMS v1.0 is:
 4. [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md);
 5. [Fundamental Fields and Operators](chapters/05_fundamental_fields_and_operators.md);
 6. [Dynamics and Variational Principles](chapters/06_dynamics_and_variational_principles.md);
-7. Observables, Projection, and Measurement;
+7. [Observables, Projection, and Measurement](chapters/07_observables_projection_and_measurement.md);
 8. Dimensional Structure and Units;
 9. Limiting Cases and Correspondence Principles;
 10. Computational Conformance and Validation;
@@ -264,7 +265,8 @@ This organization may evolve during the draft phase. Once RSMS v1.0 is released,
 | 4 | [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md) | Normative draft complete |
 | 5 | [Fundamental Fields and Operators](chapters/05_fundamental_fields_and_operators.md) | Normative draft complete |
 | 6 | [Dynamics and Variational Principles](chapters/06_dynamics_and_variational_principles.md) | Normative draft complete |
-| 7–12 | Planned chapters | Not yet |
+| 7 | [Observables, Projection, and Measurement](chapters/07_observables_projection_and_measurement.md) | Normative draft complete |
+| 8–12 | Planned chapters | Not yet |
 
 ---
 
