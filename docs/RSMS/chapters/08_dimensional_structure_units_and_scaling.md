@@ -137,6 +137,17 @@ Use of natural units does not make the underlying dimensional distinctions nonex
 
 **Internal model units** are allowed for analytic or computational work. An internal unit system shall declare its base units, links to reference scales, conversions at all input and output boundaries, and any quantities for which no external conversion is currently defined. Internal computational units shall not be mislabeled as SI or observational units.
 
+The RSMS does not assume that every internal resolutive quantity possesses an SI-representable physical dimension. A specialized specification may introduce an internal dimension only if it declares:
+
+- its symbol and semantic meaning;
+- its algebraic behavior;
+- its relation, if any, to the SI dimensional basis;
+- whether that relation is exact, conventional, model-dependent, or unknown;
+- its conversion or mapping rule when one exists; and
+- an explicit statement when no SI mapping is currently defined.
+
+An internal resolutive dimension shall not be represented as a validated physical dimension merely because it is mathematically declared.
+
 ### RS-U006 — Conversion factors
 
 A **conversion factor** is a documented multiplicative factor, or where necessary an explicitly affine or nonlinear map, relating numerical representations of the same quantity under two unit conventions. For multiplicatively related units (u) and (v),
@@ -225,6 +236,8 @@ The Buckingham Pi theorem may be used only as an established mathematical framew
 \[
 \Pi_1,\ldots,\Pi_{n-r}.
 \]
+
+The Buckingham Pi theorem is adopted only as an established mathematical tool for dimensional analysis and nondimensionalization. Its inclusion does not support, validate, or provide evidence for any specific resolutive hypothesis, state variable, interaction, or physical law.
 
 An application shall declare the quantity list, base-dimension basis, exponent matrix, its rank, the selected independent groups, and the domain on which the transformation is valid. The theorem does not determine numerical coefficients or a unique physical law, prove causality, select a preferred group basis, or validate a model. This specification claims no resolutive extension of the Buckingham Pi theorem.
 
