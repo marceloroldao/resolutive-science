@@ -2,7 +2,7 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft  
+**Version:** 1.0-draft.3
 **Status:** In development  
 **Author:** Marcelo Roldão Matos  
 **ORCID:** 0009-0003-6075-4680  
@@ -23,6 +23,8 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | Version | Date | Status | Description |
 |---|---:|---|---|
 | 1.0-draft.1 | 2026-08-06 | Draft | Initial introduction, scope, documentation hierarchy, and scientific principles. |
+| 1.0-draft.2 | 2026-08-06 | Draft | Added mathematical conventions and notation. |
+| 1.0-draft.3 | 2026-08-06 | Draft | Added Chapter 3, Primitive Objects and Resolutive State Space. |
 
 ---
 
@@ -234,9 +236,9 @@ The project shall report favorable, neutral, and unfavorable results with the sa
 
 The planned structure of RSMS v1.0 is:
 
-1. Introduction, Scope, and Scientific Principles;
-2. Mathematical Conventions and Notation;
-3. Primitive Objects and Resolutive State Space;
+1. [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles);
+2. [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md);
+3. [Primitive Objects and Resolutive State Space](chapters/03_primitive_objects_and_resolutive_state_space.md);
 4. Geometric and Bundle Structure;
 5. Fundamental Fields and Operators;
 6. Dynamics and Variational Principles;
