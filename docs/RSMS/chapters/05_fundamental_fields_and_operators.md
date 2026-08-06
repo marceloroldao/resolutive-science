@@ -135,7 +135,7 @@ The notation \(\Psi_R\) supplies a field symbol for the object defined as a reso
 
 ## 5.8 Projection operator
 
-### RS-F009 — Projection operator signature
+### RS-F009 — Projection operator signature specialization
 
 Let \(\mathcal O\) be the observable space of RS-D006. The reserved projection operator has the mathematical signature
 
@@ -143,7 +143,13 @@ Let \(\mathcal O\) be the observable space of RS-D006. The reserved projection o
 \Pi:E_R\longrightarrow\mathcal O.
 \]
 
-This restates and types the operator reserved by RS-O001 without changing its meaning. “Projection” names its intended mathematical role; idempotence, linearity, orthogonality, continuity, differentiability, surjectivity, and fiberwise action do not follow from the name and shall be declared when applicable.
+RS-O001 is the canonical normative definition of \(\Pi\). RS-F009
+cross-references and specializes that definition by recording its mathematical
+signature; it does not define a distinct operator or change the meaning of
+RS-O001. “Projection” names its intended mathematical role; idempotence,
+linearity, orthogonality, continuity, differentiability, surjectivity, and
+fiberwise action do not follow from the name and shall be declared when
+applicable.
 
 No measurement procedure, probabilistic rule, observer, uncertainty model, or physical interpretation is defined here. Those matters belong to Chapter 7 or a specialized specification.
 
