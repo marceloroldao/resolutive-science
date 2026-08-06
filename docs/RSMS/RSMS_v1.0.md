@@ -2,9 +2,14 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft.9
-**Status:** In development
+**Specification:** RSMS-1.0
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.1
+**Status:** Normative draft — scope and scientific principles
+**Parent document:** RSMS-1.0
 **Author:** Marcelo Roldão Matos
+
 **ORCID:** 0009-0003-6075-4680
 **Project:** Resolutive Science
 
@@ -31,6 +36,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | 1.0-draft.7 | 2026-08-06 | Normative draft | Added Chapter 7 observable projection, measurement, inference, uncertainty, and independent validation categories without selecting a universal observable or measurement law. |
 | 1.0-draft.8 | 2026-08-06 | Normative draft | Added Chapter 8 dimensional structure, units, conversions, normalization, and scaling without introducing a physical law. |
 | 1.0-draft.9 | 2026-08-06 | Normative draft | Added Chapter 9 symmetry, invariance, covariance, equivalence, and correspondence principles without introducing a physical interaction. |
+| 1.0-draft.10 | 2026-08-06 | Normative draft | Completed the Chapters 1–9 cross-chapter specification audit; unified metadata and namespace; repaired identifier collisions; added global registries and automated conformance checks. No scientific hypothesis or physical equation was changed. |
 
 ---
 

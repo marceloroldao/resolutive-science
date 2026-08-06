@@ -1,10 +1,12 @@
 # Chapter 3 — Primitive Objects and Resolutive State Space
 
 **Specification:** RSMS-1.0
-**Version:** 1.0-draft.3
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.3
 **Status:** Normative draft — proposed foundational hypotheses
-**Author:** Marcelo Roldão Matos
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 
@@ -81,7 +83,7 @@ It is the space of admissible values of the minimal resolutive state. Provisiona
 \times S^1_{\Theta}
 \times \mathcal D_{\iota}
 \times \mathcal D_{\kappa},
-\tag{RS-E028}
+\tag{RS-E101}
 \]
 
 where \(\mathcal D_{\rho}\), \(\mathcal D_{\iota}\), and \(\mathcal D_{\kappa}\) are declared admissible scalar domains and \(S^1_{\Theta}\) is the phase space. Unless a specialization states otherwise, \(\mathcal D_{\rho}=\mathbb R_{\geq 0}\), \(\mathcal D_{\iota}\subseteq\mathbb R\), and \(\mathcal D_{\kappa}\subseteq\mathbb R\). The equivalence relation and period used to realize \(S^1_{\Theta}\) shall be declared by the applicable specialization; they shall not be inferred from the symbol alone.
@@ -114,14 +116,14 @@ and shall be equipped with a surjective bundle projection
 
 \[
 \pi_M:E_R\to M.
-\tag{RS-E029}
+\tag{RS-E102}
 \]
 
 Each fiber \(E_{R,x}=\pi_M^{-1}(x)\) shall be modeled on \(\mathcal R\). The minimal un-twisted representation may use
 
 \[
 E_R=M\times\mathcal R,
-\tag{RS-E030}
+\tag{RS-E103}
 \]
 
 but the product form is not required universally. No connection, metric, transport law, or evolution law on \(E_R\) is defined here.
@@ -148,7 +150,7 @@ A **resolutive state** at \(x\in M\) is an element \(R_x\in E_{R,x}\) represente
 
 \[
 R=(\rho_R,\Theta_R,\iota_R,\kappa_R)\in\mathcal R,
-\tag{RS-E031}
+\tag{RS-E104}
 \]
 
 where:
@@ -203,7 +205,7 @@ The resolutive address is **not part of the resolutive state**:
 a_R\notin R,
 \qquad
 R=(\rho_R,\Theta_R,\iota_R,\kappa_R).
-\tag{RS-E032}
+\tag{RS-E105}
 \]
 
 Changing an address without changing the represented fiber element shall not be interpreted as changing the resolutive state. Conversely, equal local state tuples may occur at distinct addresses.
@@ -222,7 +224,7 @@ A **resolutive field** is a section of the total state space,
 \mathcal R_f:M\to E_R,
 \qquad
 \pi_M\circ\mathcal R_f=\operatorname{id}_M.
-\tag{RS-E033}
+\tag{RS-E106}
 \]
 
 In a local trivialization it may be written
@@ -231,7 +233,7 @@ In a local trivialization it may be written
 \mathcal R_f(x)
 =
 \bigl(x;\rho_R(x),\Theta_R(x),\iota_R(x),\kappa_R(x)\bigr).
-\tag{RS-E034}
+\tag{RS-E107}
 \]
 
 This notation assigns states to base points only; it introduces no field dynamics.
@@ -280,7 +282,7 @@ The **observable projection operator** is the map
 
 \[
 \Pi:E_R\to\mathcal O.
-\tag{RS-E035}
+\tag{RS-E108}
 \]
 
 It maps a total-state-space element to an element of the observable space. The name “projection” denotes its observable-extraction role and does not require \(\Pi\) to be a linear, idempotent, orthogonal, or coordinate projection.
@@ -309,10 +311,10 @@ A **derived quantity** is any quantity \(Q\) obtained by a declared map from pri
 
 \[
 Q=F[R;B,P],
-\tag{RS-E036}
+\tag{RS-E109}
 \]
 
-where \(B\) denotes explicitly declared background structures and \(P\) denotes explicitly declared parameters. Equation RS-E036 is a dependency schema, not a physical equation or evolution law.
+where \(B\) denotes explicitly declared background structures and \(P\) denotes explicitly declared parameters. Equation RS-E109 is a dependency schema, not a physical equation or evolution law.
 
 | Metadata | Normative content |
 |---|---|

@@ -1,10 +1,12 @@
 # Chapter 2 — Mathematical Conventions and Notation
 
-**Specification:** RSMS-1.0  
-**Version:** 1.0-draft.1  
-**Status:** Normative draft  
-**Author:** Marcelo Roldão Matos  
+**Specification:** RSMS-1.0
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.2
+**Status:** Normative draft — mathematical conventions
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 
@@ -20,7 +22,7 @@ No physical claim is introduced in this chapter. The definitions below specify n
 
 ## 2.2 Foundational mathematical domains
 
-### RS-D001 — Real numbers
+### RS-MATH001 — Real numbers
 
 The symbol
 
@@ -38,7 +40,7 @@ The subsets
 
 denote the strictly positive and non-negative real numbers, respectively.
 
-### RS-D002 — Complex numbers
+### RS-MATH002 — Complex numbers
 
 The symbol
 
@@ -58,7 +60,7 @@ For \(z\in\mathbb{C}\), the complex conjugate, modulus, real part, and imaginary
 z^*,\qquad |z|,\qquad \operatorname{Re}(z),\qquad \operatorname{Im}(z).
 \]
 
-### RS-D003 — Natural numbers and index sets
+### RS-MATH003 — Natural numbers and index sets
 
 The natural numbers are denoted by
 
@@ -79,7 +81,7 @@ A finite index set may be written as
 I_n=\{1,2,\ldots,n\}.
 \]
 
-### RS-D004 — Function spaces
+### RS-MATH004 — Function spaces
 
 Let \(X\) and \(Y\) be mathematical spaces. The set of functions from \(X\) to \(Y\) is denoted by
 
@@ -111,7 +113,7 @@ Whenever a measure is omitted, the applicable measure shall be clear from contex
 
 ## 2.3 Sets, mappings, and composition
 
-### RS-D005 — Mapping notation
+### RS-MATH005 — Mapping notation
 
 A mapping is written
 
@@ -129,7 +131,7 @@ f(A),\qquad f^{-1}(B),
 
 for \(A\subseteq X\) and \(B\subseteq Y\).
 
-### RS-D006 — Composition
+### RS-MATH006 — Composition
 
 For maps
 
@@ -148,7 +150,7 @@ the composition is
 
 Composition is read from right to left.
 
-### RS-D007 — Identity map
+### RS-MATH007 — Identity map
 
 The identity map on \(X\) is denoted by
 
@@ -167,7 +169,7 @@ Every normative operator or mapping shall declare its domain and codomain either
 
 ## 2.4 Coordinate and index conventions
 
-### RS-D008 — Spacetime indices
+### RS-MATH008 — Spacetime indices
 
 Unless otherwise stated, lowercase Greek indices from the middle of the alphabet,
 
@@ -763,7 +765,7 @@ For a field or operator undefined on a subset \(S\subset M\), the singular set s
 \operatorname{Sing}(X)=S.
 \]
 
-### RS-R013 — Singular behavior
+### RS-R019 — Singular behavior
 
 A singularity shall not be hidden by numerical clipping, regularization, or coordinate transformation. Any such treatment shall be documented and its physical and numerical consequences tested.
 
@@ -788,7 +790,7 @@ X_a\approx X(x_a).
 \tag{RS-E028}
 \]
 
-### RS-R014 — Discretization traceability
+### RS-R020 — Discretization traceability
 
 A numerical implementation shall distinguish the continuum equation from its discretization. The approximation order, grid or basis, timestep rule, convergence criterion, and stability restrictions shall be documented.
 
@@ -810,7 +812,7 @@ and locally as
 g=g_{\mu\nu}\,dx^\mu\otimes dx^\nu.
 \]
 
-### RS-R015 — Representation equivalence
+### RS-R021 — Representation equivalence
 
 When both forms are given, their equivalence shall be established or treated as a conformance test.
 
@@ -823,8 +825,8 @@ The following namespace is reserved provisionally for later RSMS chapters:
 | Symbol | Intended role | Status |
 |---|---|---|
 | \(M\) | Base spacetime or physical manifold | Reserved |
-| \(\mathcal E_R\) | Resolutive total space | Reserved |
-| \(\pi:\mathcal E_R\to M\) | Bundle projection | Reserved |
+| \(E_R\) | Resolutive total space | Reserved |
+| \(\pi_M:E_R\to M\) | Bundle projection | Reserved |
 | \(G_R\) | Internal resolutive group | Reserved |
 | \(\Psi_R\) | Resolutive field or state field | Reserved |
 | \(\rho_R\) | Resolutive density or depth variable | Reserved |

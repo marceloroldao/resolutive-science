@@ -1,9 +1,12 @@
 # Chapter 6 — Dynamics and Variational Principles
 
-**Specification:** RSMS-1.0  
-**Version:** 1.0-draft.6  
-**Status:** Normative draft — admissible dynamical architecture  
+**Specification:** RSMS-1.0
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.6
+**Status:** Normative draft — admissible dynamical architecture
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 
@@ -22,7 +25,7 @@ Moving from one status to another shall require explicit evidence and documentat
 
 ## 6.2 Scope boundary and inherited objects
 
-This chapter uses the base manifold \(\mathcal M\), internal space \(\mathcal R\), total state space \(E_R\), state \(R\), observable space \(\mathcal O\), and projection \(\Pi\) with the meanings established in Chapters 3–5. It uses the bundles, sections, metrics, connections, fields, and operators of Chapters 4–5 only when they have been declared for the applicable model. It neither changes their definitions nor assumes that every optional structure exists.
+This chapter uses the base manifold \(M\), internal space \(\mathcal R\), total state space \(E_R\), state \(R\), observable space \(\mathcal O\), and projection \(\Pi\) with the meanings established in Chapters 3–5. It uses the bundles, sections, metrics, connections, fields, and operators of Chapters 4–5 only when they have been declared for the applicable model. It neither changes their definitions nor assumes that every optional structure exists.
 
 This chapter does not introduce cosmological, galactic, lensing, electromagnetic, or quantum-specific dynamics. Such laws belong in specialized specifications. A symbol introduced here is not a claim that the corresponding object exists in nature.
 
@@ -36,11 +39,11 @@ An admissible configuration is a declared tuple of dynamical fields
 \Phi=(\Phi^A)_{A\in I}
 \]
 
-on \(\mathcal M\), where each \(\Phi^A\) is a section of a specified bundle from the vocabulary of Chapters 3–5 and satisfies declared regularity, domain, boundary, range, reality, and constraint conditions. The index set \(I\) shall be declared and may include \(\Psi_R\) only when the specialization explicitly makes the resolutive field dynamical. Prescribed backgrounds and external sources are not components of \(\Phi\).
+on \(M\), where each \(\Phi^A\) is a section of a specified bundle from the vocabulary of Chapters 3–5 and satisfies declared regularity, domain, boundary, range, reality, and constraint conditions. The index set \(I\) shall be declared and may include \(\Psi_R\) only when the specialization explicitly makes the resolutive field dynamical. Prescribed backgrounds and external sources are not components of \(\Phi\).
 
 ### RS-V002 — Configuration space
 
-For declared bundles \(E_A\to\mathcal M\), the configuration space is a specified subset
+For declared bundles \(E_A\toM\), the configuration space is a specified subset
 
 \[
 \mathfrak C\subseteq\prod_{A\in I}\Gamma_{r_A}(E_A),
@@ -62,7 +65,7 @@ of the generic form
 
 \[
 \mathcal S[\Phi;g,J,\lambda]=
-\int_{\mathcal M}
+\int_{M}
 \mathcal L(\Phi,\nabla\Phi,g,J;\lambda)\,dV_g.
 \]
 
@@ -143,7 +146,7 @@ An initial-value formulation specifies a data space \(\mathfrak I\), an initial 
 
 ### RS-Y003 — Boundary-value formulation
 
-A boundary-value formulation specifies a domain \(\Omega\subseteq\mathcal M\), boundary operator \(\mathcal B\), boundary data \(b\), and equations satisfying
+A boundary-value formulation specifies a domain \(\Omega\subseteqM\), boundary operator \(\mathcal B\), boundary data \(b\), and equations satisfying
 
 \[
 \mathfrak D[\Phi]=0\ \text{in }\Omega,

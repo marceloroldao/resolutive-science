@@ -1,9 +1,12 @@
 # Chapter 9 — Symmetry, Invariance, and Correspondence Principles
 
-**Specification:** RSMS-1.0  
-**Version:** 1.0-draft.9  
-**Status:** Normative draft — mathematical framework only  
+**Specification:** RSMS-1.0
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.9
+**Status:** Normative draft — mathematical framework only
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 

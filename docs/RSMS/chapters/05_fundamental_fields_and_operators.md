@@ -1,9 +1,12 @@
 # Chapter 5 — Fundamental Fields and Operators
 
 **Specification:** RSMS-1.0
-**Version:** 1.0-draft.5
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.5
 **Status:** Normative draft — mathematical vocabulary only
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 
@@ -13,7 +16,7 @@ This chapter defines the fields, operators, functional spaces, and algebraic ope
 
 The definitions are mathematical only. They introduce no equation of motion, variational principle, physical interpretation, measurement model, or claim about nature. In particular, naming an object “resolutive” reserves its role in the specification but does not assert its physical existence. Dynamics and variational principles belong to Chapter 6.
 
-Unless stated otherwise, (M) is the smooth base manifold of RS-D001 and Chapter 4, \(E\to M\) is a declared smooth bundle, and \(\Gamma(E)\) denotes its smooth global sections. A specialization shall declare different regularity, local domains, additional geometric structure, or boundary conditions whenever they are needed.
+Unless stated otherwise, \(M\) is the smooth base manifold of RS-D001 and Chapter 4, \(E\to M\) is a declared smooth bundle, and \(\Gamma(E)\) denotes its smooth global sections. A specialization shall declare different regularity, local domains, additional geometric structure, or boundary conditions whenever they are needed.
 
 ---
 
@@ -21,7 +24,7 @@ Unless stated otherwise, (M) is the smooth base manifold of RS-D001 and Chapter 
 
 ### RS-F001 — Scalar field
 
-A real scalar field on (M) is a map
+A real scalar field on \(M\) is a map
 
 \[
 f:M\longrightarrow\mathbb R.
@@ -34,7 +37,7 @@ It assigns a real number to each point and is coordinate-independent as a map. I
 The space of continuous real scalar fields is \(C^0(M,\mathbb R)\). The space of smooth real scalar fields is
 
 \[
-C^\infty(M)=C^\infty(M,\mathbb R).
+C^\infty\(M\)=C^\infty(M,\mathbb R).
 \]
 
 More generally, \(C^k(M,\mathbb R)\) contains fields with (k) continuous derivatives. Regularity shall not be inferred from the word “field”; it shall be stated or inherited from a cited definition.
@@ -64,7 +67,7 @@ Vector fields act as derivations on smooth scalar fields: \(X(f)\) is smooth, th
 A smooth covector field, or differential one-form, is a section
 
 \[
-\alpha\in\Gamma(T^*M)=\Omega^1(M),\qquad \alpha_p:T_pM\to\mathbb R.
+\alpha\in\Gamma(T^*M)=\Omega^1\(M\),\qquad \alpha_p:T_pM\to\mathbb R.
 \]
 
 The pairing with a vector field is the scalar field \(\alpha(X):p\mapsto\alpha_p(X_p)\). In local coordinates, \(\alpha=\alpha_\mu dx^\mu\), with covariant component transformation. The differential \(df\) of a smooth scalar field is the canonical one-form characterized by \(df(X)=X(f)\).
@@ -155,7 +158,7 @@ The following are standard mathematical operators. Each requires the geometric s
 
 ### RS-F010 — Gradient
 
-Given a nondegenerate metric \(g\), the gradient of \(f\in C^\infty(M)\) is the vector field \(\operatorname{grad}f\) uniquely defined by
+Given a nondegenerate metric \(g\), the gradient of \(f\in C^\infty\(M\)\) is the vector field \(\operatorname{grad}f\) uniquely defined by
 
 \[
 g(\operatorname{grad}f,X)=df(X)
@@ -198,7 +201,7 @@ On differential forms, the Hodge Laplacian may be defined by \(\Delta_H=d\delta+
 The exterior derivative is the unique graded derivation
 
 \[
-d:\Omega^k(M)\longrightarrow\Omega^{k+1}(M)
+d:\Omega^k\(M\)\longrightarrow\Omega^{k+1}\(M\)
 \]
 
 that agrees with the differential on scalar fields and satisfies \(d^2=0\) and the graded Leibniz rule. It requires no metric or connection.
@@ -247,7 +250,7 @@ Only projection and restriction have complete meanings at this level. Coherence 
 
 ### RS-F018 — Smooth-function and section spaces
 
-The space \(C^\infty(M)\) is a commutative real algebra under pointwise addition and multiplication. For a vector bundle \(E\to M\), \(\Gamma(E)\) is a module over \(C^\infty(M)\). Compactly supported spaces are denoted \(C_c^\infty(M)\) and \(\Gamma_c(E)\).
+The space \(C^\infty\(M\)\) is a commutative real algebra under pointwise addition and multiplication. For a vector bundle \(E\to M\), \(\Gamma(E)\) is a module over \(C^\infty\(M\)\). Compactly supported spaces are denoted \(C_c^\infty\(M\)\) and \(\Gamma_c(E)\).
 
 ### RS-F019 — Banach space
 
@@ -259,7 +262,7 @@ A Hilbert space is an inner-product space \(H\) complete in the norm induced by 
 
 ### RS-F021 — Distribution space
 
-For a smooth manifold supplied with the density or volume data needed by the chosen convention, a scalar distribution is a continuous linear functional on a declared test-function space, commonly \(C_c^\infty(M)\). The notation \(\mathcal D'(M)\) may be used after the test-space topology and pairing convention are fixed. Distributional sections require the corresponding dual bundle and density conventions. This optional generalized regularity carries no physical interpretation.
+For a smooth manifold supplied with the density or volume data needed by the chosen convention, a scalar distribution is a continuous linear functional on a declared test-function space, commonly \(C_c^\infty\(M\)\). The notation \(\mathcal D'\(M\)\) may be used after the test-space topology and pairing convention are fixed. Distributional sections require the corresponding dual bundle and density conventions. This optional generalized regularity carries no physical interpretation.
 
 ---
 
@@ -267,7 +270,7 @@ For a smooth manifold supplied with the density or volume data needed by the cho
 
 ### RS-F022 — Addition and scalar multiplication
 
-Fields taking values in the same vector bundle may be added and multiplied by scalars fiberwise. Sections also admit multiplication by \(f\in C^\infty(M)\). Addition is not defined intrinsically for sections of a general nonlinear fiber bundle.
+Fields taking values in the same vector bundle may be added and multiplied by scalars fiberwise. Sections also admit multiplication by \(f\in C^\infty\(M\)\). Addition is not defined intrinsically for sections of a general nonlinear fiber bundle.
 
 ### RS-F023 — Composition
 

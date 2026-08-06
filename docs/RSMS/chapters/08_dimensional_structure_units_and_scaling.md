@@ -1,9 +1,12 @@
 # Chapter 8 — Dimensional Structure, Units, and Scaling
 
 **Specification:** RSMS-1.0
-**Version:** 1.0-draft.8
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.8
 **Status:** Normative draft — dimensional and metrological framework
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 

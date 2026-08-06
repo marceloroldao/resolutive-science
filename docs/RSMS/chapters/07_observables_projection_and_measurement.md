@@ -1,9 +1,12 @@
 # Chapter 7 — Observables, Projection, and Measurement
 
-**Specification:** RSMS-1.0  
-**Version:** 1.0-draft.7  
-**Status:** Normative draft — observable and measurement framework  
+**Specification:** RSMS-1.0
+**Current RSMS version:** 1.0-draft.10
+**Chapter revision:** 1.0
+**Introduced in:** 1.0-draft.7
+**Status:** Normative draft — observable and measurement framework
 **Parent document:** `docs/RSMS/RSMS_v1.0.md`
+**Author:** Marcelo Roldão Matos
 
 ---
 
