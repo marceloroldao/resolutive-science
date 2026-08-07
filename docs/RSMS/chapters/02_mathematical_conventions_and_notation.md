@@ -20,7 +20,7 @@ No physical claim is introduced in this chapter. The definitions below specify n
 
 ## 2.2 Foundational mathematical domains
 
-### RS-D001 — Real numbers
+### RS-N001 — Real numbers
 
 The symbol
 
@@ -38,7 +38,7 @@ The subsets
 
 denote the strictly positive and non-negative real numbers, respectively.
 
-### RS-D002 — Complex numbers
+### RS-N002 — Complex numbers
 
 The symbol
 
@@ -58,7 +58,7 @@ For \(z\in\mathbb{C}\), the complex conjugate, modulus, real part, and imaginary
 z^*,\qquad |z|,\qquad \operatorname{Re}(z),\qquad \operatorname{Im}(z).
 \]
 
-### RS-D003 — Natural numbers and index sets
+### RS-N003 — Natural numbers and index sets
 
 The natural numbers are denoted by
 
@@ -79,7 +79,7 @@ A finite index set may be written as
 I_n=\{1,2,\ldots,n\}.
 \]
 
-### RS-D004 — Function spaces
+### RS-N004 — Function spaces
 
 Let \(X\) and \(Y\) be mathematical spaces. The set of functions from \(X\) to \(Y\) is denoted by
 
@@ -111,7 +111,7 @@ Whenever a measure is omitted, the applicable measure shall be clear from contex
 
 ## 2.3 Sets, mappings, and composition
 
-### RS-D005 — Mapping notation
+### RS-N005 — Mapping notation
 
 A mapping is written
 
@@ -129,7 +129,7 @@ f(A),\qquad f^{-1}(B),
 
 for \(A\subseteq X\) and \(B\subseteq Y\).
 
-### RS-D006 — Composition
+### RS-N006 — Composition
 
 For maps
 
@@ -143,12 +143,12 @@ the composition is
 
 \[
 (g\circ f)(x)=g(f(x)).
-\tag{RS-E001}
+\tag{RS-N201}
 \]
 
 Composition is read from right to left.
 
-### RS-D007 — Identity map
+### RS-N007 — Identity map
 
 The identity map on \(X\) is denoted by
 
@@ -156,10 +156,10 @@ The identity map on \(X\) is denoted by
 \operatorname{id}_X:X\to X,
 \qquad
 \operatorname{id}_X(x)=x.
-\tag{RS-E002}
+\tag{RS-N202}
 \]
 
-### RS-R001 — Explicit domains
+### RS-N101 — Explicit domains
 
 Every normative operator or mapping shall declare its domain and codomain either at first definition or in an associated metadata record.
 
@@ -167,7 +167,7 @@ Every normative operator or mapping shall declare its domain and codomain either
 
 ## 2.4 Coordinate and index conventions
 
-### RS-D008 — Spacetime indices
+### RS-N008 — Spacetime indices
 
 Unless otherwise stated, lowercase Greek indices from the middle of the alphabet,
 
@@ -184,7 +184,7 @@ For a four-dimensional spacetime chart,
 
 The coordinate \(x^0\) may be written as \(ct\) or \(t\), but the convention shall be declared explicitly because it changes dimensional bookkeeping.
 
-### RS-D009 — Spatial indices
+### RS-N009 — Spatial indices
 
 Lowercase Latin indices from the middle of the alphabet,
 
@@ -197,7 +197,7 @@ label spatial components. In three spatial dimensions,
 i,j,k\in\{1,2,3\}.
 \]
 
-### RS-D010 — Internal resolutive indices
+### RS-N010 — Internal resolutive indices
 
 Uppercase Latin indices,
 
@@ -208,7 +208,7 @@ shall be reserved for internal or resolutive-space components unless a specializ
 
 The range of internal indices is not fixed by this chapter and shall be defined by the structure in which they appear.
 
-### RS-D011 — Layer, mode, or subsystem indices
+### RS-N011 — Layer, mode, or subsystem indices
 
 Indices such as
 
@@ -217,7 +217,7 @@ n,m,r,s
 \]
 may label layers, modes, subsystems, or discrete states. Their domain shall be stated explicitly.
 
-### RS-R002 — Einstein summation convention
+### RS-N102 — Einstein summation convention
 
 Repeated upper and lower indices are summed unless otherwise stated:
 
@@ -225,12 +225,12 @@ Repeated upper and lower indices are summed unless otherwise stated:
 A^\mu B_\mu
 =
 \sum_{\mu}A^\mu B_\mu.
-\tag{RS-E003}
+\tag{RS-N203}
 \]
 
 Repeated indices in the same position shall not imply summation unless explicitly declared.
 
-### RS-R003 — Free-index consistency
+### RS-N103 — Free-index consistency
 
 Both sides of a tensor equation shall contain exactly the same free indices in the same positions.
 
@@ -238,7 +238,7 @@ Both sides of a tensor equation shall contain exactly the same free indices in t
 
 ## 2.5 Scalars, vectors, tensors, and forms
 
-### RS-D012 — Scalar
+### RS-N012 — Scalar
 
 A scalar field on a manifold \(M\) is a map
 
@@ -248,7 +248,7 @@ A scalar field on a manifold \(M\) is a map
 
 where \(\mathbb{K}=\mathbb{R}\) or \(\mathbb{C}\).
 
-### RS-D013 — Vector and covector
+### RS-N013 — Vector and covector
 
 At \(p\in M\), a tangent vector belongs to the tangent space
 
@@ -268,10 +268,10 @@ In local coordinates,
 V=V^\mu\partial_\mu,
 \qquad
 \omega=\omega_\mu\,dx^\mu.
-\tag{RS-E004}
+\tag{RS-N204}
 \]
 
-### RS-D014 — Tensor
+### RS-N014 — Tensor
 
 A tensor of type \((r,s)\) at \(p\) is an element of
 
@@ -281,7 +281,7 @@ T_p^{(r,s)}M
 \underbrace{T_pM\otimes\cdots\otimes T_pM}_{r}
 \otimes
 \underbrace{T_p^*M\otimes\cdots\otimes T_p^*M}_{s}.
-\tag{RS-E005}
+\tag{RS-N205}
 \]
 
 Its components are written
@@ -290,7 +290,7 @@ Its components are written
 T^{\mu_1\ldots\mu_r}{}_{\nu_1\ldots\nu_s}.
 \]
 
-### RS-D015 — Differential form
+### RS-N015 — Differential form
 
 A differential \(p\)-form is a totally antisymmetric covariant tensor field,
 
@@ -304,14 +304,14 @@ The exterior derivative satisfies
 
 \[
 d^2=0.
-\tag{RS-E006}
+\tag{RS-N206}
 \]
 
 ---
 
 ## 2.6 Metrics and signatures
 
-### RS-D016 — Metric tensor
+### RS-N016 — Metric tensor
 
 A metric on a manifold \(M\) is written
 
@@ -323,21 +323,21 @@ Its inverse satisfies
 
 \[
 g^{\mu\alpha}g_{\alpha\nu}=\delta^\mu{}_{\nu}.
-\tag{RS-E007}
+\tag{RS-N207}
 \]
 
-### RS-D017 — Signature convention
+### RS-N017 — Signature convention
 
 The default spacetime signature of the RSMS is
 
 \[
 (-,+,+,+).
-\tag{RS-E008}
+\tag{RS-N208}
 \]
 
 A specialized specification may use \((+,-,-,-)\), but shall declare the change explicitly and adjust all sign-sensitive expressions consistently.
 
-### RS-D018 — Raising and lowering indices
+### RS-N018 — Raising and lowering indices
 
 Indices are raised and lowered with the applicable metric:
 
@@ -345,7 +345,7 @@ Indices are raised and lowered with the applicable metric:
 V_\mu=g_{\mu\nu}V^\nu,
 \qquad
 V^\mu=g^{\mu\nu}V_\nu.
-\tag{RS-E009}
+\tag{RS-N209}
 \]
 
 Internal indices shall be raised or lowered using the declared internal metric, provisionally denoted by
@@ -360,7 +360,7 @@ The existence and physical interpretation of \(\mathcal{I}_{AB}\) will be specif
 
 ## 2.7 Derivatives and connections
 
-### RS-D019 — Partial derivative
+### RS-N019 — Partial derivative
 
 The coordinate partial derivative is
 
@@ -370,7 +370,7 @@ The coordinate partial derivative is
 \frac{\partial}{\partial x^\mu}.
 \]
 
-### RS-D020 — Covariant derivative
+### RS-N020 — Covariant derivative
 
 The spacetime covariant derivative is denoted by
 
@@ -386,7 +386,7 @@ For a vector field,
 \partial_\mu V^\nu
 +
 \Gamma^\nu{}_{\mu\lambda}V^\lambda.
-\tag{RS-E010}
+\tag{RS-N210}
 \]
 
 For a covector field,
@@ -397,10 +397,10 @@ For a covector field,
 \partial_\mu\omega_\nu
 -
 \Gamma^\lambda{}_{\mu\nu}\omega_\lambda.
-\tag{RS-E011}
+\tag{RS-N211}
 \]
 
-### RS-D021 — Internal covariant derivative
+### RS-N021 — Internal covariant derivative
 
 When an internal connection is present, the corresponding derivative shall be denoted provisionally by
 
@@ -414,12 +414,12 @@ Its detailed form depends on the internal group, representation, and connection 
 D_\mu
 =
 \partial_\mu+\mathcal{A}_\mu,
-\tag{RS-E012}
+\tag{RS-N212}
 \]
 
 where \(\mathcal{A}_\mu\) is representation-valued. This expression is structural, not yet a physical axiom.
 
-### RS-R004 — Derivative disambiguation
+### RS-N104 — Derivative disambiguation
 
 Whenever \(\partial_\mu\), \(\nabla_\mu\), and \(D_\mu\) coexist, the specification shall identify which geometric or internal connection each derivative uses.
 
@@ -427,13 +427,13 @@ Whenever \(\partial_\mu\), \(\nabla_\mu\), and \(D_\mu\) coexist, the specificat
 
 ## 2.8 Complex fields and phase conventions
 
-### RS-D022 — Polar representation
+### RS-N022 — Polar representation
 
 A nonzero complex field may be represented as
 
 \[
 \Psi=\sqrt{\rho}\,e^{i\vartheta},
-\tag{RS-E013}
+\tag{RS-N213}
 \]
 
 where
@@ -444,7 +444,7 @@ where
 
 and \(\vartheta\) is a phase variable.
 
-### RS-D023 — Resolutive phase symbol
+### RS-N023 — Resolutive phase symbol
 
 The symbol
 
@@ -457,12 +457,12 @@ The candidate representation
 
 \[
 \Psi_R=\sqrt{\rho_R}\,e^{i\Theta_R/2}\,\zeta_R
-\tag{RS-E014}
+\tag{RS-N214}
 \]
 
 is reserved for later normative treatment. In this chapter it is registered only as a notation target and shall not yet be interpreted as an established physical equation.
 
-### RS-R005 — Periodicity declaration
+### RS-N105 — Periodicity declaration
 
 Every phase variable shall declare its equivalence relation. For example,
 
@@ -482,7 +482,7 @@ A periodicity shall not be inferred solely from notation.
 
 ## 2.9 Operators
 
-### RS-D024 — Linear operator
+### RS-N024 — Linear operator
 
 A linear operator \(\hat A:V\to W\) satisfies
 
@@ -490,12 +490,12 @@ A linear operator \(\hat A:V\to W\) satisfies
 \hat A(av+bw)
 =
 a\hat A(v)+b\hat A(w)
-\tag{RS-E015}
+\tag{RS-N215}
 \]
 
 for all admissible scalars \(a,b\) and vectors \(v,w\).
 
-### RS-D025 — Commutator
+### RS-N025 — Commutator
 
 The commutator of two operators is
 
@@ -503,10 +503,10 @@ The commutator of two operators is
 [\hat A,\hat B]
 =
 \hat A\hat B-\hat B\hat A.
-\tag{RS-E016}
+\tag{RS-N216}
 \]
 
-### RS-D026 — Anticommutator
+### RS-N026 — Anticommutator
 
 The anticommutator is
 
@@ -514,10 +514,10 @@ The anticommutator is
 \{\hat A,\hat B\}
 =
 \hat A\hat B+\hat B\hat A.
-\tag{RS-E017}
+\tag{RS-N217}
 \]
 
-### RS-D027 — Adjoint
+### RS-N027 — Adjoint
 
 The adjoint of \(\hat A\) is denoted by \(\hat A^\dagger\) and is defined relative to a declared inner product:
 
@@ -525,10 +525,10 @@ The adjoint of \(\hat A\) is denoted by \(\hat A^\dagger\) and is defined relati
 \langle u,\hat A v\rangle
 =
 \langle \hat A^\dagger u,v\rangle.
-\tag{RS-E018}
+\tag{RS-N218}
 \]
 
-### RS-R006 — Operator metadata
+### RS-N106 — Operator metadata
 
 Every normative operator shall declare:
 
@@ -544,7 +544,7 @@ Every normative operator shall declare:
 
 ## 2.10 Inner products, norms, and expectation values
 
-### RS-D028 — Inner product
+### RS-N028 — Inner product
 
 An inner product is denoted by
 
@@ -554,7 +554,7 @@ An inner product is denoted by
 
 For a complex vector space it is conjugate-linear in the first argument and linear in the second unless another convention is declared.
 
-### RS-D029 — Norm
+### RS-N029 — Norm
 
 The induced norm is
 
@@ -562,10 +562,10 @@ The induced norm is
 \|v\|
 =
 \sqrt{\langle v,v\rangle}.
-\tag{RS-E019}
+\tag{RS-N219}
 \]
 
-### RS-D030 — Expectation value
+### RS-N030 — Expectation value
 
 For a normalized state \(|\Psi\rangle\) and operator \(\hat A\), the expectation value is
 
@@ -573,7 +573,7 @@ For a normalized state \(|\Psi\rangle\) and operator \(\hat A\), the expectation
 \langle \hat A\rangle_\Psi
 =
 \langle\Psi|\hat A|\Psi\rangle.
-\tag{RS-E020}
+\tag{RS-N220}
 \]
 
 This notation shall be used only where a Hilbert-space structure has been explicitly introduced.
@@ -582,7 +582,7 @@ This notation shall be used only where a Hilbert-space structure has been explic
 
 ## 2.11 Probability and statistical notation
 
-### RS-D031 — Probability distribution
+### RS-N031 — Probability distribution
 
 A probability density for a continuous variable \(x\) is denoted by
 
@@ -592,10 +592,10 @@ p(x),
 p(x)\ge0,
 \qquad
 \int p(x)\,dx=1.
-\tag{RS-E021}
+\tag{RS-N221}
 \]
 
-### RS-D032 — Conditional probability
+### RS-N032 — Conditional probability
 
 Conditional probability is denoted by
 
@@ -603,7 +603,7 @@ Conditional probability is denoted by
 p(x\mid y).
 \]
 
-### RS-D033 — Likelihood
+### RS-N033 — Likelihood
 
 For data \(\mathcal D\), model \(\mathcal M\), and parameters \(\theta\), the likelihood is
 
@@ -611,10 +611,10 @@ For data \(\mathcal D\), model \(\mathcal M\), and parameters \(\theta\), the li
 \mathcal L(\theta)
 =
 p(\mathcal D\mid\theta,\mathcal M).
-\tag{RS-E022}
+\tag{RS-N222}
 \]
 
-### RS-D034 — Posterior
+### RS-N034 — Posterior
 
 Bayes' theorem is written
 
@@ -623,10 +623,10 @@ p(\theta\mid\mathcal D,\mathcal M)
 =
 \frac{p(\mathcal D\mid\theta,\mathcal M)p(\theta\mid\mathcal M)}
 {p(\mathcal D\mid\mathcal M)}.
-\tag{RS-E023}
+\tag{RS-N223}
 \]
 
-### RS-R007 — Statistical transparency
+### RS-N107 — Statistical transparency
 
 Every statistical result shall declare the likelihood, priors, nuisance parameters, data covariance treatment, numerical sampler, convergence diagnostics, and comparison metric used.
 
@@ -634,7 +634,7 @@ Every statistical result shall declare the likelihood, priors, nuisance paramete
 
 ## 2.12 Dimensional notation
 
-### RS-D035 — Physical dimension
+### RS-N035 — Physical dimension
 
 The physical dimension of a quantity \(Q\) is denoted by
 
@@ -656,7 +656,7 @@ The base SI dimensions are represented by
 
 corresponding to mass, length, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity.
 
-### RS-D036 — Dimensionless quantities
+### RS-N036 — Dimensionless quantities
 
 A dimensionless quantity satisfies
 
@@ -666,7 +666,7 @@ A dimensionless quantity satisfies
 
 Angles and phases are dimensionless, although radians may be retained as semantic unit labels.
 
-### RS-R008 — Dimensional homogeneity
+### RS-N108 — Dimensional homogeneity
 
 Every additive equation shall be dimensionally homogeneous. If
 
@@ -677,12 +677,12 @@ then
 
 \[
 [A]=[B]=[C].
-\tag{RS-E024}
+\tag{RS-N224}
 \]
 
 Arguments of exponential, logarithmic, and trigonometric functions shall be dimensionless.
 
-### RS-R009 — Natural units
+### RS-N109 — Natural units
 
 Natural units such as \(c=1\), \(\hbar=1\), or \(k_B=1\) may be used only when explicitly declared. Conversion back to SI or another declared physical unit system shall remain possible.
 
@@ -699,7 +699,7 @@ The following symbols shall be distinguished:
 - \(\sim\): equivalence relation, asymptotic behavior, or order relation, with meaning declared by context;
 - \(\simeq\): approximate equivalence, to be used sparingly and defined when ambiguity is possible.
 
-### RS-R010 — Numerical tolerance
+### RS-N110 — Numerical tolerance
 
 A computational equality shall specify a tolerance where exact floating-point equality is not mathematically justified. A generic conformance condition may be written
 
@@ -709,14 +709,14 @@ A computational equality shall specify a tolerance where exact floating-point eq
 \varepsilon_{\mathrm{abs}}
 +
 \varepsilon_{\mathrm{rel}}|x_{\mathrm{ref}}|.
-\tag{RS-E025}
+\tag{RS-N225}
 \]
 
 ---
 
 ## 2.14 Boundary, initial, and normalization conditions
 
-### RS-R011 — Condition declaration
+### RS-N111 — Condition declaration
 
 A differential model shall declare all conditions required for a well-posed problem, including as applicable:
 
@@ -727,22 +727,22 @@ A differential model shall declare all conditions required for a well-posed prob
 - regularity assumptions;
 - asymptotic conditions.
 
-### RS-D037 — Initial condition
+### RS-N037 — Initial condition
 
 An initial condition may be written
 
 \[
 X(t_0)=X_0.
-\tag{RS-E026}
+\tag{RS-N226}
 \]
 
-### RS-D038 — Boundary condition
+### RS-N038 — Boundary condition
 
 A boundary condition on \(\partial\Omega\) may be written generically as
 
 \[
 \mathcal B[X]\big|_{\partial\Omega}=0,
-\tag{RS-E027}
+\tag{RS-N227}
 \]
 
 where \(\mathcal B\) is the declared boundary operator.
@@ -751,11 +751,11 @@ where \(\mathcal B\) is the declared boundary operator.
 
 ## 2.15 Mathematical regularity and singularities
 
-### RS-R012 — Regularity declaration
+### RS-N112 — Regularity declaration
 
 The minimum regularity class required by each equation shall be declared. For example, if second derivatives occur, the field should ordinarily belong to at least \(C^2\) locally unless weak derivatives are intended.
 
-### RS-D039 — Singular set
+### RS-N039 — Singular set
 
 For a field or operator undefined on a subset \(S\subset M\), the singular set shall be identified explicitly:
 
@@ -763,7 +763,7 @@ For a field or operator undefined on a subset \(S\subset M\), the singular set s
 \operatorname{Sing}(X)=S.
 \]
 
-### RS-R013 — Singular behavior
+### RS-N113 — Singular behavior
 
 A singularity shall not be hidden by numerical clipping, regularization, or coordinate transformation. Any such treatment shall be documented and its physical and numerical consequences tested.
 
@@ -771,7 +771,7 @@ A singularity shall not be hidden by numerical clipping, regularization, or coor
 
 ## 2.16 Discrete and continuous representations
 
-### RS-D040 — Continuous field
+### RS-N040 — Continuous field
 
 A continuous field is written
 
@@ -779,16 +779,16 @@ A continuous field is written
 X:M\to V.
 \]
 
-### RS-D041 — Discrete approximation
+### RS-N041 — Discrete approximation
 
 A discrete approximation on nodes \(x_a\) is written
 
 \[
 X_a\approx X(x_a).
-\tag{RS-E028}
+\tag{RS-N228}
 \]
 
-### RS-R014 — Discretization traceability
+### RS-N114 — Discretization traceability
 
 A numerical implementation shall distinguish the continuum equation from its discretization. The approximation order, grid or basis, timestep rule, convergence criterion, and stability restrictions shall be documented.
 
@@ -810,7 +810,7 @@ and locally as
 g=g_{\mu\nu}\,dx^\mu\otimes dx^\nu.
 \]
 
-### RS-R015 — Representation equivalence
+### RS-N115 — Representation equivalence
 
 When both forms are given, their equivalence shall be established or treated as a conformance test.
 
