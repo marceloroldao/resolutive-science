@@ -2,7 +2,7 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft.9
+**Version:** 1.0-draft.10
 **Status:** In development
 **Author:** Marcelo Roldão Matos
 **ORCID:** 0009-0003-6075-4680
@@ -31,6 +31,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | 1.0-draft.7 | 2026-08-06 | Normative draft | Added Chapter 7 observable projection, measurement, inference, uncertainty, and independent validation categories without selecting a universal observable or measurement law. |
 | 1.0-draft.8 | 2026-08-06 | Normative draft | Added Chapter 8 dimensional structure, units, conversions, normalization, and scaling without introducing a physical law. |
 | 1.0-draft.9 | 2026-08-06 | Normative draft | Added Chapter 9 symmetry, invariance, covariance, equivalence, and correspondence principles without introducing a physical interaction. |
+| 1.0-draft.10 | 2026-08-07 | Normative draft | Added Chapter 10 computational conformance, software and numerical verification, validation categories, reproducibility, symmetric comparison, and scientific claim controls without introducing a physical law. |
 
 ---
 
@@ -210,6 +211,8 @@ The initial identifier families are:
 - `RS-R###` — requirements;
 - `RS-T###` — tests or validation criteria.
 
+Additional identifier families are defined by their governing chapters. Once assigned, an identifier shall not be reused for a different meaning.
+
 Specialized specifications shall use their own prefixes, such as `RC-E###` for cosmological equations or `RG-E###` for galactic equations.
 
 An identifier shall not be reassigned to a different meaning after publication. Deprecated identifiers shall remain in the historical record with an explicit replacement reference when applicable.
@@ -251,7 +254,7 @@ The planned structure of RSMS v1.0 is:
 7. [Observables, Projection, and Measurement](chapters/07_observables_projection_and_measurement.md);
 8. [Dimensional Structure, Units, and Scaling](chapters/08_dimensional_structure_units_and_scaling.md);
 9. [Symmetry, Invariance, and Correspondence Principles](chapters/09_symmetry_invariance_and_correspondence_principles.md);
-10. Computational Conformance and Validation;
+10. [Computational Conformance and Validation](chapters/10_computational_conformance_and_validation.md);
 11. Versioning, Extensions, and Deprecation;
 12. Appendices and Symbol Registry.
 
@@ -270,10 +273,11 @@ This organization may evolve during the draft phase. Once RSMS v1.0 is released,
 | 7 | [Observables, Projection, and Measurement](chapters/07_observables_projection_and_measurement.md) | Normative draft complete |
 | 8 | [Dimensional Structure, Units, and Scaling](chapters/08_dimensional_structure_units_and_scaling.md) | Normative draft complete |
 | 9 | [Symmetry, Invariance, and Correspondence Principles](chapters/09_symmetry_invariance_and_correspondence_principles.md) | Normative draft complete |
-| 10–12 | Planned chapters | Not yet |
+| 10 | [Computational Conformance and Validation](chapters/10_computational_conformance_and_validation.md) | Normative draft complete |
+| 11–12 | Planned chapters | Not yet |
 
 ---
 
 ## Next chapter
 
-**Chapter 10 — Computational Conformance and Validation** will define the common requirements for conforming implementations and validation workflows.
+**Chapter 11 — Versioning, Extensions, and Deprecation** will define the common rules for specification evolution, compatibility, migration, deprecation, and controlled extensions.
