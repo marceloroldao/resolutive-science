@@ -2,7 +2,7 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft.10
+**Version:** 1.0-draft.11
 **Status:** In development
 **Author:** Marcelo Roldão Matos
 **ORCID:** 0009-0003-6075-4680
@@ -32,6 +32,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | 1.0-draft.8 | 2026-08-06 | Normative draft | Added Chapter 8 dimensional structure, units, conversions, normalization, and scaling without introducing a physical law. |
 | 1.0-draft.9 | 2026-08-06 | Normative draft | Added Chapter 9 symmetry, invariance, covariance, equivalence, and correspondence principles without introducing a physical interaction. |
 | 1.0-draft.10 | 2026-08-07 | Normative draft | Added Chapter 10 computational conformance, software and numerical verification, validation categories, reproducibility, symmetric comparison, and scientific claim controls without introducing a physical law. |
+| 1.0-draft.11 | 2026-08-07 | Normative draft | Added Chapter 11 versioning, compatibility, controlled extensions, deprecation, supersession, migration, and revision governance without introducing a physical law. |
 
 ---
 
@@ -255,7 +256,7 @@ The planned structure of RSMS v1.0 is:
 8. [Dimensional Structure, Units, and Scaling](chapters/08_dimensional_structure_units_and_scaling.md);
 9. [Symmetry, Invariance, and Correspondence Principles](chapters/09_symmetry_invariance_and_correspondence_principles.md);
 10. [Computational Conformance and Validation](chapters/10_computational_conformance_and_validation.md);
-11. Versioning, Extensions, and Deprecation;
+11. [Versioning, Extensions, and Deprecation](chapters/11_versioning_extensions_and_deprecation.md);
 12. Appendices and Symbol Registry.
 
 This organization may evolve during the draft phase. Once RSMS v1.0 is released, incompatible structural changes shall require a new major version.
@@ -274,10 +275,11 @@ This organization may evolve during the draft phase. Once RSMS v1.0 is released,
 | 8 | [Dimensional Structure, Units, and Scaling](chapters/08_dimensional_structure_units_and_scaling.md) | Normative draft complete |
 | 9 | [Symmetry, Invariance, and Correspondence Principles](chapters/09_symmetry_invariance_and_correspondence_principles.md) | Normative draft complete |
 | 10 | [Computational Conformance and Validation](chapters/10_computational_conformance_and_validation.md) | Normative draft complete |
-| 11–12 | Planned chapters | Not yet |
+| 11 | [Versioning, Extensions, and Deprecation](chapters/11_versioning_extensions_and_deprecation.md) | Normative draft complete |
+| 12 | Appendices and Symbol Registry | Planned |
 
 ---
 
 ## Next chapter
 
-**Chapter 11 — Versioning, Extensions, and Deprecation** will define the common rules for specification evolution, compatibility, migration, deprecation, and controlled extensions.
+**Chapter 12 — Appendices and Symbol Registry** will consolidate registries, machine-readable indexes, symbol governance, cross-references, and release-readiness checks for RSMS-1.0.
