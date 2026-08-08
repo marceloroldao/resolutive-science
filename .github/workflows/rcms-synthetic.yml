@@ -7,6 +7,7 @@ on:
       - 'tests/test_rcms_synthetic.py'
       - 'tools/run_rcms_synthetic.py'
       - 'tools/run_rcms_multiseed.py'
+      - 'tools/run_rcms_effective_compare.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
   push:
@@ -16,6 +17,7 @@ on:
       - 'tests/test_rcms_synthetic.py'
       - 'tools/run_rcms_synthetic.py'
       - 'tools/run_rcms_multiseed.py'
+      - 'tools/run_rcms_effective_compare.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
 
@@ -37,3 +39,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: python tools/run_rcms_multiseed.py
+      - name: Effective-amplitude comparison
+        env:
+          PYTHONPATH: .
+        run: python tools/run_rcms_effective_compare.py
