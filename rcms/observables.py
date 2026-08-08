@@ -4,7 +4,14 @@ from __future__ import annotations
 from math import log10
 from typing import Callable
 
-from .background import LCDMParams, RCMSEffectiveParams, h_lcdm, h_rcms_effective
+from .background import (
+    LCDMParams,
+    RCMSParams,
+    RCMSEffectiveParams,
+    h_lcdm,
+    h_rcms_e020,
+    h_rcms_effective,
+)
 
 C_KM_S = 299792.458
 
@@ -38,6 +45,12 @@ def comoving_distance_lcdm(z: float, params: LCDMParams) -> float:
     return C_KM_S * _simpson_integral(lambda zz: 1.0 / h_lcdm(zz, params), 0.0, z)
 
 
+def comoving_distance_e020(z: float, params: LCDMParams, rcms: RCMSParams) -> float:
+    if z < 0:
+        raise ValueError("z must be non-negative")
+    return C_KM_S * _simpson_integral(lambda zz: 1.0 / h_rcms_e020(zz, params, rcms), 0.0, z)
+
+
 def comoving_distance_effective(z: float, params: LCDMParams, rcms: RCMSEffectiveParams) -> float:
     if z < 0:
         raise ValueError("z must be non-negative")
@@ -46,6 +59,10 @@ def comoving_distance_effective(z: float, params: LCDMParams, rcms: RCMSEffectiv
 
 def luminosity_distance_lcdm(z: float, params: LCDMParams) -> float:
     return (1.0 + z) * comoving_distance_lcdm(z, params)
+
+
+def luminosity_distance_e020(z: float, params: LCDMParams, rcms: RCMSParams) -> float:
+    return (1.0 + z) * comoving_distance_e020(z, params, rcms)
 
 
 def luminosity_distance_effective(z: float, params: LCDMParams, rcms: RCMSEffectiveParams) -> float:
@@ -62,6 +79,10 @@ def mu_lcdm(z: float, params: LCDMParams) -> float:
     return distance_modulus_from_mpc(luminosity_distance_lcdm(z, params))
 
 
+def mu_e020(z: float, params: LCDMParams, rcms: RCMSParams) -> float:
+    return distance_modulus_from_mpc(luminosity_distance_e020(z, params, rcms))
+
+
 def mu_effective(z: float, params: LCDMParams, rcms: RCMSEffectiveParams) -> float:
     return distance_modulus_from_mpc(luminosity_distance_effective(z, params, rcms))
 
@@ -72,6 +93,13 @@ def dv_lcdm(z: float, params: LCDMParams) -> float:
         raise ValueError("BAO z must be positive")
     dm = comoving_distance_lcdm(z, params)
     return (dm * dm * C_KM_S * z / h_lcdm(z, params)) ** (1.0 / 3.0)
+
+
+def dv_e020(z: float, params: LCDMParams, rcms: RCMSParams) -> float:
+    if z <= 0:
+        raise ValueError("BAO z must be positive")
+    dm = comoving_distance_e020(z, params, rcms)
+    return (dm * dm * C_KM_S * z / h_rcms_e020(z, params, rcms)) ** (1.0 / 3.0)
 
 
 def dv_effective(z: float, params: LCDMParams, rcms: RCMSEffectiveParams) -> float:
