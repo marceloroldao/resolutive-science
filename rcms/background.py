@@ -27,6 +27,13 @@ class RCMSParams:
     s1: float = 0.0
 
 
+@dataclass(frozen=True)
+class RCMSEffectiveParams:
+    """One-parameter low-signal effective deformation amplitude."""
+
+    a_r: float = 0.0
+
+
 def e2_lcdm(z: float, params: LCDMParams) -> float:
     """Dimensionless squared expansion rate E(z)^2 for flat Lambda-CDM."""
     params.validate()
@@ -47,6 +54,18 @@ def deformation_e020(z: float, params: RCMSParams) -> float:
     return params.epsilon_r * tanh(params.s1 * log1p(z))
 
 
+def deformation_effective(z: float, params: RCMSEffectiveParams) -> float:
+    """Low-signal RC-E020 approximation F_eff=A_R ln(1+z).
+
+    RC-E020 gives tanh(x)~x for |x| << 1, so
+    epsilon_R*tanh[s1 ln(1+z)] ~ (epsilon_R*s1) ln(1+z).
+    The effective parameter is A_R=epsilon_R*s1.
+    """
+    if z < 0:
+        raise ValueError("z must be non-negative")
+    return params.a_r * log1p(z)
+
+
 def h_rcms_e020(z: float, lcdm: LCDMParams, rcms: RCMSParams) -> float:
     """RC-E020 expansion rate.
 
@@ -57,4 +76,13 @@ def h_rcms_e020(z: float, lcdm: LCDMParams, rcms: RCMSParams) -> float:
     total_e2 = base_e2 + deformation_e020(z, rcms)
     if total_e2 <= 0:
         raise ValueError("RC-E020 violates positive expansion-square requirement RC-R006")
+    return lcdm.h0 * sqrt(total_e2)
+
+
+def h_rcms_effective(z: float, lcdm: LCDMParams, rcms: RCMSEffectiveParams) -> float:
+    """One-parameter low-signal effective RCMS expansion rate."""
+    base_e2 = e2_lcdm(z, lcdm)
+    total_e2 = base_e2 + deformation_effective(z, rcms)
+    if total_e2 <= 0:
+        raise ValueError("effective RCMS model violates positive expansion-square requirement")
     return lcdm.h0 * sqrt(total_e2)

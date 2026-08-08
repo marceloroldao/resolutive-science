@@ -5,7 +5,14 @@ from dataclasses import dataclass
 from random import Random
 from typing import Iterable, Sequence
 
-from .background import LCDMParams, RCMSParams, h_lcdm, h_rcms_e020
+from .background import (
+    LCDMParams,
+    RCMSParams,
+    RCMSEffectiveParams,
+    h_lcdm,
+    h_rcms_e020,
+    h_rcms_effective,
+)
 
 
 @dataclass(frozen=True)
@@ -47,6 +54,14 @@ def chi2(data: Iterable[Observation], lcdm: LCDMParams, rcms: RCMSParams | None 
     return total
 
 
+def chi2_effective(data: Iterable[Observation], lcdm: LCDMParams, rcms: RCMSEffectiveParams) -> float:
+    total = 0.0
+    for obs in data:
+        pred = h_rcms_effective(obs.z, lcdm, rcms)
+        total += ((obs.h - pred) / obs.sigma) ** 2
+    return total
+
+
 def grid_fit_e020(
     data: Sequence[Observation],
     lcdm: LCDMParams,
@@ -67,6 +82,27 @@ def grid_fit_e020(
                 best_chi2 = value
     if best is None:
         raise ValueError("no admissible RC-E020 candidate on supplied grid")
+    return best, best_chi2
+
+
+def grid_fit_effective(
+    data: Sequence[Observation],
+    lcdm: LCDMParams,
+    a_grid: Sequence[float],
+) -> tuple[RCMSEffectiveParams, float]:
+    best: RCMSEffectiveParams | None = None
+    best_chi2 = float("inf")
+    for a_r in a_grid:
+        candidate = RCMSEffectiveParams(a_r=a_r)
+        try:
+            value = chi2_effective(data, lcdm, candidate)
+        except ValueError:
+            continue
+        if value < best_chi2:
+            best = candidate
+            best_chi2 = value
+    if best is None:
+        raise ValueError("no admissible effective RCMS candidate on supplied grid")
     return best, best_chi2
 
 
