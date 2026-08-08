@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'rcms/**'
+      - 'data/rcms/**'
       - 'tests/test_rcms_synthetic.py'
       - 'tools/run_rcms_synthetic.py'
       - 'tools/run_rcms_multiseed.py'
@@ -14,12 +15,14 @@ on:
       - 'tools/run_rcms_probe_ablation.py'
       - 'tools/run_rcms_calibration_nuisance.py'
       - 'tools/run_rcms_full_vs_effective.py'
+      - 'tools/validate_rcms_hz_intake.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
   push:
     branches: [main]
     paths:
       - 'rcms/**'
+      - 'data/rcms/**'
       - 'tests/test_rcms_synthetic.py'
       - 'tools/run_rcms_synthetic.py'
       - 'tools/run_rcms_multiseed.py'
@@ -30,6 +33,7 @@ on:
       - 'tools/run_rcms_probe_ablation.py'
       - 'tools/run_rcms_calibration_nuisance.py'
       - 'tools/run_rcms_full_vs_effective.py'
+      - 'tools/validate_rcms_hz_intake.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
 
@@ -41,6 +45,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate real H(z) data intake
+        run: python tools/validate_rcms_hz_intake.py
       - name: Unit and falsification tests
         run: python -m unittest tests/test_rcms_synthetic.py -v
       - name: Reproducible benchmark report
