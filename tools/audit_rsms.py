@@ -10,12 +10,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs" / "RSMS"
-MASTER = DOCS / "RSMS_v1.0.md"
 
 HEADING = re.compile(r"^### (RS-[A-Z0-9]+) — (.+)$", re.M)
 TAG = re.compile(r"\\tag\{(RS-[A-Z0-9]+)\}")
 REF = re.compile(r"\bRS-[A-Z][A-Z0-9]*[0-9]{3}\b")
-VERSION = re.compile(r"\*\*(?:Current RSMS version|Version):\*\*\s*([^\n]+)")
 MASTER_VERSION = re.compile(r"\*\*Version:\*\*\s*([^\n]+)")
 
 BAD_LATEX = [
@@ -74,7 +72,8 @@ def main() -> int:
     texts = current_text()
     defs, errors = definitions(texts)
 
-    # References must resolve to an extant heading/equation.
+    # References must resolve to an extant heading/equation. Audit reports may
+    # intentionally cite historical or failing identifiers and are excluded.
     for path, text in texts.items():
         if "/audits/" in f"/{path}":
             continue
@@ -90,12 +89,15 @@ def main() -> int:
                 if not dest.exists():
                     errors.append(f"broken Markdown link {target} in {path}")
 
-    # LaTeX delimiters and known replacement damage.
+    # LaTeX delimiters and known replacement damage. Audit reports are allowed
+    # to quote malformed source literally as evidence; normative sources are not.
     for path, text in texts.items():
         if text.count(r"\(") != text.count(r"\)"):
             errors.append(f"unbalanced inline LaTeX delimiters in {path}")
         if text.count(r"\[") != text.count(r"\]"):
             errors.append(f"unbalanced display LaTeX delimiters in {path}")
+        if "/audits/" in f"/{path}":
+            continue
         for pattern, label in BAD_LATEX:
             for match in pattern.finditer(text):
                 errors.append(f"{label} in {path}: {match.group(0)}")
