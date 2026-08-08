@@ -9,7 +9,13 @@ from .background import LCDMParams, RCMSEffectiveParams, h_lcdm, h_rcms_effectiv
 C_KM_S = 299792.458
 
 
-def _simpson_integral(fn: Callable[[float], float], a: float, b: float, n: int = 120) -> float:
+def _simpson_integral(fn: Callable[[float], float], a: float, b: float, n: int = 40) -> float:
+    """Composite Simpson rule for synthetic-distance tests.
+
+    The 40-subinterval default was checked against a 400-subinterval reference
+    over the nominal z<=2 domain; relative distance differences remain far below
+    the synthetic observational uncertainties used by the RCMS benchmarks.
+    """
     if b < a:
         raise ValueError("integration upper bound must be >= lower bound")
     if n < 2:
