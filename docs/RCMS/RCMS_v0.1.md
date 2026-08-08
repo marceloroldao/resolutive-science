@@ -2,8 +2,8 @@
 
 ## Resolutive Cosmology Mathematical Specification
 
-**Version:** 0.1-draft.1  
-**Status:** Initial normative draft  
+**Version:** 0.1-draft.2  
+**Status:** Candidate-model normative draft  
 **Parent specification:** RSMS-1.0-rc.1  
 **Author:** Marcelo Roldão Matos  
 **ORCID:** 0009-0003-6075-4680  
@@ -19,7 +19,14 @@ The **Resolutive Cosmology Mathematical Specification (RCMS)** is the specialize
 
 RCMS inherits the mathematical language, state-space architecture, registry governance, computational conformance rules, versioning discipline, and scientific-integrity requirements of RSMS-1.0-rc.1. It does not alter RSMS identifiers.
 
-This initial draft establishes the scope and test architecture required to formulate resolutive cosmological hypotheses and compare them with standard cosmological models. It does not claim that a resolutive cosmology is observationally validated.
+RCMS-0.1-draft.2 establishes the cosmological scope and the first dimensionally explicit falsification candidates. It does not claim that a resolutive cosmology is observationally validated.
+
+## Version history
+
+| Version | Date | Status | Description |
+|---|---:|---|---|
+| 0.1-draft.1 | 2026-08-07 | Initial normative draft | Established RCMS inheritance, observable architecture, baseline comparison, and validation matrix. |
+| 0.1-draft.2 | 2026-08-07 | Candidate-model normative draft | Added bounded background-deformation candidates, dimensional requirements, state-evolution test functions, falsification criteria, and synthetic validation battery. |
 
 ## 1. Purpose
 
@@ -189,7 +196,7 @@ H_R^2(z)=H_{\mathrm{ref}}^2(z)+\Delta_R(z;\vartheta_R),
 
 where \(\Delta_R\) is a resolutive contribution and \(\vartheta_R\) is its declared parameter set.
 
-RC-E009 is an interface for hypothesis construction, not a physical law. A later RCMS draft shall define candidate forms for \(\Delta_R\), derive their dimensional structure, state recovery limits, and confront them with data.
+RC-E009 is an interface for hypothesis construction, not a physical law. Candidate forms for \(\Delta_R\), their dimensional structure, recovery limits, and synthetic falsification requirements are defined in [Chapter 2 — Resolutive Background Deformations](chapters/02_resolutive_background_deformations.md).
 
 ### RC-R004 — Reference recovery
 
@@ -210,15 +217,22 @@ A candidate resolutive cosmology should identify at least one observable regime 
 | C5 | Joint | Combined likelihood and posterior diagnostics | Same probes and priors |
 | C6 | Predictive | Held-out / external predictions | Predeclared candidate models |
 
-## 8. Immediate next draft
+## 8. Candidate-model chapter
 
-RCMS-0.1-draft.2 should define:
+The first dimensionally explicit candidate family is defined in:
 
-1. the first dimensionally explicit candidate for \(\Delta_R(z;\vartheta_R)\);
-2. the relation, if any, between cosmological evolution and \(\rho_R,\Theta_R,\iota_R,\kappa_R\);
-3. exact datasets and likelihood interfaces for the five-probe validation battery;
-4. parameter priors and nuisance parameters;
-5. synthetic recovery tests before observational fitting;
-6. numerical implementation and traceability identifiers.
+- [Chapter 2 — Resolutive Background Deformations](chapters/02_resolutive_background_deformations.md).
 
-Until those items are supplied, RC-H001 remains a hypothesis interface rather than a validated cosmological model.
+The preferred first falsification target is RC-E020. Synthetic tests RC-T006 through RC-T011 shall precede fitting to real cosmological observations.
+
+## 9. Immediate next implementation stage
+
+The next implementation shall:
+
+1. implement a flat \(\Lambda\)CDM reference background and RC-E020 through the same numerical interface;
+2. generate null and injected-signal synthetic datasets;
+3. test recovery, discrimination, identifiability, numerical stability, and interval calibration;
+4. record seeds, tolerances, parameter bounds, and software versions;
+5. reject or revise RC-E020 if it fails the synthetic battery before observational fitting.
+
+Until those tests are completed, RC-E020 remains a dimensionally defined candidate rather than a validated cosmological model.
