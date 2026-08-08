@@ -88,12 +88,14 @@ def chi2_cached(data: list[Datum], predictions: tuple[float, ...]) -> float:
 
 
 def fit_reference(data: list[Datum], refs):
-    p, _, c2 = min((p, pred, chi2_cached(data, pred)) for p, pred in refs)
+    candidates = [(p, chi2_cached(data, pred)) for p, pred in refs]
+    p, c2 = min(candidates, key=lambda item: item[1])
     return p, c2
 
 
 def fit_effective(data: list[Datum], effs):
-    p, a_r, _, c2 = min((p, a, pred, chi2_cached(data, pred)) for p, a, pred in effs)
+    candidates = [(p, a, chi2_cached(data, pred)) for p, a, pred in effs]
+    p, a_r, c2 = min(candidates, key=lambda item: item[2])
     return p, a_r, c2
 
 
