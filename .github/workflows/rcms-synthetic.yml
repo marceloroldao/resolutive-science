@@ -16,6 +16,7 @@ on:
       - 'tools/run_rcms_calibration_nuisance.py'
       - 'tools/run_rcms_full_vs_effective.py'
       - 'tools/validate_rcms_hz_intake.py'
+      - 'tools/run_rcms_real_hz.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
   push:
@@ -34,6 +35,7 @@ on:
       - 'tools/run_rcms_calibration_nuisance.py'
       - 'tools/run_rcms_full_vs_effective.py'
       - 'tools/validate_rcms_hz_intake.py'
+      - 'tools/run_rcms_real_hz.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
 
@@ -47,6 +49,8 @@ jobs:
           python-version: '3.12'
       - name: Validate real H(z) data intake
         run: python tools/validate_rcms_hz_intake.py
+      - name: Preregistered real H(z) production stage
+        run: python tools/run_rcms_real_hz.py
       - name: Unit and falsification tests
         run: python -m unittest tests/test_rcms_synthetic.py -v
       - name: Reproducible benchmark report
