@@ -9,6 +9,7 @@ on:
       - 'tools/run_rcms_multiseed.py'
       - 'tools/run_rcms_effective_compare.py'
       - 'tools/run_rcms_nuisance_refit.py'
+      - 'tools/run_rcms_detection_power.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
   push:
@@ -20,6 +21,7 @@ on:
       - 'tools/run_rcms_multiseed.py'
       - 'tools/run_rcms_effective_compare.py'
       - 'tools/run_rcms_nuisance_refit.py'
+      - 'tools/run_rcms_detection_power.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
 
@@ -49,3 +51,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: python tools/run_rcms_nuisance_refit.py
+      - name: Detection-power map
+        env:
+          PYTHONPATH: .
+        run: python tools/run_rcms_detection_power.py
