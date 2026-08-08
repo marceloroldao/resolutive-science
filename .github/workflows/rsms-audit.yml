@@ -1,0 +1,33 @@
+name: RSMS audit
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RSMS/**'
+      - 'tools/audit_rsms.py'
+      - '.github/workflows/rsms-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/RSMS/**'
+      - 'tools/audit_rsms.py'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Cross-chapter audit
+        run: python tools/audit_rsms.py --baseline main
+
+      - name: Release-readiness audit
+        run: python tools/audit_rsms.py --release-readiness
