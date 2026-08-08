@@ -1,0 +1,32 @@
+name: RCMS Protocol 01 remaining combinations
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol01_remaining_combos.py'
+      - 'tools/run_rcms_real_hz.py'
+      - 'tools/fit_rcms_pantheonplus.py'
+      - 'tools/fetch_rcms_pantheonplus.py'
+      - 'tools/run_rcms_desi_dr2_bao.py'
+      - 'data/rcms/cc_hz_moresco_bc03_v1.csv'
+      - 'data/rcms/cc_systematics_moresco2020_v1.csv'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - '.github/workflows/rcms-protocol01-remaining-combos.yml'
+  workflow_dispatch:
+
+jobs:
+  remaining-combos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install observational dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Fetch and verify frozen Pantheon+ bytes
+        run: python tools/fetch_rcms_pantheonplus.py
+      - name: Run all remaining preregistered combinations
+        run: python tools/run_rcms_protocol01_remaining_combos.py
