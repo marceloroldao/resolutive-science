@@ -48,7 +48,7 @@ More generally, \(C^k(M,\mathbb R)\) contains fields with (k) continuous derivat
 A smooth vector field is a smooth section of the tangent bundle,
 
 \[
-X\in\Gamma\(TM\),\qquad X(p)\in T_pM.
+X\in\Gamma(TM),\qquad X(p)\in T_pM.
 \]
 
 This section-based definition is primary. In a chart, \(X=X^\mu\partial_\mu\), and its components transform by the differential of a coordinate transition. The component list alone is not the vector field.
@@ -271,7 +271,7 @@ Fields taking values in the same vector bundle may be added and multiplied by sc
 
 ### RS-F023 — Composition
 
-For maps \(B:A\to B_0\) and \(A_0:B_0\to C\), composition is \(A_0\circ B:A\to C\), evaluated right to left as specified by RS-D006. Operator sums, products, and compositions are defined only on a stated common domain, which may be a proper subspace for unbounded operators.
+For maps \(B:A\to B_0\) and \(A_0:B_0\to C\), composition is \(A_0\circ B:A\to C\), evaluated right to left as specified by RS-N006. Operator sums, products, and compositions are defined only on a stated common domain, which may be a proper subspace for unbounded operators.
 
 ### RS-F024 — Tensor product
 
