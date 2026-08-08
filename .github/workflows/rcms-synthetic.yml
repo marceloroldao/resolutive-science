@@ -28,4 +28,6 @@ jobs:
       - name: Unit and falsification tests
         run: python -m unittest tests/test_rcms_synthetic.py -v
       - name: Reproducible benchmark report
+        env:
+          PYTHONPATH: .
         run: python tools/run_rcms_synthetic.py
