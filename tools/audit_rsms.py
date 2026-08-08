@@ -162,14 +162,23 @@ def main() -> int:
     if r"base manifold \(\mathcal M\)" in ch6 or r"on \(\mathcal M\)" in ch6:
         errors.append("Chapter 6 still uses historical \\mathcal M for the canonical base manifold M")
 
-    # Strict release-candidate checks.
+    # Strict release-candidate checks. The master may be in either the final
+    # hardening stage or an actual RC phase; both are valid readiness states.
     if args.release_readiness:
         if not symbol_registry:
             errors.append("release readiness requires Appendix B symbol registry")
-        if "RSMS-1.0 hardening phase" not in master:
-            errors.append("master document does not declare the hardening phase")
-        if "Normative draft complete" not in master:
-            errors.append("master chapter-status table is incomplete")
+        phase_markers = (
+            "RSMS-1.0 hardening phase",
+            "RSMS-1.0 release-candidate phase",
+        )
+        if not any(marker in master for marker in phase_markers):
+            errors.append("master document does not declare a hardening or release-candidate phase")
+        chapter_status_markers = (
+            "Normative draft complete",
+            "RC1 included",
+        )
+        if not any(marker in master for marker in chapter_status_markers):
+            errors.append("master chapter-status table does not declare completed/included chapters")
         if not (DOCS / "audits").exists():
             errors.append("release readiness requires an audits directory")
 
