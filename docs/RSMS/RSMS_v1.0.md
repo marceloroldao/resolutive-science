@@ -2,8 +2,8 @@
 
 ## Resolutive Science Mathematical Specification
 
-**Version:** 1.0-draft.12
-**Status:** In development
+**Version:** 1.0-rc.1
+**Status:** Release candidate
 **Author:** Marcelo Roldão Matos
 **ORCID:** 0009-0003-6075-4680
 **Project:** Resolutive Science
@@ -14,9 +14,9 @@
 
 ## Document status
 
-This document is the normative draft of the **Resolutive Science Mathematical Specification (RSMS)**. It defines the universal scientific, mathematical, and methodological basis shared by the specialized modules of Resolutive Science.
+This document is the first release candidate of the **Resolutive Science Mathematical Specification (RSMS)**. It defines the universal scientific, mathematical, and methodological basis shared by the specialized modules of Resolutive Science.
 
-The present draft does not claim experimental validation of Resolutive Physics. It establishes the language, scope, traceability rules, and scientific commitments required for its hypotheses to be formulated, implemented, tested, and revised.
+Release-candidate status means that the planned RSMS-1.0 architecture has completed its initial hardening and is ready for external review. It does not claim experimental validation of Resolutive Physics. The specification establishes the language, scope, traceability rules, and scientific commitments required for resolutive hypotheses to be formulated, implemented, tested, compared, and revised.
 
 ### Version history
 
@@ -34,6 +34,7 @@ The present draft does not claim experimental validation of Resolutive Physics. 
 | 1.0-draft.10 | 2026-08-07 | Normative draft | Added Chapter 10 computational conformance, software and numerical verification, validation categories, reproducibility, symmetric comparison, and scientific claim controls without introducing a physical law. |
 | 1.0-draft.11 | 2026-08-07 | Normative draft | Added Chapter 11 versioning, compatibility, controlled extensions, deprecation, supersession, migration, and revision governance without introducing a physical law. |
 | 1.0-draft.12 | 2026-08-07 | Normative draft | Added Chapter 12 registry governance, symbol and alias compatibility, appendices, machine-readable indexes, cross-reference integrity, and RSMS-1.0 release-readiness requirements. |
+| 1.0-rc.1 | 2026-08-07 | Release candidate | First hardened release candidate after cross-chapter audit, canonical registries, automated release-readiness checks, machine-readable registry generation, and closure of identified RC1 source blockers. |
 
 ---
 
@@ -260,27 +261,27 @@ The planned structure of RSMS v1.0 is:
 11. [Versioning, Extensions, and Deprecation](chapters/11_versioning_extensions_and_deprecation.md);
 12. [Appendices and Symbol Registry](chapters/12_appendices_and_symbol_registry.md).
 
-This organization may evolve during the draft phase. Once RSMS v1.0 is released, incompatible structural changes shall require a new major version.
+This organization may evolve during the release-candidate phase through controlled compatible corrections. Once RSMS v1.0 is released, incompatible structural changes shall require a new major version.
 
 ## 1.12 Chapter status
 
 | Chapter | Title | Status |
 |---:|---|---|
-| 1 | [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles) | Draft complete |
-| 2 | [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md) | Normative draft |
-| 3 | [Primitive Objects and Resolutive State Space](chapters/03_primitive_objects_and_resolutive_state_space.md) | Normative draft complete |
-| 4 | [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md) | Normative draft complete |
-| 5 | [Fundamental Fields and Operators](chapters/05_fundamental_fields_and_operators.md) | Normative draft complete |
-| 6 | [Dynamics and Variational Principles](chapters/06_dynamics_and_variational_principles.md) | Normative draft complete |
-| 7 | [Observables, Projection, and Measurement](chapters/07_observables_projection_and_measurement.md) | Normative draft complete |
-| 8 | [Dimensional Structure, Units, and Scaling](chapters/08_dimensional_structure_units_and_scaling.md) | Normative draft complete |
-| 9 | [Symmetry, Invariance, and Correspondence Principles](chapters/09_symmetry_invariance_and_correspondence_principles.md) | Normative draft complete |
-| 10 | [Computational Conformance and Validation](chapters/10_computational_conformance_and_validation.md) | Normative draft complete |
-| 11 | [Versioning, Extensions, and Deprecation](chapters/11_versioning_extensions_and_deprecation.md) | Normative draft complete |
-| 12 | [Appendices and Symbol Registry](chapters/12_appendices_and_symbol_registry.md) | Normative draft complete |
+| 1 | [Introduction, Scope, and Scientific Principles](#chapter-1--introduction-scope-and-scientific-principles) | RC1 included |
+| 2 | [Mathematical Conventions and Notation](chapters/02_mathematical_conventions_and_notation.md) | RC1 included |
+| 3 | [Primitive Objects and Resolutive State Space](chapters/03_primitive_objects_and_resolutive_state_space.md) | RC1 included |
+| 4 | [Geometric and Bundle Structure](chapters/04_geometric_and_bundle_structure.md) | RC1 included |
+| 5 | [Fundamental Fields and Operators](chapters/05_fundamental_fields_and_operators.md) | RC1 included |
+| 6 | [Dynamics and Variational Principles](chapters/06_dynamics_and_variational_principles.md) | RC1 included |
+| 7 | [Observables, Projection, and Measurement](chapters/07_observables_projection_and_measurement.md) | RC1 included |
+| 8 | [Dimensional Structure, Units, and Scaling](chapters/08_dimensional_structure_units_and_scaling.md) | RC1 included |
+| 9 | [Symmetry, Invariance, and Correspondence Principles](chapters/09_symmetry_invariance_and_correspondence_principles.md) | RC1 included |
+| 10 | [Computational Conformance and Validation](chapters/10_computational_conformance_and_validation.md) | RC1 included |
+| 11 | [Versioning, Extensions, and Deprecation](chapters/11_versioning_extensions_and_deprecation.md) | RC1 included |
+| 12 | [Appendices and Symbol Registry](chapters/12_appendices_and_symbol_registry.md) | RC1 included |
 
 ---
 
-## RSMS-1.0 hardening phase
+## RSMS-1.0 release-candidate phase
 
-The planned twelve-chapter RSMS-1.0 architecture is complete at normative-draft level. The next phase is release hardening: complete the canonical registries, run cross-chapter and automated audits, resolve release-blocking findings, generate machine-readable indexes, and prepare a release candidate. Completion of this process concerns specification maturity and does not imply empirical validation of Resolutive Physics.
+`RSMS-1.0-rc.1` is the first hardened candidate for external review. Subsequent changes before the stable 1.0 release shall be controlled, traceable, compatibility-classified, and re-audited. Release-candidate maturity concerns specification integrity only and does not imply empirical validation of Resolutive Physics.
