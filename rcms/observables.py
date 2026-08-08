@@ -9,7 +9,7 @@ from .background import LCDMParams, RCMSEffectiveParams, h_lcdm, h_rcms_effectiv
 C_KM_S = 299792.458
 
 
-def _simpson_integral(fn: Callable[[float], float], a: float, b: float, n: int = 400) -> float:
+def _simpson_integral(fn: Callable[[float], float], a: float, b: float, n: int = 120) -> float:
     if b < a:
         raise ValueError("integration upper bound must be >= lower bound")
     if n < 2:
