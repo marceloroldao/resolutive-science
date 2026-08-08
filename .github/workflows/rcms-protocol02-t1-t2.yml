@@ -1,0 +1,30 @@
+name: RCMS Protocol 02 T1-T2
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol02_t1_t2.py'
+      - 'tools/run_rcms_protocol01_remaining_combos.py'
+      - 'tools/run_rcms_real_hz.py'
+      - 'tools/run_rcms_desi_dr2_bao.py'
+      - 'tools/fit_rcms_pantheonplus.py'
+      - 'tools/fetch_rcms_pantheonplus.py'
+      - 'data/rcms/**'
+      - '.github/workflows/rcms-protocol02-t1-t2.yml'
+  workflow_dispatch:
+
+jobs:
+  protocol02-t1-t2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy
+      - name: Fetch and verify frozen Pantheon+ bytes
+        run: python tools/fetch_rcms_pantheonplus.py
+      - name: Execute preregistered T1 and T2
+        run: python tools/run_rcms_protocol02_t1_t2.py
