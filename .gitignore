@@ -1,0 +1,4 @@
+# Reproducibly fetched external observational products
+# These files are pinned and integrity-checked by acquisition scripts rather
+# than committed into this repository.
+data/external/
