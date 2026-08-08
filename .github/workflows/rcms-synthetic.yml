@@ -13,6 +13,7 @@ on:
       - 'tools/run_rcms_multiobservable.py'
       - 'tools/run_rcms_probe_ablation.py'
       - 'tools/run_rcms_calibration_nuisance.py'
+      - 'tools/run_rcms_full_vs_effective.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
   push:
@@ -28,6 +29,7 @@ on:
       - 'tools/run_rcms_multiobservable.py'
       - 'tools/run_rcms_probe_ablation.py'
       - 'tools/run_rcms_calibration_nuisance.py'
+      - 'tools/run_rcms_full_vs_effective.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
 
@@ -73,3 +75,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: python tools/run_rcms_calibration_nuisance.py
+      - name: Full-vs-effective RCMS benchmark
+        env:
+          PYTHONPATH: .
+        run: python tools/run_rcms_full_vs_effective.py
