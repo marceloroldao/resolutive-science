@@ -1,6 +1,6 @@
 # Appendix B — Canonical symbol registry
 
-**Status:** Normative registry for RSMS-1.0-draft.12  
+**Status:** Normative registry for RSMS-1.0-rc.1  
 **Scope:** Universal RSMS symbols and cross-chapter aliases.  
 **Authority:** Governing definitions in Chapters 2–12 remain authoritative.
 
@@ -65,4 +65,4 @@ The mathematical conventions of Chapter 2 remain authoritative. Common universal
 
 Changes to this appendix shall be synchronized with the governing clauses under RS-VSN015 and Chapter 12. A symbol may be added without changing scientific content when it only indexes an already normative definition. A symbol reassignment that changes mathematical meaning is a semantic change and shall follow Chapter 11.
 
-This registry is intended to become machine-generated or machine-verified before the final RSMS-1.0 release.
+This registry is machine-verifiable through `tools/build_rsms_registries.py`, which generates the release-candidate symbol index from this table and records the governing RSMS version.
