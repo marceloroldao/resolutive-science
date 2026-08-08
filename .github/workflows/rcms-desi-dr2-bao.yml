@@ -1,0 +1,23 @@
+name: RCMS DESI DR2 BAO observational check
+
+on:
+  pull_request:
+    paths:
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - 'docs/RCMS/data/desi_dr2_bao.md'
+      - 'tools/run_rcms_desi_dr2_bao.py'
+      - '.github/workflows/rcms-desi-dr2-bao.yml'
+  workflow_dispatch:
+
+jobs:
+  desi-dr2-bao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run preregistered DESI DR2 BAO-alone comparison
+        run: python tools/run_rcms_desi_dr2_bao.py
