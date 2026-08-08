@@ -10,6 +10,7 @@ on:
       - 'tools/run_rcms_effective_compare.py'
       - 'tools/run_rcms_nuisance_refit.py'
       - 'tools/run_rcms_detection_power.py'
+      - 'tools/run_rcms_multiobservable.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
   push:
@@ -22,6 +23,7 @@ on:
       - 'tools/run_rcms_effective_compare.py'
       - 'tools/run_rcms_nuisance_refit.py'
       - 'tools/run_rcms_detection_power.py'
+      - 'tools/run_rcms_multiobservable.py'
       - 'docs/RCMS/**'
       - '.github/workflows/rcms-synthetic.yml'
 
@@ -55,3 +57,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: python tools/run_rcms_detection_power.py
+      - name: Multiobservable joint benchmark
+        env:
+          PYTHONPATH: .
+        run: python tools/run_rcms_multiobservable.py
