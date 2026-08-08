@@ -5,12 +5,14 @@ on:
     paths:
       - 'docs/RSMS/**'
       - 'tools/audit_rsms.py'
+      - 'tools/build_rsms_registries.py'
       - '.github/workflows/rsms-audit.yml'
   push:
     branches: [main]
     paths:
       - 'docs/RSMS/**'
       - 'tools/audit_rsms.py'
+      - 'tools/build_rsms_registries.py'
 
 jobs:
   audit:
@@ -28,6 +30,21 @@ jobs:
 
       - name: Cross-chapter audit
         run: python tools/audit_rsms.py --baseline main
+
+      - name: Generate machine-readable registries
+        run: python tools/build_rsms_registries.py --output-dir build/rsms_registries
+
+      - name: Validate generated registry JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in sorted(Path('build/rsms_registries').glob('*.json')):
+              data = json.loads(path.read_text(encoding='utf-8'))
+              assert data['specification'] == 'RSMS-1.0'
+              assert data['count'] == len(data['entries'])
+              print(path, data['count'])
+          PY
 
       - name: Release-readiness audit
         run: python tools/audit_rsms.py --release-readiness
