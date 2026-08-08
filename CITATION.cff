@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use or discuss this specification, please cite this software/specification release."
+title: "Resolutive Science Mathematical Specification (RSMS)"
+version: "1.0-rc.1"
+date-released: 2026-08-07
+type: software
+authors:
+  - family-names: "Matos"
+    given-names: "Marcelo Roldão"
+    orcid: "https://orcid.org/0009-0003-6075-4680"
+repository-code: "https://github.com/marceloroldao/resolutive-science"
+url: "https://github.com/marceloroldao/resolutive-science"
+abstract: >-
+  RSMS defines the universal mathematical, methodological, computational,
+  validation, versioning, and registry framework used by the Resolutive
+  Science research program. Release-candidate status denotes specification
+  maturity and does not imply empirical validation of Resolutive Physics.
+keywords:
+  - resolutive science
+  - mathematical specification
+  - reproducible science
+  - scientific software
+  - validation
