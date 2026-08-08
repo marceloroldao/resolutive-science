@@ -1,0 +1,23 @@
+name: RCMS H(z) observational check
+
+on:
+  pull_request:
+    paths:
+      - 'data/rcms/cc_hz_moresco_bc03_v1.csv'
+      - 'data/rcms/cc_systematics_moresco2020_v1.csv'
+      - 'docs/RCMS/data/cc_moresco_bc03_v1.md'
+      - 'tools/run_rcms_real_hz.py'
+      - '.github/workflows/rcms-hz.yml'
+  workflow_dispatch:
+
+jobs:
+  hz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run preregistered cosmic-chronometer H(z) comparison
+        run: python tools/run_rcms_real_hz.py
