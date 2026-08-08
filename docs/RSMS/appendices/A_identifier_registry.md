@@ -1,6 +1,6 @@
 # Appendix A — Canonical identifier registry
 
-**Status:** Normative registry for RSMS-1.0-draft.12  
+**Status:** Normative registry for RSMS-1.0-rc.1  
 **Scope:** Cross-chapter lookup; definitions remain normative in their cited chapters.  
 **Registry authority:** Chapter definitions are authoritative; this appendix is a synchronized normative index.
 
