@@ -1,0 +1,16 @@
+name: RCMS Protocol 02 T5
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  t5:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy
+      - run: python tools/fetch_rcms_pantheonplus.py
+      - run: python tools/run_rcms_protocol02_t5.py
