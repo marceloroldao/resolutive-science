@@ -2,7 +2,7 @@
 
 **Status:** Frozen external-replication intake before P03-T1 output inspection  
 **Protocol:** RCMS Protocol 03  
-**Purpose:** Freeze provenance, byte identity, ordering, and likelihood conventions for the first external supernova replication dataset.
+**Purpose:** Freeze provenance, byte identity, ordering, likelihood conventions, and the first external-replication runner.
 
 ## Upstream source
 
@@ -10,7 +10,7 @@
 - Frozen revision: `c9a4fcafc4cbd19bd750dee47fc76194a45c181f`
 - Upstream description: DES Supernova Cosmological Analysis
 
-The revision above is frozen before any RCMS P03-T1 fit output is inspected.
+The revision above was frozen before any RCMS P03-T1 fit output was inspected.
 
 ## Production files
 
@@ -23,13 +23,13 @@ The production Hubble-diagram/precision pairing is:
 - reference likelihood: `4_DISTANCES_COVMAT/DES-Dovekie-SN_Likelihood.py`
   - Git blob SHA: `b7142093d633bf62281a2253d85ccc54db48431a`
 
-The metadata table is not to be substituted for the production Hubble diagram in the likelihood because the upstream README explicitly warns that its ordering differs from the covariance-compatible file.
+The metadata table is not substituted for the production Hubble diagram because the upstream README explicitly warns that its ordering differs from the covariance-compatible file.
 
 ## Precision-matrix convention
 
 The frozen upstream revision clarifies that the supplied matrix products are already inverse covariance matrices (precision matrices). The official likelihood reconstructs the symmetric precision matrix from the packed upper-triangular `.npz` representation.
 
-RCMS therefore shall not interpret `STAT+SYS.npz` as a covariance matrix requiring an additional scientific inversion. Any conversion used only to satisfy an external library API must round-trip to the same precision matrix within numerical tolerance.
+RCMS therefore does not interpret `STAT+SYS.npz` as a covariance matrix requiring a second scientific inversion.
 
 ## Supernova likelihood convention
 
@@ -41,11 +41,11 @@ The reference likelihood:
 4. analytically marginalizes the additive SN absolute-magnitude/intercept direction;
 5. therefore does not identify H0 from DES-SN alone.
 
-The RCMS implementation must preserve these semantics symmetrically for flat LCDM and the frozen one-parameter RCMS surrogate.
+The RCMS implementation preserves these semantics symmetrically for flat LCDM and the frozen one-parameter RCMS surrogate.
 
 ## Acquisition and execution gate
 
-The committed fetcher shall download the three frozen upstream files and verify their Git blob SHA values before use. The committed P03-T1 runner is allowed to exist in the same branch because it was committed before any external-fit output was inspected.
+The committed fetcher downloads the three frozen upstream files and verifies their Git blob SHA values before use. The P03-T1 runner was committed before any external-fit output was inspected.
 
 P03-T1 output is valid only if all of the following pass first:
 
