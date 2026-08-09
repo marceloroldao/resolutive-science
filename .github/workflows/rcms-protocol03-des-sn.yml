@@ -1,0 +1,25 @@
+name: RCMS Protocol 03 DES-SN T1
+
+on:
+  pull_request:
+    paths:
+      - 'tools/fetch_rcms_des_sn5yr.py'
+      - 'tools/run_rcms_protocol03_t1_des_sn.py'
+      - 'docs/RCMS/**'
+      - '.github/workflows/rcms-protocol03-des-sn.yml'
+  workflow_dispatch:
+
+jobs:
+  des-sn-t1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify frozen DES-SN5YR inputs
+        run: python tools/fetch_rcms_des_sn5yr.py
+      - name: Run Protocol 03 P03-T1 external replication
+        run: python tools/run_rcms_protocol03_t1_des_sn.py
