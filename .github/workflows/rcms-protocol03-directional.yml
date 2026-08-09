@@ -1,0 +1,19 @@
+name: RCMS Protocol 03 Directional T4
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol03_t4_directional.py'
+      - '.github/workflows/rcms-protocol03-directional.yml'
+  workflow_dispatch:
+
+jobs:
+  directional-t4:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Protocol 03 P03-T4 directional consistency
+        run: python tools/run_rcms_protocol03_t4_directional.py
