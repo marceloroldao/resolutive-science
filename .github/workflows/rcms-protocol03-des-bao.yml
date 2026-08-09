@@ -1,0 +1,21 @@
+name: RCMS Protocol 03 DES BAO T2
+
+on:
+  pull_request:
+    paths:
+      - 'data/rcms/des_y6_bao_nodesi_alpha_v1.csv'
+      - 'docs/RCMS/data/des_y6_bao_nodesi_intake.md'
+      - 'tools/run_rcms_protocol03_t2_des_bao.py'
+      - '.github/workflows/rcms-protocol03-des-bao.yml'
+  workflow_dispatch:
+
+jobs:
+  des-bao-t2:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Protocol 03 P03-T2 identifiability diagnostic
+        run: python tools/run_rcms_protocol03_t2_des_bao.py
