@@ -1,0 +1,26 @@
+name: RCMS Protocol 03 Joint T3
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol03_t3_joint.py'
+      - 'tools/run_rcms_protocol03_t1_des_sn.py'
+      - 'tools/fetch_rcms_des_sn5yr.py'
+      - 'data/rcms/des_y6_bao_nodesi_alpha_v1.csv'
+      - '.github/workflows/rcms-protocol03-joint.yml'
+  workflow_dispatch:
+
+jobs:
+  external-joint-t3:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify frozen DES-SN5YR inputs
+        run: python tools/fetch_rcms_des_sn5yr.py
+      - name: Run Protocol 03 P03-T3 joint closure
+        run: python tools/run_rcms_protocol03_t3_joint.py
