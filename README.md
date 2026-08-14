@@ -4,18 +4,30 @@ The official scientific specification and development framework for Resolutive S
 
 This repository is the versioned source of truth for the universal mathematical specification, specialized scientific specifications, reproducible analyses, validation protocols, software, and shared documentation of the Resolutive Science research program.
 
-The repository is currently maintained privately during consolidation and is being prepared for public scientific review.
+## Release
+
+**Current public scientific release candidate:** `v0.1.0` — Cosmology Foundation.
+
+This first public version freezes the RSMS foundation and the completed RCMS cosmology validation record through Protocol 03. Protocol 04 is preserved as future work and is not part of the scientific evidence claimed by v0.1.0.
 
 ## Primary specifications
 
-- **RSMS** — Resolutive Science Mathematical Specification
-- **RCMS** — Resolutive Cosmology Mathematical Specification
+- **RSMS** — Resolutive Science Mathematical Specification (`1.0-rc.1`)
+- **RCMS** — Resolutive Cosmology Mathematical Specification (`0.1` research line)
 
 ## Scientific status
 
-Resolutive Science is a research program. Mathematical consistency, software verification, numerical performance, observational agreement, and independent scientific validation are treated as distinct stages.
+Resolutive Science is a research program. Mathematical consistency, software verification, numerical performance, observational agreement, external replication, and independent scientific validation are distinct stages.
 
-Publication of the repository does not imply experimental validation of Resolutive Physics.
+The cosmology results in v0.1.0 are **candidate observational results**, not a discovery and not experimental validation of Resolutive Physics. The completed protocols include positive, negative, and inconclusive outcomes and are retained for auditability.
+
+Publication of this repository does not imply that Resolutive Physics is established physics.
+
+## Reproducibility
+
+The repository preserves model definitions, protocol preregistrations, data provenance/manifests, analysis runners, numerical gates, workflows, and frozen scientific reports where applicable. Third-party datasets are referenced or acquired under their original terms and are not relicensed by this repository.
+
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) and [`RELEASE_NOTES_v0.1.0.md`](RELEASE_NOTES_v0.1.0.md).
 
 ## Licensing
 
@@ -45,6 +57,10 @@ See:
 
 Because commercial use is restricted, this project should be described as **public-source/source-available for scientific research**, not as OSI-approved open-source software.
 
+## Citation
+
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff). A Zenodo DOI should be added after the v0.1.0 deposition is minted.
+
 ## Author
 
 Marcelo Roldão Matos  
@@ -52,4 +68,4 @@ ORCID: 0009-0003-6075-4680
 
 ## Status
 
-Scientific specification, reproducibility, validation, and controlled public-release preparation are in active development.
+**Publication candidate — v0.1.0.** Cosmology Foundation is frozen for first public release; subsequent scientific areas will be added cumulatively in later version lines while this release remains immutable and citable.
