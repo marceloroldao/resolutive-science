@@ -1,8 +1,8 @@
 cff-version: 1.2.0
-message: "If you use or discuss this specification, please cite this software/specification release."
-title: "Resolutive Science Mathematical Specification (RSMS)"
-version: "1.0-rc.1"
-date-released: 2026-08-07
+message: "If you use or discuss this release, please cite Resolutive Science v0.1.0."
+title: "Resolutive Science: Cosmology Foundation"
+version: "0.1.0"
+date-released: 2026-08-14
 type: software
 authors:
   - family-names: "Matos"
@@ -11,13 +11,18 @@ authors:
 repository-code: "https://github.com/marceloroldao/resolutive-science"
 url: "https://github.com/marceloroldao/resolutive-science"
 abstract: >-
-  RSMS defines the universal mathematical, methodological, computational,
-  validation, versioning, and registry framework used by the Resolutive
-  Science research program. Release-candidate status denotes specification
-  maturity and does not imply empirical validation of Resolutive Physics.
+  Resolutive Science v0.1.0 freezes the first public scientific package,
+  including the RSMS mathematical and methodological foundation and the RCMS
+  cosmology research line through completed Protocol 03. The release preserves
+  reproducible validation records, data provenance, negative and inconclusive
+  results, and explicit scientific-status boundaries. Candidate observational
+  behavior reported by RCMS is not presented as a discovery or as validation
+  of Resolutive Physics.
 keywords:
   - resolutive science
+  - cosmology
   - mathematical specification
   - reproducible science
   - scientific software
   - validation
+license: other
