@@ -1,0 +1,33 @@
+name: RCMS Protocol 06 DESI DR2 T1
+
+on:
+  pull_request:
+    paths:
+      - 'tools/fetch_rcms_desi_dr2_p06.py'
+      - 'tools/run_rcms_protocol06_t0_desi.py'
+      - 'tools/run_rcms_protocol06_t1_desi.py'
+      - 'docs/RCMS/protocols/protocol06_desi_dr2_external_replication.md'
+      - '.github/workflows/rcms-protocol06-t1-desi.yml'
+  workflow_dispatch:
+
+jobs:
+  desi-dr2-t1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify frozen DESI DR2 inputs
+        run: python tools/fetch_rcms_desi_dr2_p06.py
+      - name: Re-run P06-T0 before reveal
+        run: python tools/run_rcms_protocol06_t0_desi.py
+      - name: Run preregistered P06-T1 RCMS reveal
+        run: python tools/run_rcms_protocol06_t1_desi.py
+      - name: Upload machine-readable P06-T1 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol06-t1
+          path: results/rcms_protocol06_t1.json
