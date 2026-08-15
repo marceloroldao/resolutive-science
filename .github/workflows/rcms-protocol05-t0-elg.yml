@@ -1,0 +1,27 @@
+name: RCMS Protocol 05 ELG T0
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/data/eboss_dr16_protocol05_elg_manifest.md'
+      - 'tools/fetch_rcms_eboss_elg_p05.py'
+      - 'tools/run_rcms_protocol05_t0_elg.py'
+      - '.github/workflows/rcms-protocol05-t0-elg.yml'
+  workflow_dispatch:
+
+jobs:
+  elg-t0:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify Protocol 04 QSO and Lyman-alpha inputs
+        run: python tools/fetch_rcms_eboss_dr16.py
+      - name: Fetch and verify frozen Protocol 05 ELG input
+        run: python tools/fetch_rcms_eboss_elg_p05.py
+      - name: Run Protocol 05 P05-T0 Lambda-CDM and identifiability gates
+        run: python tools/run_rcms_protocol05_t0_elg.py
