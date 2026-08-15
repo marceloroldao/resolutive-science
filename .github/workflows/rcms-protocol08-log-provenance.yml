@@ -1,0 +1,25 @@
+name: RCMS Protocol 08 Logarithmic Provenance
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol08_log_provenance.py'
+      - 'docs/RCMS/protocols/protocol08_logarithmic_provenance.md'
+      - '.github/workflows/rcms-protocol08-log-provenance.yml'
+  workflow_dispatch:
+
+jobs:
+  protocol08-log-provenance:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run preregistered Protocol 08 tests
+        run: python tools/run_rcms_protocol08_log_provenance.py
+      - name: Upload machine-readable result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol08-log-provenance
+          path: results/rcms_protocol08_log_provenance.json
