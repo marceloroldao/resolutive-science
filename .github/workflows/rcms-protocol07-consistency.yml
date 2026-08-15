@@ -1,0 +1,27 @@
+name: RCMS Protocol 07 Consistency Synthesis
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol07_consistency.py'
+      - 'docs/RCMS/protocols/protocol07_cross_protocol_parameter_consistency.md'
+      - '.github/workflows/rcms-protocol07-consistency.yml'
+  workflow_dispatch:
+
+jobs:
+  protocol07-consistency:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Run preregistered Protocol 07 synthesis
+        run: python tools/run_rcms_protocol07_consistency.py
+      - name: Upload machine-readable result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol07-consistency
+          path: results/rcms_protocol07_consistency.json
