@@ -1,0 +1,29 @@
+name: RCMS Protocol 04 eBOSS T3
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol04_t3_execution_freeze.md'
+      - 'tools/run_rcms_protocol04_t3_robustness.py'
+      - '.github/workflows/rcms-protocol04-t3.yml'
+  workflow_dispatch:
+
+jobs:
+  eboss-t3:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify frozen eBOSS DR16 inputs
+        run: python tools/fetch_rcms_eboss_dr16.py
+      - name: Run P04-T3 leave-one-block-out robustness
+        run: python tools/run_rcms_protocol04_t3_robustness.py
+      - name: Upload machine-readable P04-T3 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol04-t3
+          path: results/rcms_protocol04_t3.json
