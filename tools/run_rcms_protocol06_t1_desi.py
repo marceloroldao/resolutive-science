@@ -76,10 +76,9 @@ om0, q0 = null.x
 om1, q1, ar1 = alt.x
 chi0 = float(null.fun)
 chi1 = float(alt.fun)
-dchi = chi0 - chi1
-daic = dchi - 2.0
+dchi = float(chi0 - chi1)
+daic = float(dchi - 2.0)
 
-# Frozen profile scan in A_R. Optimize (Omega_m,q) independently for each fixed value.
 ars = np.linspace(-5.0, 5.0, 201)
 prof = []
 start = np.array([om1, q1])
@@ -100,7 +99,7 @@ else:
     lo = hi = float("nan")
 zero_in_profile = bool(lo <= 0.0 <= hi) if np.isfinite(lo) else False
 
-boundary = (
+boundary = bool(
     min(abs(om1-0.10), abs(om1-0.50)) < 1e-4 or
     min(abs(q1-20.0), abs(q1-45.0)) < 1e-4 or
     min(abs(ar1+5.0), abs(ar1-5.0)) < 1e-4
@@ -119,16 +118,16 @@ result = {
     "protocol": "P06-T1",
     "dataset": "DESI DR2 combined BAO all tracers",
     "model_form": "A_R*ln(1+z)",
-    "null": {"chi2": chi0, "Omega_m": float(om0), "q": float(q0)},
-    "rcms": {"chi2": chi1, "Omega_m": float(om1), "q": float(q1), "A_R": float(ar1)},
-    "A_R_profile_delta_chi2_1": [lo, hi],
-    "zero_in_profile": zero_in_profile,
-    "Delta_chi2_LCDM_minus_RCMS": dchi,
-    "Delta_AIC_LCDM_minus_RCMS": daic,
-    "boundary": boundary,
+    "null": {"chi2": float(chi0), "Omega_m": float(om0), "q": float(q0)},
+    "rcms": {"chi2": float(chi1), "Omega_m": float(om1), "q": float(q1), "A_R": float(ar1)},
+    "A_R_profile_delta_chi2_1": [float(lo), float(hi)],
+    "zero_in_profile": bool(zero_in_profile),
+    "Delta_chi2_LCDM_minus_RCMS": float(dchi),
+    "Delta_AIC_LCDM_minus_RCMS": float(daic),
+    "boundary": bool(boundary),
     "null_converged": bool(null.success),
     "rcms_converged": bool(alt.success),
-    "classification": classification,
+    "classification": str(classification),
 }
 OUT.write_text(json.dumps(result, indent=2) + "\n")
 
