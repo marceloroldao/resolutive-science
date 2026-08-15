@@ -1,0 +1,33 @@
+name: RCMS Protocol 05 ELG T1
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol05_t1_execution_freeze.md'
+      - 'tools/run_rcms_protocol05_t1_elg.py'
+      - '.github/workflows/rcms-protocol05-t1-elg.yml'
+  workflow_dispatch:
+
+jobs:
+  elg-t1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify Protocol 04 QSO and Lyman-alpha inputs
+        run: python tools/fetch_rcms_eboss_dr16.py
+      - name: Fetch and verify frozen Protocol 05 ELG input
+        run: python tools/fetch_rcms_eboss_elg_p05.py
+      - name: Re-run P05-T0 gate before reveal
+        run: python tools/run_rcms_protocol05_t0_elg.py
+      - name: Run preregistered P05-T1 RCMS challenge reveal
+        run: python tools/run_rcms_protocol05_t1_elg.py
+      - name: Upload machine-readable P05-T1 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol05-t1
+          path: results/rcms_protocol05_t1.json
