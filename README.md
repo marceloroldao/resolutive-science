@@ -6,9 +6,11 @@ This repository is the versioned source of truth for the universal mathematical 
 
 ## Release
 
-**Current public scientific release candidate:** `v0.1.0` — Cosmology Foundation.
+**Current public scientific release:** `v0.1.1` — Metadata and Archival Fix for the `v0.1.0` Cosmology Foundation scientific snapshot.
 
-This first public version freezes the RSMS foundation and the completed RCMS cosmology validation record through Protocol 03. Protocol 04 is preserved as future work and is not part of the scientific evidence claimed by v0.1.0.
+The `v0.1.0` release freezes the RSMS foundation and the completed RCMS cosmology validation record through Protocol 03. Protocol 04 is preserved as future work and is not part of the scientific evidence claimed by v0.1.0. Version `v0.1.1` changes citation/archive metadata only; no scientific results, equations, datasets, conclusions, validation results, or evidentiary claims were changed.
+
+**Zenodo DOI:** `10.5281/zenodo.21940994`
 
 ## Primary specifications
 
@@ -19,7 +21,7 @@ This first public version freezes the RSMS foundation and the completed RCMS cos
 
 Resolutive Science is a research program. Mathematical consistency, software verification, numerical performance, observational agreement, external replication, and independent scientific validation are distinct stages.
 
-The cosmology results in v0.1.0 are **candidate observational results**, not a discovery and not experimental validation of Resolutive Physics. The completed protocols include positive, negative, and inconclusive outcomes and are retained for auditability.
+The cosmology results in v0.1.0/v0.1.1 are **candidate observational results**, not a discovery and not experimental validation of Resolutive Physics. The completed protocols include positive, negative, and inconclusive outcomes and are retained for auditability.
 
 Publication of this repository does not imply that Resolutive Physics is established physics.
 
@@ -59,7 +61,9 @@ Because commercial use is restricted, this project should be described as **publ
 
 ## Citation
 
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff). A Zenodo DOI should be added after the v0.1.0 deposition is minted.
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
+
+Zenodo DOI for the archived `v0.1.1` release: **10.5281/zenodo.21940994**.
 
 ## Author
 
@@ -68,4 +72,4 @@ ORCID: 0009-0003-6075-4680
 
 ## Status
 
-**Publication candidate — v0.1.0.** Cosmology Foundation is frozen for first public release; subsequent scientific areas will be added cumulatively in later version lines while this release remains immutable and citable.
+**Published scientific snapshot — v0.1.1.** The Cosmology Foundation scientific content remains frozen at v0.1.0; v0.1.1 is the metadata/archival interoperability correction archived in Zenodo. Subsequent scientific areas will be added cumulatively in later version lines while these releases remain immutable and citable.
