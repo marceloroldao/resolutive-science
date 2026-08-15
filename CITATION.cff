@@ -3,6 +3,7 @@ message: "If you use or discuss this release, please cite Resolutive Science v0.
 title: "Resolutive Science: Cosmology Foundation"
 version: "0.1.1"
 date-released: 2026-08-14
+doi: "10.5281/zenodo.21940994"
 type: software
 authors:
   - family-names: "Matos"
