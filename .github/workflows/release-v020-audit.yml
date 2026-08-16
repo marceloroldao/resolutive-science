@@ -1,0 +1,27 @@
+name: Resolutive Science v0.2.0 Release Audit
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/**'
+      - 'docs/releases/v0.2.0_*'
+      - 'tools/release_v020_audit.py'
+      - '.github/workflows/release-v020-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  release-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RSMS structural audit
+        run: python tools/audit_rsms.py
+      - name: Run v0.2.0 release audit
+        run: python tools/release_v020_audit.py
+      - name: Run Protocol 07 consistency regression
+        run: python tools/run_rcms_protocol07_consistency.py
+      - name: Run Protocol 08 provenance regression
+        run: python tools/run_rcms_protocol08_log_provenance.py
