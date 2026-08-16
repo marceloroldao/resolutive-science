@@ -3,7 +3,7 @@
 **Status:** Preregistered before any Protocol 05 RCMS fit  
 **Parent result:** Protocol 04 — `INDEPENDENT_SHAPE_DIRECTIONAL_ONLY`  
 **Model status:** Frozen one-parameter phenomenological screening surrogate  
-**RSMS compatibility:** RSMS-1.0
+**RSMS compatibility:** RSMS-1.0-rc.1
 
 ---
 
