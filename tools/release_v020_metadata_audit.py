@@ -28,9 +28,11 @@ def main() -> None:
     assert "separate written commercial license" in commercial
 
     # Author identity and ORCID must be internally consistent.
-    for rel, text in (("NOTICE", notice), ("CITATION.cff", citation)):
-        assert AUTHOR in text, f"author mismatch in {rel}"
-        assert ORCID in text, f"ORCID mismatch in {rel}"
+    assert AUTHOR in notice, "author mismatch in NOTICE"
+    assert ORCID in notice, "ORCID mismatch in NOTICE"
+    assert 'family-names: "Matos"' in citation, "family name mismatch in CITATION.cff"
+    assert 'given-names: "Marcelo Roldão"' in citation, "given names mismatch in CITATION.cff"
+    assert ORCID in citation, "ORCID mismatch in CITATION.cff"
 
     # Before final v0.2.0 freeze, historical v0.1.1 archival metadata must stay intact.
     assert 'version: "0.1.1"' in citation
