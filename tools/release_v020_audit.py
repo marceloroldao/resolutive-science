@@ -8,7 +8,7 @@ REQUIRED = {
     "docs/RCMS/results/06_protocol06_desi_dr2_outcome.md": "DESI_DR2_POSITIVE_DIRECTIONAL",
     "docs/RCMS/results/07_protocol07_cross_protocol_consistency.md": "COMMON_POSITIVE_COMPATIBLE",
     "docs/RCMS/results/08_protocol08_logarithmic_provenance_outcome.md": "LOG_FORM_CONDITIONALLY_DERIVED",
-    "docs/releases/v0.2.0_PUBLICATION_CHECKLIST.md": "PRE",
+    "docs/releases/v0.2.0_PUBLICATION_CHECKLIST.md": "release audit in progress",
     "docs/releases/v0.2.0_EVIDENCE_MATRIX.md": "P08",
 }
 
@@ -38,16 +38,13 @@ def main():
         text = read(rel)
         assert marker in text, f"missing frozen marker {marker!r} in {rel}"
 
-    # RCMS normative parent must be the release-candidate RSMS baseline.
     rcms = read("docs/RCMS/RCMS_v0.1.md")
     assert "Parent specification:** RSMS-1.0-rc.1" in rcms
     assert "inherits **RSMS-1.0-rc.1**" in rcms
 
-    # Protocol 08 must already use the canonical compatibility label.
     p08 = read(PROTOCOL_DOCS[-1])
     assert "RSMS-1.0-rc.1" in p08
 
-    # All target protocol documents must exist and retain scientific-boundary language.
     for rel in PROTOCOL_DOCS:
         text = read(rel)
         assert "Protocol" in text
@@ -55,7 +52,6 @@ def main():
 
     matrix = read("docs/releases/v0.2.0_EVIDENCE_MATRIX.md")
     for phrase in FORBIDDEN_RELEASE_CLAIMS:
-        # The phrase may occur only in explicit non-claim/negative context.
         if phrase in matrix:
             idx = matrix.index(phrase)
             context = matrix[max(0, idx-80):idx+len(phrase)+80].lower()
