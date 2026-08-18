@@ -3,7 +3,8 @@
 **Status:** Frozen before P04-T1 RCMS output is inspected  
 **Parent protocol:** `protocol04_independent_shape_replication.md`  
 **P04-T0 gate:** PASS on GitHub Actions run `31855944476`  
-**RSMS compatibility:** RSMS-1.0
+**RSMS compatibility:** RSMS-1.0  
+**Public execution trigger:** 2026-08-18; provenance-only change, no scientific setting modified
 
 ## Purpose
 
