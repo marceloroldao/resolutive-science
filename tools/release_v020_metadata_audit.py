@@ -38,7 +38,8 @@ def main() -> None:
     # invented before Zenodo assigns the new version DOI. Historical v0.1.1 DOI
     # remains visible in README as the current archived DOI until deposition.
     assert 'version: "0.2.0"' in citation
-    assert "date-released: 2026-08-18" in citation
+    assert ('date-released: "2026-08-18"' in citation or
+            "date-released: 2026-08-18" in citation)
     assert "doi:" not in citation.lower(), "do not invent a v0.2.0 DOI before Zenodo deposition"
     assert HISTORICAL_DOI in readme
 
