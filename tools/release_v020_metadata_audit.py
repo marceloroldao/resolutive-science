@@ -34,9 +34,12 @@ def main() -> None:
     assert 'given-names: "Marcelo Roldão"' in citation, "given names mismatch in CITATION.cff"
     assert ORCID in citation, "ORCID mismatch in CITATION.cff"
 
-    # Before final v0.2.0 freeze, historical v0.1.1 archival metadata must stay intact.
-    assert 'version: "0.1.1"' in citation
-    assert HISTORICAL_DOI in citation
+    # Final-freeze state: citation metadata advances to v0.2.0, but no DOI is
+    # invented before Zenodo assigns the new version DOI. Historical v0.1.1 DOI
+    # remains visible in README as the current archived DOI until deposition.
+    assert 'version: "0.2.0"' in citation
+    assert "date-released: 2026-08-18" in citation
+    assert "doi:" not in citation.lower(), "do not invent a v0.2.0 DOI before Zenodo deposition"
     assert HISTORICAL_DOI in readme
 
     # The README must not misrepresent the noncommercial licensing scheme as OSI Open Source.
@@ -44,14 +47,16 @@ def main() -> None:
     assert "not as osi-approved open-source software" in lower
     assert "commercial use requires a separate written commercial license" in lower
 
-    # Current public release remains historical until final freeze/tagging.
+    # Until the tag/release is actually created, README must still distinguish
+    # the public v0.1.1 snapshot from the v0.2.0 candidate line.
     assert "Current public scientific release:** `v0.1.1`" in readme
+    assert "Next release under final audit:** `v0.2.0`" in readme
 
     print("V020_METADATA_AUDIT=PASS")
     print(f"AUTHOR={AUTHOR}")
     print(f"ORCID={ORCID}")
     print("LICENSE_BOUNDARY=SOFTWARE_POLYFORM_DOCUMENTATION_CC_BY_NC_SA")
-    print("CITATION_STATE=HISTORICAL_V0.1.1_PRESERVED_UNTIL_FINAL_FREEZE")
+    print("CITATION_STATE=V0.2.0_FROZEN_DOI_PENDING_ZENODO")
 
 
 if __name__ == "__main__":
