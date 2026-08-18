@@ -1,0 +1,58 @@
+name: RCMS Protocol 09 T0 Null Calibration
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol09_null_false_positive_calibration.md'
+      - 'tools/run_rcms_protocol09_t0.py'
+      - '.github/workflows/rcms-protocol09-t0.yml'
+  workflow_dispatch:
+
+jobs:
+  p09-t0:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Implementation smoke test
+        run: |
+          python tools/run_rcms_protocol09_t0.py \
+            --n 1000 \
+            --seed 20260818 \
+            --out-json results/p09_t0_smoke.json \
+            --out-csv results/p09_t0_smoke.csv
+      - name: Execute preregistered scientific run
+        run: |
+          python tools/run_rcms_protocol09_t0.py \
+            --n 10000 \
+            --seed 20260818 \
+            --out-json results/rcms_protocol09_t0_summary.json \
+            --out-csv results/rcms_protocol09_t0_realizations.csv
+      - name: Verify final run identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('results/rcms_protocol09_t0_summary.json')
+          d = json.loads(p.read_text())
+          assert d['protocol'] == 'P09-T0'
+          assert d['status'] == 'FINAL'
+          assert d['preregistered_scientific_run'] is True
+          assert d['configuration']['N'] == 10000
+          assert d['configuration']['seed'] == 20260818
+          assert d['null_truth_A_R'] == 0.0
+          print('P09_T0_FINAL_IDENTITY=PASS')
+          print('P09_T0_CLASSIFICATION=' + d['interpretation'])
+          print('P09_T0_OVERALL_PASS=' + str(d['gates']['overall']))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol09-t0
+          path: |
+            results/rcms_protocol09_t0_summary.json
+            results/rcms_protocol09_t0_realizations.csv
+          if-no-files-found: error
