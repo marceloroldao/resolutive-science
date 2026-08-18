@@ -6,13 +6,11 @@ This repository is the versioned source of truth for the universal mathematical 
 
 ## Release
 
-**Current public scientific release:** `v0.1.1` — Metadata and Archival Fix for the `v0.1.0` Cosmology Foundation scientific snapshot.
+**Current public scientific release:** `v0.2.0` — RCMS Extended Validation, consolidating the frozen RCMS evidence record through Protocol 08 under `RSMS-1.0-rc.1` compatibility.
 
-**Next release under final audit:** `v0.2.0` — cumulative RCMS evidence through Protocol 08, with compatibility baseline `RSMS-1.0-rc.1`. The v0.2.0 candidate preserves positive, weak, null, negative, and conditional outcomes and does not import experimental material from `resolutiva-reformulacao`.
+**Zenodo DOI (v0.2.0):** `10.5281/zenodo.22002018`
 
-The `v0.1.0` release freezes the RSMS foundation and the completed RCMS cosmology validation record through Protocol 03. Version `v0.1.1` changes citation/archive metadata only; no scientific results, equations, datasets, conclusions, validation results, or evidentiary claims were changed.
-
-**Current archived DOI (v0.1.1):** `10.5281/zenodo.21940994`
+The prior `v0.1.1` release remains the immutable metadata/archive correction of the `v0.1.0` Cosmology Foundation snapshot. No historical scientific results are rewritten by v0.2.0.
 
 ## Primary specifications
 
@@ -31,7 +29,7 @@ Publication of this repository does not imply that Resolutive Physics is establi
 
 The repository preserves model definitions, protocol preregistrations, data provenance/manifests, analysis runners, numerical gates, workflows, and frozen scientific reports where applicable. Third-party datasets are referenced or acquired under their original terms and are not relicensed by this repository.
 
-See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md), and [`docs/releases/v0.2.0_EVIDENCE_MATRIX.md`](docs/releases/v0.2.0_EVIDENCE_MATRIX.md) for the candidate release audit. The public v0.1.x record remains immutable.
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md), and [`docs/releases/v0.2.0_EVIDENCE_MATRIX.md`](docs/releases/v0.2.0_EVIDENCE_MATRIX.md) for the v0.2.0 release record. The public v0.1.x record remains immutable.
 
 ## Licensing
 
@@ -63,9 +61,11 @@ Because commercial use is restricted, this project should be described as **publ
 
 ## Citation
 
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff). Until v0.2.0 is frozen and tagged, the citation file intentionally remains on the archived `v0.1.1` record.
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
 
-Zenodo DOI for the archived `v0.1.1` release: **10.5281/zenodo.21940994**.
+Zenodo DOI for `v0.2.0`: **10.5281/zenodo.22002018**.
+
+Historical Zenodo DOI for `v0.1.1`: **10.5281/zenodo.21940994**.
 
 ## Author
 
@@ -74,5 +74,5 @@ ORCID: 0009-0003-6075-4680
 
 ## Status
 
-**Published scientific snapshot:** `v0.1.1`.  
-**Candidate line under final audit:** `v0.2.0`, RCMS Protocols 01–08, `RSMS-1.0-rc.1` compatibility.
+**Published scientific snapshot:** `v0.2.0`.  
+**Frozen scope:** RCMS Protocols 01–08, `RSMS-1.0-rc.1` compatibility.
