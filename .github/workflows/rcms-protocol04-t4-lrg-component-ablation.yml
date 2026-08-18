@@ -1,0 +1,29 @@
+name: RCMS Protocol 04 eBOSS T4 LRG component ablation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol04_t4_lrg_component_ablation_freeze.md'
+      - 'tools/run_rcms_protocol04_t4_lrg_component_ablation.py'
+      - '.github/workflows/rcms-protocol04-t4-lrg-component-ablation.yml'
+  workflow_dispatch:
+
+jobs:
+  eboss-t4-lrg-component-ablation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install numpy scipy
+      - name: Fetch and verify frozen eBOSS DR16 inputs
+        run: python tools/fetch_rcms_eboss_dr16.py
+      - name: Run P04-T4 preregistered LRG component ablation
+        run: python tools/run_rcms_protocol04_t4_lrg_component_ablation.py
+      - name: Upload machine-readable P04-T4 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol04-t4-lrg-component-ablation
+          path: results/rcms_protocol04_t4_lrg_component_ablation.json
