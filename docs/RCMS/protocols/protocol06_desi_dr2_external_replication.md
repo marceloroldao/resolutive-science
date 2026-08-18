@@ -1,7 +1,7 @@
 # RCMS Protocol 06 — DESI DR2 External Multi-Redshift Replication
 
 **Status:** Preregistered before any Protocol 06 RCMS fit  
-**RSMS compatibility:** RSMS-1.0  
+**RSMS compatibility:** RSMS-1.0-rc.1  
 **Parent evidence:** Protocols 01–05  
 
 ## 1. Purpose

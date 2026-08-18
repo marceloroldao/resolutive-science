@@ -8,9 +8,11 @@ This repository is the versioned source of truth for the universal mathematical 
 
 **Current public scientific release:** `v0.1.1` — Metadata and Archival Fix for the `v0.1.0` Cosmology Foundation scientific snapshot.
 
-The `v0.1.0` release freezes the RSMS foundation and the completed RCMS cosmology validation record through Protocol 03. Protocol 04 is preserved as future work and is not part of the scientific evidence claimed by v0.1.0. Version `v0.1.1` changes citation/archive metadata only; no scientific results, equations, datasets, conclusions, validation results, or evidentiary claims were changed.
+**Next release under final audit:** `v0.2.0` — cumulative RCMS evidence through Protocol 08, with compatibility baseline `RSMS-1.0-rc.1`. The v0.2.0 candidate preserves positive, weak, null, negative, and conditional outcomes and does not import experimental material from `resolutiva-reformulacao`.
 
-**Zenodo DOI:** `10.5281/zenodo.21940994`
+The `v0.1.0` release freezes the RSMS foundation and the completed RCMS cosmology validation record through Protocol 03. Version `v0.1.1` changes citation/archive metadata only; no scientific results, equations, datasets, conclusions, validation results, or evidentiary claims were changed.
+
+**Current archived DOI (v0.1.1):** `10.5281/zenodo.21940994`
 
 ## Primary specifications
 
@@ -21,7 +23,7 @@ The `v0.1.0` release freezes the RSMS foundation and the completed RCMS cosmolog
 
 Resolutive Science is a research program. Mathematical consistency, software verification, numerical performance, observational agreement, external replication, and independent scientific validation are distinct stages.
 
-The cosmology results in v0.1.0/v0.1.1 are **candidate observational results**, not a discovery and not experimental validation of Resolutive Physics. The completed protocols include positive, negative, and inconclusive outcomes and are retained for auditability.
+The cumulative RCMS record through Protocol 08 repeatedly contains a positive one-parameter deformation direction, including independent DESI DR2 directional replication, but robustness and complexity-penalized model-selection results remain insufficient for a discovery claim or preference over Lambda-CDM. Protocol 07 is descriptive rather than an independent combined discovery significance, and Protocol 08 is a conditional mathematical provenance result rather than a Master Equation derivation.
 
 Publication of this repository does not imply that Resolutive Physics is established physics.
 
@@ -29,7 +31,7 @@ Publication of this repository does not imply that Resolutive Physics is establi
 
 The repository preserves model definitions, protocol preregistrations, data provenance/manifests, analysis runners, numerical gates, workflows, and frozen scientific reports where applicable. Third-party datasets are referenced or acquired under their original terms and are not relicensed by this repository.
 
-See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) and [`RELEASE_NOTES_v0.1.0.md`](RELEASE_NOTES_v0.1.0.md).
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md), and [`docs/releases/v0.2.0_EVIDENCE_MATRIX.md`](docs/releases/v0.2.0_EVIDENCE_MATRIX.md) for the candidate release audit. The public v0.1.x record remains immutable.
 
 ## Licensing
 
@@ -61,7 +63,7 @@ Because commercial use is restricted, this project should be described as **publ
 
 ## Citation
 
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff). Until v0.2.0 is frozen and tagged, the citation file intentionally remains on the archived `v0.1.1` record.
 
 Zenodo DOI for the archived `v0.1.1` release: **10.5281/zenodo.21940994**.
 
@@ -72,4 +74,5 @@ ORCID: 0009-0003-6075-4680
 
 ## Status
 
-**Published scientific snapshot — v0.1.1.** The Cosmology Foundation scientific content remains frozen at v0.1.0; v0.1.1 is the metadata/archival interoperability correction archived in Zenodo. Subsequent scientific areas will be added cumulatively in later version lines while these releases remain immutable and citable.
+**Published scientific snapshot:** `v0.1.1`.  
+**Candidate line under final audit:** `v0.2.0`, RCMS Protocols 01–08, `RSMS-1.0-rc.1` compatibility.

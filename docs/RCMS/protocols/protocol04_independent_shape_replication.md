@@ -3,7 +3,7 @@
 **Status:** Preregistered — no Protocol 04 fit executed at freeze time  
 **Model status:** Frozen one-parameter phenomenological screening surrogate  
 **Parent evidence:** Protocols 01–03  
-**RSMS compatibility:** RSMS-1.0
+**RSMS compatibility:** RSMS-1.0-rc.1
 
 ---
 
@@ -20,19 +20,13 @@ Protocol 04 must use a dataset with enough redshift structure to constrain the *
 The RCMS screening surrogate remains unchanged:
 
 \[
-H_{\mathrm{eff}}^2(z)
-=
-H_{\Lambda\mathrm{CDM}}^2(z)
-+
-H_0^2 A_R\ln(1+z).
+H_{\mathrm{eff}}^2(z)=H_{\Lambda\mathrm{CDM}}^2(z)+H_0^2 A_R\ln(1+z).
 \]
 
 Equivalently,
 
 \[
-E_{\mathrm{RCMS}}^2(z)
-=
-\Omega_m(1+z)^3+(1-\Omega_m)+A_R\ln(1+z)
+E_{\mathrm{RCMS}}^2(z)=\Omega_m(1+z)^3+(1-\Omega_m)+A_R\ln(1+z)
 \]
 
 for the flat late-time background used in Protocols 01–03.

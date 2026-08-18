@@ -1,7 +1,7 @@
 # RCMS Protocol 07 — Cross-Protocol Parameter Consistency Synthesis
 
 **Status:** Preregistered retrospective synthesis before computation of the synthesis statistic  
-**RSMS compatibility:** RSMS-1.0  
+**RSMS compatibility:** RSMS-1.0-rc.1  
 **Model form:** frozen one-parameter RCMS screening surrogate, `A_R ln(1+z)`
 
 ## 1. Purpose
