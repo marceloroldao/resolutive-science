@@ -31,43 +31,89 @@ P09 is a calibration/falsification protocol. It is not evidence for RCMS even if
 
 ## 3. Synthetic-data design
 
-The first P09 implementation must use a deterministic synthetic design with preregistered seeds and must preserve, as closely as practical, the redshift sampling and covariance/noise structure of a frozen release-relevant observational target without using the observed residuals to tune the generator.
-
 Two levels are required:
 
-1. **T0 — controlled diagonal-noise calibration:** synthetic observations generated from the nested null with fixed redshift grid and preregistered Gaussian uncertainties. This validates the statistical machinery in a transparent environment.
-2. **T1 — release-relevant covariance calibration:** synthetic observations generated under the nested null using a frozen observational sampling/covariance structure already documented in the repository. No post-outcome covariance modification is allowed.
+1. **T0 — controlled diagonal-noise calibration:** transparent one-parameter null calibration in the normalized additive deformation channel. This tests sign symmetry, interval coverage, false-positive calibration, deterministic seeding, and boundary handling. It does **not** claim to reproduce the full Pantheon+/BAO likelihood or nuisance structure.
+2. **T1 — release-relevant covariance calibration:** synthetic observations generated under the nested null using a frozen observational sampling/covariance structure already documented in the repository. This is the first test intended to exercise a release-relevant covariance/likelihood structure.
 
-T1 must not begin until T0 code, metrics, thresholds, and seeds are frozen.
+T1 must not begin until T0 code, metrics, thresholds, seeds, and outcome are frozen.
 
-## 4. Frozen Monte Carlo rules for T0
+## 4. Exact frozen T0 design
 
+The T0 observable is the normalized residual in the additive deformation channel,
+
+\[
+y_i = A_R\,x_i + \epsilon_i,
+\qquad
+x_i=\ln(1+z_i),
+\]
+
+with null truth `A_R = 0`.
+
+The exact design is frozen as follows before the final outcome is executed:
+
+- redshift grid: 64 equally spaced points on `z in [0.05, 2.00]` including both endpoints;
+- design vector: `x_i = ln(1 + z_i)`;
+- Gaussian independent errors: `epsilon_i ~ Normal(0, sigma_i^2)`;
+- uncertainty law: `sigma_i = 0.06 + 0.02 z_i`;
 - generator truth: `A_R = 0`;
-- number of Monte Carlo realizations: `N = 10000` for the final T0 report;
-- development smoke tests may use smaller N but cannot be reported as the scientific outcome;
-- master random seed: `20260818`;
-- fitting interval for `A_R`: `[-1.0, +1.0]` unless an inherited frozen fitter requires a narrower interval, in which case that inherited bound must be documented before execution;
-- all realizations use the same preregistered estimator and nuisance treatment;
-- failed numerical fits are counted and reported, not silently discarded.
+- Monte Carlo realizations: `N = 10000` for the scientific run;
+- master seed: `20260818` using NumPy `default_rng` / PCG64;
+- fitting interval: `A_R in [-1.0, +1.0]`;
+- no nuisance parameters in T0;
+- estimator: weighted least squares in the one-parameter channel;
+- unconstrained estimator:
 
-## 5. Primary metrics
+\[
+\hat A_R = \frac{\sum_i w_i x_i y_i}{\sum_i w_i x_i^2},
+\qquad
+w_i=\sigma_i^{-2};
+\]
 
-For recovered amplitudes `A_hat` under the null, report:
+- reported bounded estimate: unconstrained estimate clipped to `[-1,+1]`; boundary-hit frequency is reported;
+- nominal standard error before clipping:
 
-1. mean bias: `mean(A_hat)`;
+\[
+\sigma_{\hat A}=\left(\sum_iw_ix_i^2\right)^{-1/2};
+\]
+
+- two-sided 95% interval: `A_hat_unbounded +/- 1.959963984540054 * sigma_A`;
+- one-sided positive 95% false positive: `A_hat_unbounded / sigma_A > 1.6448536269514722`;
+- profile-improvement statistic under this Gaussian T0:
+
+\[
+\Delta\chi^2_0=(\hat A_R/\sigma_{\hat A})^2.
+\]
+
+The final scientific run must use exactly this configuration unless a protocol amendment is committed **before** its output is inspected.
+
+## 5. Monte Carlo execution rules
+
+- `N = 10000` is the only scientific T0 outcome;
+- smaller runs are implementation smoke tests only;
+- all 10000 realizations use the same fixed grid and uncertainty law;
+- failed/non-finite realizations are counted and reported, not silently discarded;
+- the scientific JSON summary must include the exact configuration and deterministic SHA256 of the realization-level CSV output;
+- the full realization table may be regenerated deterministically from the frozen runner, but the workflow should preserve it as an artifact when practical.
+
+## 6. Primary metrics
+
+For recovered amplitudes under the null, report:
+
+1. mean of the unbounded recovered amplitude;
 2. median recovered amplitude;
-3. standard deviation / robust spread;
-4. fraction with `A_hat > 0`;
+3. standard deviation;
+4. fraction with `A_hat_unbounded > 0`;
 5. one-sided false-positive rate at nominal 95% confidence;
 6. two-sided 95% interval coverage for `A_R = 0`;
-7. fit-failure rate;
-8. empirical quantiles of the test statistic / profile improvement used by the frozen fitter.
+7. boundary-hit frequency for the reported bounded estimator;
+8. numerical/non-finite failure rate;
+9. empirical quantiles of `DeltaChi2_0` at 50%, 90%, 95%, 99%;
+10. mean-bias diagnostic `B = abs(mean(A_hat))/std(A_hat)`.
 
-Where the estimator is symmetric and correctly calibrated, `P(A_hat > 0)` is expected to be near 0.5. This sign fraction alone is not a discovery false-positive rate; significance thresholds must be evaluated separately.
+Where the estimator is symmetric and correctly calibrated, `P(A_hat > 0)` is expected to be near 0.5. This sign fraction alone is not a discovery false-positive rate.
 
-## 6. Preregistered interpretation bands
-
-These bands are calibration diagnostics, not physical discovery thresholds.
+## 7. Preregistered interpretation bands
 
 ### Sign symmetry
 
@@ -92,43 +138,51 @@ Define
 - `0.92 <= coverage < 0.94` or `0.96 < coverage <= 0.98`: mild miscalibration requiring documentation;
 - coverage outside `[0.92, 0.98]`: calibration failure.
 
-The exact confidence-interval construction must be frozen in the runner before the final N=10000 execution.
+### One-sided 95% false-positive rate
 
-## 7. Falsification / stop rules
+- `0.04 <= FPR <= 0.06`: nominal calibration band;
+- `0.03 <= FPR < 0.04` or `0.06 < FPR <= 0.07`: mild miscalibration requiring documentation;
+- outside `[0.03, 0.07]`: calibration failure.
+
+## 8. Falsification / stop rules
 
 P09-T0 is considered a pipeline calibration failure if any of the following occurs in the final preregistered run:
 
 - `B > 0.10`;
 - 95% null coverage lies outside `[0.92, 0.98]`;
-- numerical fit-failure rate exceeds 1%;
+- one-sided nominal-95% false-positive rate lies outside `[0.03, 0.07]`;
+- numerical/non-finite failure rate exceeds 1%;
 - a material sign asymmetry is observed and cannot be explained by a preregistered boundary effect.
 
 If T0 fails, do not tune the RCMS equation. Diagnose the inference implementation or synthetic generator, preserve the failed result, and repeat only under a new explicitly versioned protocol amendment.
 
-Passing P09 does not validate RCMS. It only establishes that the tested pipeline does not obviously manufacture the v0.2 positive direction under a controlled null.
+Passing P09-T0 does not validate RCMS. It only establishes that this controlled statistical core does not obviously manufacture a positive direction under the null. Release-relevant inference calibration is deferred to P09-T1.
 
-## 8. Required artifacts
+## 9. Required artifacts
 
 The final P09-T0 record must contain:
 
 - runner script;
 - fixed seed and configuration;
-- machine-readable summary;
-- optional full realization table or deterministic regeneration instructions;
-- SHA256 hashes for scientific output artifacts;
+- machine-readable JSON summary;
+- realization-level CSV or deterministic regeneration instructions;
+- SHA256 of the CSV output;
 - frozen Markdown outcome report;
 - environment/dependency record;
-- automated regression test for deterministic summary quantities where practical.
+- automated smoke/regression test where practical.
 
-## 9. Prohibited changes after outcome inspection
+## 10. Prohibited changes after outcome inspection
 
 After the first final N=10000 outcome is produced, do not silently change:
 
 - the seed;
 - N;
+- redshift grid;
+- uncertainty law;
 - estimator;
 - fitting bounds;
 - confidence-interval construction;
+- significance threshold;
 - interpretation bands;
 - failure criteria;
 - null generator;
@@ -136,6 +190,6 @@ After the first final N=10000 outcome is produced, do not silently change:
 
 Any scientifically necessary change requires a documented amendment and preservation of the original result.
 
-## 10. Advancement criterion
+## 11. Advancement criterion
 
 P10 injection/recovery may proceed after P09-T0 is computationally complete and its outcome is frozen, regardless of whether P09 passes or fails. A P09 failure must remain visible in the v0.3 evidence record and may itself become a central v0.3 result.
