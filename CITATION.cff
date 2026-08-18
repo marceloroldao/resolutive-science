@@ -1,9 +1,8 @@
 cff-version: 1.2.0
-message: "If you use or discuss this release, please cite Resolutive Science v0.1.1."
-title: "Resolutive Science: Cosmology Foundation"
-version: "0.1.1"
-date-released: 2026-08-14
-doi: "10.5281/zenodo.21940994"
+message: "If you use or discuss this release, please cite Resolutive Science v0.2.0."
+title: "Resolutive Science: RCMS Extended Validation"
+version: "0.2.0"
+date-released: 2026-08-18
 type: software
 authors:
   - family-names: "Matos"
@@ -12,16 +11,20 @@ authors:
 repository-code: "https://github.com/marceloroldao/resolutive-science"
 url: "https://github.com/marceloroldao/resolutive-science"
 abstract: >-
-  Resolutive Science v0.1.1 is a metadata and archival interoperability patch
-  for the v0.1.0 Cosmology Foundation scientific snapshot. No scientific
-  results, equations, datasets, conclusions, or evidentiary claims are changed
-  from v0.1.0. This patch corrects citation metadata for Zenodo archival while
-  preserving the scientific content and provenance of the original release.
+  Resolutive Science v0.2.0 consolidates the frozen RCMS evidence record through
+  Protocol 08 under RSMS-1.0-rc.1 compatibility. The release preserves positive,
+  weak, limiting, and conditional outcomes; includes independent DESI DR2
+  directional replication and cross-protocol consistency analysis; and records
+  a conditional mathematical provenance result for the logarithmic screening
+  form. It does not claim discovery of new physics, experimental validation of
+  Resolutive Physics, or statistical preference over Lambda-CDM.
 keywords:
   - resolutive science
   - cosmology
+  - RCMS
+  - RSMS
   - mathematical specification
   - reproducible science
   - scientific software
-  - validation
+  - falsifiable models
 license: PolyForm-Noncommercial-1.0.0
