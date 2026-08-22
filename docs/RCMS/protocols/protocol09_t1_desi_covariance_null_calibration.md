@@ -1,9 +1,9 @@
 # RCMS Protocol 09 T1 — DESI DR2 Covariance Null Calibration
 
-**Status:** PREREGISTERED — outcome not inspected  
+**Status:** PREREGISTERED / READY FOR EXECUTION — outcome not inspected  
 **Release line:** v0.3-dev  
 **RSMS compatibility:** RSMS-1.0-rc.1  
-**Parent:** P09-T0 `CALIBRATION_PASS`
+**Parent:** P09-T0 `CALIBRATION_PASS`, frozen in `docs/RCMS/results/protocol09_t0_null_calibration_outcome.md`
 
 ## 1. Purpose
 
