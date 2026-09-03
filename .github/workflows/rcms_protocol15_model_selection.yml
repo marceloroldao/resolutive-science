@@ -1,0 +1,36 @@
+name: RCMS Protocol 15 Model Selection
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol15_complexity_penalized_model_comparison.md'
+      - 'tools/run_rcms_protocol15_model_selection.py'
+      - '.github/workflows/rcms_protocol15_model_selection.yml'
+  workflow_dispatch:
+
+jobs:
+  p15:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute preregistered P15 model-selection synthesis
+        run: python tools/run_rcms_protocol15_model_selection.py
+      - name: Verify frozen P15 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('results/rcms_protocol15_model_selection.json').read_text())
+          assert d['protocol']=='P15'
+          assert d['status']=='FINAL'
+          print('P15_FINAL_IDENTITY=PASS')
+          print('P15_CLASSIFICATION='+d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol15-model-selection
+          path: results/rcms_protocol15_model_selection.json
+          if-no-files-found: error
