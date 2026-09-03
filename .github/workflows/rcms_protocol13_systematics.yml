@@ -1,0 +1,43 @@
+name: RCMS Protocol 13 Systematics Sensitivity
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol13_systematics_nuisance_sensitivity.md'
+      - 'tools/run_rcms_protocol13_systematics.py'
+      - '.github/workflows/rcms_protocol13_systematics.yml'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+  workflow_dispatch:
+
+jobs:
+  p13:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Execute preregistered P13 sensitivity map
+        run: python tools/run_rcms_protocol13_systematics.py
+      - name: Verify frozen P13 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('results/rcms_protocol13_systematics.json').read_text())
+          assert d['protocol'] == 'P13'
+          assert d['status'] == 'FINAL'
+          assert len(d['branches']) == 7
+          assert d['A_R_bounds'] == [-1.0, 1.0]
+          assert d['A_R_step'] == 0.01
+          print('P13_FINAL_IDENTITY=PASS')
+          print('P13_CLASSIFICATION=' + d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol13-systematics
+          path: results/rcms_protocol13_systematics.json
+          if-no-files-found: error
