@@ -22,7 +22,7 @@
   ],
   "repository": "https://github.com/marceloroldao/resolutive-science",
   "parent_release_doi": "10.5281/zenodo.22002018",
-  "doi": null,
-  "doi_status": "pending Zenodo archival deposition",
+  "doi": "10.5281/zenodo.22643804",
+  "doi_status": "published",
   "licensing_note": "Repository-owned software is under PolyForm Noncommercial 1.0.0; project-owned scientific specifications/documentation are under CC BY-NC-SA 4.0 unless otherwise stated. Third-party data retain their original terms."
 }
