@@ -1,0 +1,56 @@
+name: Publish Resolutive Science v0.3.0
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v0.3.0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen release metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'version: "0.3.0"' CITATION.cff
+          grep -q 'date-released: "2026-09-07"' CITATION.cff
+          grep -q 'Resolutive Science v0.3.0 — RCMS Falsification Release' docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md
+          grep -q 'OUT_OF_SAMPLE_INVALID' docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md
+          test -f docs/releases/v0.3.0_ZENODO_METADATA.json
+
+      - name: Create immutable tag and GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v0.3.0 >/dev/null 2>&1; then
+            echo 'v0.3.0 release already exists; refusing to recreate or move it.'
+            exit 0
+          fi
+          gh release create v0.3.0 \
+            --target "$GITHUB_SHA" \
+            --title 'Resolutive Science v0.3.0 — RCMS Falsification Release' \
+            --notes-file docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md \
+            --latest
+
+      - name: Verify publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release view v0.3.0 --json tagName,name,isDraft,isPrerelease,url,targetCommitish
+          git fetch --tags origin
+          test "$(git rev-list -n 1 v0.3.0)" = "$GITHUB_SHA"
+          echo "V030_RELEASE_TARGET=$GITHUB_SHA"
