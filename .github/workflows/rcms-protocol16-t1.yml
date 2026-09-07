@@ -1,0 +1,37 @@
+name: RCMS Protocol 16 T1 BOSS DR12 Reveal
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  p16-t1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Execute preregistered P16-T1 blind reveal
+        run: python tools/run_rcms_protocol16_t1_boss_dr12_reveal.py
+      - name: Verify frozen P16-T1 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('results/rcms_protocol16_t1_boss_dr12_reveal.json').read_text())
+          assert d['protocol']=='P16-T1'
+          assert d['status']=='FINAL'
+          assert d['prediction_interval']==[0.1219711,0.407494649]
+          assert d['A_R_bounds']==[-1.0,1.0]
+          print('P16_T1_FINAL_IDENTITY=PASS')
+          print('P16_CLASSIFICATION='+d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol16-t1-boss-dr12
+          path: results/rcms_protocol16_t1_boss_dr12_reveal.json
+          if-no-files-found: error
