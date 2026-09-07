@@ -1,31 +1,35 @@
 cff-version: 1.2.0
-message: "If you use or discuss this release, please cite Resolutive Science v0.2.0."
-title: "Resolutive Science: RCMS Extended Validation"
-version: "0.2.0"
-date-released: "2026-08-18"
+message: "If you use or discuss this release, please cite Resolutive Science v0.3.0."
+title: "Resolutive Science: RCMS Falsification Release"
+version: "0.3.0"
+date-released: "2026-09-07"
 type: software
 authors:
   - family-names: "Matos"
     given-names: "Marcelo Roldão"
     orcid: "https://orcid.org/0009-0003-6075-4680"
-doi: "10.5281/zenodo.22002018"
 repository-code: "https://github.com/marceloroldao/resolutive-science"
 url: "https://github.com/marceloroldao/resolutive-science"
 abstract: >-
-  Resolutive Science v0.2.0 consolidates the frozen RCMS evidence record through
-  Protocol 08 under RSMS-1.0-rc.1 compatibility. The release preserves positive,
-  weak, limiting, and conditional outcomes; includes independent DESI DR2
-  directional replication and cross-protocol consistency analysis; and records
-  a conditional mathematical provenance result for the logarithmic screening
-  form. It does not claim discovery of new physics, experimental validation of
-  Resolutive Physics, or statistical preference over Lambda-CDM.
+  Resolutive Science v0.3.0 is an adversarial falsification release for the
+  frozen one-parameter RCMS cosmological screening surrogate. It adds Protocols
+  09–16, including null and injection/recovery calibration, equal-complexity
+  functional controls, dataset-family ablations, systematics and amplitude
+  stability tests, complexity-penalized model comparison, and a preregistered
+  held-out BOSS DR12 prediction. The release preserves unfavorable outcomes:
+  the logarithmic form is not uniquely selected, fitted amplitudes are not
+  universal, model-selection preference over Lambda-CDM is not established,
+  and the preregistered positive BOSS DR12 prediction is not reproduced within
+  the frozen primary domain. This release does not claim discovery of new
+  physics or experimental validation of Resolutive Physics.
 keywords:
   - "resolutive science"
   - "cosmology"
   - "RCMS"
   - "RSMS"
-  - "mathematical specification"
+  - "falsification"
+  - "preregistration"
   - "reproducible science"
   - "scientific software"
-  - "falsifiable models"
+  - "model comparison"
 license: PolyForm-Noncommercial-1.0.0
