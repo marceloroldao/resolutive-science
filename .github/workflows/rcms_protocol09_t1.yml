@@ -1,0 +1,59 @@
+name: RCMS Protocol 09 T1 DESI Covariance Calibration
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol09_t1.py'
+      - 'docs/RCMS/protocols/protocol09_t1_desi_covariance_null_calibration.md'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - '.github/workflows/rcms_protocol09_t1.yml'
+  workflow_dispatch:
+
+jobs:
+  p09-t1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Implementation smoke test
+        run: |
+          python tools/run_rcms_protocol09_t1.py \
+            --n 500 \
+            --seed 20260820 \
+            --out-json results/p09_t1_smoke.json \
+            --out-csv results/p09_t1_smoke.csv
+      - name: Execute preregistered scientific run
+        run: |
+          python tools/run_rcms_protocol09_t1.py \
+            --n 5000 \
+            --seed 20260820 \
+            --out-json results/rcms_protocol09_t1_summary.json \
+            --out-csv results/rcms_protocol09_t1_realizations.csv
+      - name: Verify final run identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('results/rcms_protocol09_t1_summary.json')
+          d = json.loads(p.read_text())
+          assert d['protocol'] == 'P09-T1'
+          assert d['status'] == 'FINAL'
+          assert d['preregistered_scientific_run'] is True
+          assert d['configuration']['N'] == 5000
+          assert d['configuration']['seed'] == 20260820
+          assert d['null_truth_A_R'] == 0.0
+          print('P09_T1_FINAL_IDENTITY=PASS')
+          print('P09_T1_CLASSIFICATION=' + d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol09-t1
+          path: |
+            results/rcms_protocol09_t1_summary.json
+            results/rcms_protocol09_t1_realizations.csv
+          if-no-files-found: error

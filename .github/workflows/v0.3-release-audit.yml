@@ -1,0 +1,59 @@
+name: Resolutive Science v0.3.0 Release Audit
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify release-candidate documents
+        run: |
+          test -f RELEASE_NOTES_v0.3.0.md
+          test -f docs/releases/v0.3.0_DEVELOPMENT_PLAN.md
+          test -f docs/releases/v0.3.0_EVIDENCE_MATRIX.md
+          test -f docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md
+          test -f docs/RCMS/results/16_protocol16_out_of_sample_outcome.md
+          grep -q 'OUT_OF_SAMPLE_INVALID' docs/RCMS/results/16_protocol16_out_of_sample_outcome.md
+          grep -q 'NO_MODEL_SELECTION_PREFERENCE' docs/releases/v0.3.0_EVIDENCE_MATRIX.md
+          grep -q 'SYSTEMATICS_SENSITIVE' docs/releases/v0.3.0_EVIDENCE_MATRIX.md
+          grep -q 'FUNCTIONALLY_NON_SPECIFIC' docs/releases/v0.3.0_EVIDENCE_MATRIX.md
+      - name: Verify licensing baseline remains present
+        run: |
+          test -f LICENSE.md
+          test -f NOTICE
+          test -f COMMERCIAL_LICENSE.md
+          test -f LICENSES/PolyForm-Noncommercial-1.0.0.md
+          test -f LICENSES/CC-BY-NC-SA-4.0.md
+      - name: Compile v0.3 Python runners
+        run: |
+          python -m py_compile \
+            tools/run_rcms_protocol09_t0.py \
+            tools/run_rcms_protocol09_t1.py \
+            tools/run_rcms_protocol10_injection_recovery.py \
+            tools/run_rcms_protocol11_functional_controls.py \
+            tools/run_rcms_protocol12_leave_one_dataset_out.py \
+            tools/run_rcms_protocol13_systematics.py \
+            tools/run_rcms_protocol14_amplitude_stability.py \
+            tools/run_rcms_protocol15_model_selection.py \
+            tools/run_rcms_protocol16_t0_boss_dr12.py \
+            tools/run_rcms_protocol16_t1_boss_dr12_reveal.py \
+            tools/run_rcms_protocol16_t1_boss_dr12_reveal_optimized.py
+      - name: Reject accidentally committed private keys or obvious bearer secrets
+        run: |
+          if git grep -n -E -- 'BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Authorization:[[:space:]]*Bearer[[:space:]]+[A-Za-z0-9._-]{16,}' -- ':!*.md'; then
+            echo 'Potential secret material found'
+            exit 1
+          fi
+          echo 'SECRET_PATTERN_AUDIT=PASS'
+      - name: Confirm public citation remains intentionally pinned to v0.2 until v0.3 DOI
+        run: |
+          grep -q 'version: "0.2.0"' CITATION.cff
+          grep -q '10.5281/zenodo.22002018' CITATION.cff
+          echo 'CITATION_PRE_RELEASE_PIN=PASS'

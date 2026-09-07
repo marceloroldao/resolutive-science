@@ -1,0 +1,58 @@
+name: RCMS Protocol 10 Injection Recovery
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_rcms_protocol10_injection_recovery.py'
+      - 'docs/RCMS/protocols/protocol10_injection_recovery_calibration.md'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - '.github/workflows/rcms_protocol10_injection_recovery.yml'
+  workflow_dispatch:
+
+jobs:
+  p10:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Implementation smoke test
+        run: |
+          python tools/run_rcms_protocol10_injection_recovery.py \
+            --n-per 200 \
+            --seed 20260821 \
+            --out-json results/p10_smoke.json \
+            --out-csv results/p10_smoke.csv
+      - name: Execute preregistered scientific run
+        run: |
+          python tools/run_rcms_protocol10_injection_recovery.py \
+            --n-per 2000 \
+            --seed 20260821 \
+            --out-json results/rcms_protocol10_summary.json \
+            --out-csv results/rcms_protocol10_realizations.csv
+      - name: Verify final run identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('results/rcms_protocol10_summary.json').read_text())
+          assert d['protocol'] == 'P10'
+          assert d['status'] == 'FINAL'
+          assert d['preregistered_scientific_run'] is True
+          assert d['configuration']['N_per_truth'] == 2000
+          assert d['configuration']['master_seed'] == 20260821
+          assert d['configuration']['A_R_truths'] == [-0.4, -0.2, 0.0, 0.2, 0.4]
+          print('P10_FINAL_IDENTITY=PASS')
+          print('P10_CLASSIFICATION=' + d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol10
+          path: |
+            results/rcms_protocol10_summary.json
+            results/rcms_protocol10_realizations.csv
+          if-no-files-found: error

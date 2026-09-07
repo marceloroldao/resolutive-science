@@ -1,0 +1,37 @@
+name: RCMS Protocol 14 Amplitude Stability
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol14_amplitude_stability.md'
+      - 'tools/run_rcms_protocol14_amplitude_stability.py'
+      - '.github/workflows/rcms_protocol14_amplitude_stability.yml'
+  workflow_dispatch:
+
+jobs:
+  p14:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute preregistered P14 stability diagnostics
+        run: python tools/run_rcms_protocol14_amplitude_stability.py
+      - name: Verify frozen P14 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('results/rcms_protocol14_amplitude_stability.json').read_text())
+          assert d['protocol']=='P14'
+          assert d['status']=='FINAL'
+          assert d['independence_assumed'] is False
+          print('P14_FINAL_IDENTITY=PASS')
+          print('P14_CLASSIFICATION='+d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol14-amplitude-stability
+          path: results/rcms_protocol14_amplitude_stability.json
+          if-no-files-found: error

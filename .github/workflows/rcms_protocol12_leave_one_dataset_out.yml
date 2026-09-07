@@ -1,0 +1,39 @@
+name: RCMS Protocol 12 Leave-One-Dataset-Family-Out
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol12_leave_one_dataset_out.md'
+      - 'tools/run_rcms_protocol12_leave_one_dataset_out.py'
+      - '.github/workflows/rcms_protocol12_leave_one_dataset_out.yml'
+  workflow_dispatch:
+
+jobs:
+  p12:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute preregistered P12 family stress test
+        run: python tools/run_rcms_protocol12_leave_one_dataset_out.py
+      - name: Verify frozen P12 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('results/rcms_protocol12_leave_one_dataset_out.json').read_text())
+          assert d['protocol'] == 'P12'
+          assert d['status'] == 'FINAL'
+          assert d['independence_assumed'] is False
+          assert len(d['frozen_inputs']) == 5
+          assert len(d['leave_one_family_out']) == 5
+          print('P12_FINAL_IDENTITY=PASS')
+          print('P12_CLASSIFICATION=' + d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol12-leave-one-dataset-out
+          path: results/rcms_protocol12_leave_one_dataset_out.json
+          if-no-files-found: error

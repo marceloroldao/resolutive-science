@@ -1,0 +1,41 @@
+name: RCMS Protocol 11 Equal-Complexity Controls
+
+on:
+  pull_request:
+    paths:
+      - 'docs/RCMS/protocols/protocol11_equal_complexity_functional_controls.md'
+      - 'tools/run_rcms_protocol11_functional_controls.py'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - '.github/workflows/rcms_protocol11_functional_controls.yml'
+  workflow_dispatch:
+
+jobs:
+  p11:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute preregistered equal-complexity controls
+        run: python tools/run_rcms_protocol11_functional_controls.py
+      - name: Verify frozen P11 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('results/rcms_protocol11_functional_controls.json').read_text())
+          assert d['protocol'] == 'P11'
+          assert d['status'] == 'FINAL'
+          assert d['pivot_z'] == 1.0
+          assert [m['family'] for m in d['models']] == ['log','linear','saturating','sqrt']
+          print('P11_FINAL_IDENTITY=PASS')
+          print('P11_CLASSIFICATION=' + d['classification'])
+          print('P11_LOG_CONTROL_GAP=' + str(d['Delta_chi2_log_ctrl']))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol11-functional-controls
+          path: results/rcms_protocol11_functional_controls.json
+          if-no-files-found: error
