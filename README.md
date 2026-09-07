@@ -10,7 +10,7 @@ This repository is the versioned source of truth for the universal mathematical 
 
 **Release date:** `2026-09-07`.
 
-**Zenodo DOI (v0.3.0):** pending archival deposition. The assigned DOI will be added back without rewriting the frozen scientific record.
+**Zenodo DOI (v0.3.0):** `10.5281/zenodo.22643804`.
 
 **Previous release:** `v0.2.0` — RCMS Extended Validation. Zenodo DOI: `10.5281/zenodo.22002018`.
 
@@ -78,7 +78,7 @@ Because commercial use is restricted, this project should be described as **publ
 
 Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
 
-Zenodo DOI for `v0.3.0`: pending archival deposition.
+Zenodo DOI for `v0.3.0`: **10.5281/zenodo.22643804**.
 
 Zenodo DOI for `v0.2.0`: **10.5281/zenodo.22002018**.
 
