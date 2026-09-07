@@ -28,29 +28,36 @@ jobs:
           grep -q 'OUT_OF_SAMPLE_INVALID' docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md
           test -f docs/releases/v0.3.0_ZENODO_METADATA.json
 
-      - name: Create immutable tag and GitHub Release
+      - name: Create or synchronize GitHub Release without moving tag
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
+          EXPECTED_TAG_SHA='b70288462ffe9a6797aeaa3ad9d336f2bbd66371'
           if gh release view v0.3.0 >/dev/null 2>&1; then
-            echo 'v0.3.0 release already exists; refusing to recreate or move it.'
-            exit 0
+            git fetch --tags origin
+            test "$(git rev-list -n 1 v0.3.0)" = "$EXPECTED_TAG_SHA"
+            gh release edit v0.3.0 \
+              --title 'Resolutive Science v0.3.0 — RCMS Falsification Release' \
+              --notes-file docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md \
+              --latest
+          else
+            gh release create v0.3.0 \
+              --target "$GITHUB_SHA" \
+              --title 'Resolutive Science v0.3.0 — RCMS Falsification Release' \
+              --notes-file docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md \
+              --latest
           fi
-          gh release create v0.3.0 \
-            --target "$GITHUB_SHA" \
-            --title 'Resolutive Science v0.3.0 — RCMS Falsification Release' \
-            --notes-file docs/releases/v0.3.0_GITHUB_RELEASE_BODY.md \
-            --latest
 
-      - name: Verify publication
+      - name: Verify publication identity
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          gh release view v0.3.0 --json tagName,name,isDraft,isPrerelease,url,targetCommitish
+          EXPECTED_TAG_SHA='b70288462ffe9a6797aeaa3ad9d336f2bbd66371'
           git fetch --tags origin
-          test "$(git rev-list -n 1 v0.3.0)" = "$GITHUB_SHA"
-          echo "V030_RELEASE_TARGET=$GITHUB_SHA"
+          test "$(git rev-list -n 1 v0.3.0)" = "$EXPECTED_TAG_SHA"
+          gh release view v0.3.0 --json tagName,name,isDraft,isPrerelease,url,targetCommitish
+          echo "V030_RELEASE_TARGET=$EXPECTED_TAG_SHA"
