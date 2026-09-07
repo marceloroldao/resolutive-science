@@ -6,11 +6,13 @@ This repository is the versioned source of truth for the universal mathematical 
 
 ## Release
 
-**Current public scientific release:** `v0.2.0` — RCMS Extended Validation, consolidating the frozen RCMS evidence record through Protocol 08 under `RSMS-1.0-rc.1` compatibility.
+**Current scientific release:** `v0.3.0` — RCMS Falsification Release, adding Protocols 09–16 under `RSMS-1.0-rc.1` compatibility.
 
-**Zenodo DOI (v0.2.0):** `10.5281/zenodo.22002018`
+**Release date:** `2026-09-07`.
 
-**Current development candidate:** `v0.3-dev` — RCMS Falsification Release candidate. Protocols 09–16 are now complete on the development branch; release audit and metadata synchronization remain before `v0.3.0` publication.
+**Zenodo DOI (v0.3.0):** pending archival deposition. The assigned DOI will be added back without rewriting the frozen scientific record.
+
+**Previous release:** `v0.2.0` — RCMS Extended Validation. Zenodo DOI: `10.5281/zenodo.22002018`.
 
 The prior `v0.1.1` release remains the immutable metadata/archive correction of the `v0.1.0` Cosmology Foundation snapshot. No historical scientific results are rewritten by later releases.
 
@@ -23,9 +25,7 @@ The prior `v0.1.1` release remains the immutable metadata/archive correction of 
 
 Resolutive Science is a research program. Mathematical consistency, software verification, numerical performance, observational agreement, external replication, independent scientific validation, and scientific acceptance are distinct stages.
 
-The published v0.2.0 RCMS record through Protocol 08 contains a recurring positive one-parameter deformation direction, including independent DESI DR2 directional replication, but robustness and complexity-penalized model-selection results are insufficient for a discovery claim or preference over Lambda-CDM.
-
-The v0.3 falsification line deliberately subjects that pattern to stronger adversarial tests without changing the frozen logarithmic surrogate. The completed v0.3 protocols show simultaneously that:
+The v0.3 falsification line deliberately subjects the frozen logarithmic surrogate to stronger adversarial tests without modifying the model in response to unfavorable outcomes. The completed v0.3 protocols show simultaneously that:
 
 - the inference pipeline passes null and injection/recovery calibration tests;
 - the positive descriptive direction is not carried by only one previously analyzed dataset family;
@@ -42,9 +42,9 @@ Publication of this repository does not imply that Resolutive Physics is establi
 
 The repository preserves model definitions, protocol preregistrations, data provenance/manifests, analysis runners, numerical gates, workflows, frozen scientific reports, and unfavorable outcomes where applicable. Third-party datasets are referenced or acquired under their original terms and are not relicensed by this repository.
 
-For the current published release see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md), and [`docs/releases/v0.2.0_EVIDENCE_MATRIX.md`](docs/releases/v0.2.0_EVIDENCE_MATRIX.md).
+For v0.3.0 see [`RELEASE_NOTES_v0.3.0.md`](RELEASE_NOTES_v0.3.0.md), [`docs/releases/v0.3.0_EVIDENCE_MATRIX.md`](docs/releases/v0.3.0_EVIDENCE_MATRIX.md), and [`docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md`](docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md).
 
-For the v0.3 release candidate see [`RELEASE_NOTES_v0.3.0.md`](RELEASE_NOTES_v0.3.0.md), [`docs/releases/v0.3.0_EVIDENCE_MATRIX.md`](docs/releases/v0.3.0_EVIDENCE_MATRIX.md), and [`docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md`](docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md).
+Historical v0.2.0 materials remain available in [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md) and [`docs/releases/v0.2.0_EVIDENCE_MATRIX.md`](docs/releases/v0.2.0_EVIDENCE_MATRIX.md).
 
 ## Licensing
 
@@ -78,11 +78,11 @@ Because commercial use is restricted, this project should be described as **publ
 
 Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
 
+Zenodo DOI for `v0.3.0`: pending archival deposition.
+
 Zenodo DOI for `v0.2.0`: **10.5281/zenodo.22002018**.
 
 Historical Zenodo DOI for `v0.1.1`: **10.5281/zenodo.21940994**.
-
-The v0.3.0 DOI will be added after the final immutable release is archived; until then `CITATION.cff` intentionally remains on the current public v0.2.0 release.
 
 ## Author
 
@@ -91,6 +91,6 @@ ORCID: 0009-0003-6075-4680
 
 ## Status
 
-**Published scientific snapshot:** `v0.2.0`.  
-**Development publication candidate:** `v0.3-dev`, Protocols 09–16 complete; release audit pending.  
+**Scientific snapshot:** `v0.3.0`.  
+**Frozen scope:** RCMS Protocols 01–16, with v0.3.0 adding the adversarial falsification suite P09–P16.  
 **RSMS compatibility baseline:** `RSMS-1.0-rc.1`.
