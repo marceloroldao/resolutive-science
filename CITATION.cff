@@ -3,6 +3,7 @@ message: "If you use or discuss this release, please cite Resolutive Science v0.
 title: "Resolutive Science: RCMS Falsification Release"
 version: "0.3.0"
 date-released: "2026-09-07"
+doi: "10.5281/zenodo.22643804"
 type: software
 authors:
   - family-names: "Matos"
