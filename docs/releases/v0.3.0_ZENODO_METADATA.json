@@ -1,0 +1,28 @@
+{
+  "title": "Resolutive Science: RCMS Falsification Release",
+  "version": "0.3.0",
+  "publication_date": "2026-09-07",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Matos, Marcelo Roldão",
+      "orcid": "0009-0003-6075-4680"
+    }
+  ],
+  "description": "Resolutive Science v0.3.0 is an adversarial falsification release for the frozen one-parameter RCMS cosmological screening surrogate. It adds Protocols 09–16, including null and injection/recovery calibration, equal-complexity functional controls, dataset-family ablations, systematics and amplitude stability tests, complexity-penalized model comparison, and a preregistered held-out BOSS DR12 prediction. The release preserves unfavorable outcomes: the logarithmic form is not uniquely selected, fitted amplitudes are not universal, model-selection preference over Lambda-CDM is not established, and the preregistered positive BOSS DR12 prediction is not reproduced within the frozen primary domain. This release does not claim discovery of new physics or experimental validation of Resolutive Physics.",
+  "keywords": [
+    "resolutive science",
+    "cosmology",
+    "RCMS",
+    "RSMS",
+    "falsification",
+    "preregistration",
+    "reproducible science",
+    "model comparison"
+  ],
+  "repository": "https://github.com/marceloroldao/resolutive-science",
+  "parent_release_doi": "10.5281/zenodo.22002018",
+  "doi": null,
+  "doi_status": "pending Zenodo archival deposition",
+  "licensing_note": "Repository-owned software is under PolyForm Noncommercial 1.0.0; project-owned scientific specifications/documentation are under CC BY-NC-SA 4.0 unless otherwise stated. Third-party data retain their original terms."
+}
