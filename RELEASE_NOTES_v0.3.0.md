@@ -1,6 +1,7 @@
 # Resolutive Science v0.3.0 — Falsification Release
 
-**Status:** release-candidate draft  
+**Status:** final release metadata  
+**Release date:** 2026-09-07  
 **Parent:** v0.2.0 — DOI `10.5281/zenodo.22002018`  
 **Compatibility:** `RSMS-1.0-rc.1`
 
@@ -96,6 +97,10 @@ Protocol preregistrations, runners, workflows, frozen upstream revisions, checks
 - `docs/RCMS/results/`;
 - `tools/`;
 - `.github/workflows/`.
+
+## Archival metadata
+
+The version is finalized as `v0.3.0` with release date `2026-09-07`. The Zenodo DOI is intentionally not invented in advance; after archival deposition, the assigned DOI must be added back to `CITATION.cff`, `README.md`, and the version metadata in a provenance-preserving follow-up commit.
 
 ## Publication boundary
 
