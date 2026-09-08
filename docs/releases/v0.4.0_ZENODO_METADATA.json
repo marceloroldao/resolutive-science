@@ -1,0 +1,29 @@
+{
+  "title": "Resolutive Science: Post-Falsification Diagnostic Release",
+  "version": "0.4.0",
+  "publication_date": "2026-09-08",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Matos, Marcelo Roldão",
+      "orcid": "0009-0003-6075-4680"
+    }
+  ],
+  "description": "Resolutive Science v0.4.0 is a post-falsification diagnostic release for the frozen one-parameter RCMS cosmological screening surrogate. Protocols 17–20 test residual topology, radial/transverse parameter consistency, redshift locality with look-elsewhere calibration, and exact-redshift cross-survey concordance between DESI DR2 and BOSS DR12. The diagnostic block finds diffuse post-fit residual structure, a DESI-specific channel tension, no calibrated redshift-locality evidence, and exact-z survey discordance at z=0.51. The preregistered gate DIAGNOSTIC_STOP_NO_EXTENSION is activated; no new cosmological RCMS functional form is generated from these residuals. The release does not claim discovery of new physics or experimental validation of Resolutive Physics.",
+  "keywords": [
+    "resolutive science",
+    "cosmology",
+    "RCMS",
+    "RSMS",
+    "falsification",
+    "diagnostic science",
+    "cross-survey concordance",
+    "model criticism",
+    "reproducible science"
+  ],
+  "repository": "https://github.com/marceloroldao/resolutive-science",
+  "parent_release_doi": "10.5281/zenodo.22643804",
+  "doi": null,
+  "doi_status": "pending Zenodo archival deposition",
+  "licensing_note": "Repository-owned software is under PolyForm Noncommercial 1.0.0; project-owned scientific specifications/documentation are under CC BY-NC-SA 4.0 unless otherwise stated. Third-party data retain their original terms."
+}
