@@ -1,0 +1,90 @@
+name: Resolutive Science v0.4.0 Release Audit
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'RELEASE_NOTES_v0.4.0.md'
+      - 'docs/releases/v0.4.0_*'
+      - 'docs/RCMS/protocols/protocol17_*'
+      - 'docs/RCMS/protocols/protocol18_*'
+      - 'docs/RCMS/protocols/protocol19_*'
+      - 'docs/RCMS/protocols/protocol20_*'
+      - 'docs/RCMS/results/protocol17_*'
+      - 'docs/RCMS/results/protocol18_*'
+      - 'docs/RCMS/results/protocol19_*'
+      - 'docs/RCMS/results/protocol20_*'
+      - 'tools/run_rcms_protocol17_*'
+      - 'tools/run_rcms_protocol18_*'
+      - 'tools/run_rcms_protocol19_*'
+      - 'tools/run_rcms_protocol20_*'
+      - '.github/workflows/v0.4-release-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify diagnostic release documents
+        run: |
+          set -euo pipefail
+          test -f RELEASE_NOTES_v0.4.0.md
+          test -f docs/releases/v0.4.0_DEVELOPMENT_PLAN.md
+          test -f docs/releases/v0.4.0_DIAGNOSTIC_GATE.md
+          test -f docs/releases/v0.4.0_EVIDENCE_MATRIX.md
+          test -f docs/releases/v0.4.0_PUBLICATION_CHECKLIST.md
+          grep -q 'DIAGNOSTIC_STOP_NO_EXTENSION' docs/releases/v0.4.0_DIAGNOSTIC_GATE.md
+          grep -q 'DIFFUSE_RESIDUAL_STRUCTURE' docs/releases/v0.4.0_EVIDENCE_MATRIX.md
+          grep -q 'SURVEY_SPECIFIC_CHANNEL_TENSION' docs/releases/v0.4.0_EVIDENCE_MATRIX.md
+          grep -q 'NO_REDSHIFT_LOCALITY_EVIDENCE' docs/releases/v0.4.0_EVIDENCE_MATRIX.md
+          grep -q 'EXACT_Z_SURVEY_DISCORDANCE' docs/releases/v0.4.0_EVIDENCE_MATRIX.md
+      - name: Verify frozen outcome documents
+        run: |
+          set -euo pipefail
+          test -f docs/RCMS/results/protocol17_residual_topology_outcome.md
+          test -f docs/RCMS/results/protocol18_radial_transverse_consistency_outcome.md
+          test -f docs/RCMS/results/protocol19_redshift_locality_outcome.md
+          test -f docs/RCMS/results/protocol20_cross_survey_concordance_outcome.md
+          grep -q 'DIFFUSE_RESIDUAL_STRUCTURE' docs/RCMS/results/protocol17_residual_topology_outcome.md
+          grep -q 'SURVEY_SPECIFIC_CHANNEL_TENSION' docs/RCMS/results/protocol18_radial_transverse_consistency_outcome.md
+          grep -q 'NO_REDSHIFT_LOCALITY_EVIDENCE' docs/RCMS/results/protocol19_redshift_locality_outcome.md
+          grep -q 'EXACT_Z_SURVEY_DISCORDANCE' docs/RCMS/results/protocol20_cross_survey_concordance_outcome.md
+      - name: Compile v0.4 diagnostic runners
+        run: |
+          python -m py_compile \
+            tools/run_rcms_protocol17_residual_topology.py \
+            tools/run_rcms_protocol18_channel_consistency.py \
+            tools/run_rcms_protocol19_redshift_locality.py \
+            tools/run_rcms_protocol20_cross_survey_concordance.py
+      - name: Verify licensing baseline
+        run: |
+          set -euo pipefail
+          test -f LICENSE.md
+          test -f NOTICE
+          test -f COMMERCIAL_LICENSE.md
+          test -f LICENSES/PolyForm-Noncommercial-1.0.0.md
+          test -f LICENSES/CC-BY-NC-SA-4.0.md
+      - name: Verify parent publication identity remains visible
+        run: |
+          set -euo pipefail
+          grep -q 'version: "0.3.0"' CITATION.cff
+          grep -q '10.5281/zenodo.22643804' CITATION.cff
+          grep -q '10.5281/zenodo.22643804' README.md
+          echo 'V040_PARENT_PUBLICATION_IDENTITY=PASS'
+      - name: Reject obvious secret material
+        run: |
+          set -euo pipefail
+          if git grep -n -E -- 'BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Authorization:[[:space:]]*Bearer[[:space:]]+[A-Za-z0-9._-]{16,}' -- ':!*.md'; then
+            echo 'Potential secret material found'
+            exit 1
+          fi
+          echo 'V040_SECRET_PATTERN_AUDIT=PASS'
+      - name: Confirm no candidate extension was introduced
+        run: |
+          set -euo pipefail
+          grep -q 'No P21 cosmological candidate generation will be performed' docs/releases/v0.4.0_DIAGNOSTIC_GATE.md
+          echo 'V040_NO_EXTENSION_GATE=PASS'
