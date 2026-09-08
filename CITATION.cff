@@ -1,9 +1,8 @@
 cff-version: 1.2.0
-message: "If you use or discuss this release, please cite Resolutive Science v0.3.0."
-title: "Resolutive Science: RCMS Falsification Release"
-version: "0.3.0"
-date-released: "2026-09-07"
-doi: "10.5281/zenodo.22643804"
+message: "If you use or discuss this release, please cite Resolutive Science v0.4.0."
+title: "Resolutive Science: Post-Falsification Diagnostic Release"
+version: "0.4.0"
+date-released: "2026-09-08"
 type: software
 authors:
   - family-names: "Matos"
@@ -12,25 +11,25 @@ authors:
 repository-code: "https://github.com/marceloroldao/resolutive-science"
 url: "https://github.com/marceloroldao/resolutive-science"
 abstract: >-
-  Resolutive Science v0.3.0 is an adversarial falsification release for the
+  Resolutive Science v0.4.0 is a post-falsification diagnostic release for the
   frozen one-parameter RCMS cosmological screening surrogate. It adds Protocols
-  09–16, including null and injection/recovery calibration, equal-complexity
-  functional controls, dataset-family ablations, systematics and amplitude
-  stability tests, complexity-penalized model comparison, and a preregistered
-  held-out BOSS DR12 prediction. The release preserves unfavorable outcomes:
-  the logarithmic form is not uniquely selected, fitted amplitudes are not
-  universal, model-selection preference over Lambda-CDM is not established,
-  and the preregistered positive BOSS DR12 prediction is not reproduced within
-  the frozen primary domain. This release does not claim discovery of new
-  physics or experimental validation of Resolutive Physics.
+  17–20, testing residual topology, radial/transverse parameter consistency,
+  redshift locality with look-elsewhere calibration, and exact-redshift
+  cross-survey concordance between DESI DR2 and BOSS DR12. The diagnostic block
+  finds diffuse post-fit residual structure, a DESI-specific channel tension,
+  no calibrated redshift-locality evidence, and an exact-z survey discordance
+  at z=0.51. The preregistered development stop gate is therefore activated as
+  DIAGNOSTIC_STOP_NO_EXTENSION: no new cosmological RCMS functional form is
+  generated from the same residuals. This release does not claim discovery of
+  new physics or experimental validation of Resolutive Physics.
 keywords:
   - "resolutive science"
   - "cosmology"
   - "RCMS"
   - "RSMS"
   - "falsification"
-  - "preregistration"
+  - "diagnostic science"
+  - "cross-survey concordance"
   - "reproducible science"
-  - "scientific software"
-  - "model comparison"
+  - "model criticism"
 license: PolyForm-Noncommercial-1.0.0
