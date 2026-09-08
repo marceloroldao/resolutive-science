@@ -1,0 +1,51 @@
+name: RCMS Protocol 18 Channel Consistency
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'tools/run_rcms_protocol17_residual_topology.py'
+      - 'tools/run_rcms_protocol18_channel_consistency.py'
+      - 'docs/RCMS/protocols/protocol18_radial_transverse_consistency.md'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - '.github/workflows/rcms_protocol18_channel_consistency.yml'
+  workflow_dispatch:
+
+jobs:
+  p18:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Execute preregistered P18 audit
+        run: python tools/run_rcms_protocol18_channel_consistency.py
+      - name: Verify P18 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('results/rcms_protocol18_channel_consistency.json').read_text())
+          assert d['protocol']=='P18'
+          assert d['status']=='FINAL'
+          assert set(d['surveys'])=={'DESI_DR2','BOSS_DR12'}
+          assert d['classification'] in {
+              'CROSS_SURVEY_CHANNEL_SIGN_REVERSAL',
+              'SURVEY_SPECIFIC_CHANNEL_TENSION',
+              'CHANNEL_AMPLITUDE_HETEROGENEITY',
+              'CHANNEL_CONSISTENT_WITHIN_DIAGNOSTIC',
+          }
+          assert abs(d['surveys']['DESI_DR2']['radial']['RCMS']['A_R']+0.58)<=0.0100000001
+          assert abs(d['surveys']['DESI_DR2']['transverse_volume']['RCMS']['A_R']-0.86)<=0.0100000001
+          print('P18_FINAL_IDENTITY=PASS')
+          print('P18_CLASSIFICATION='+d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol18-channel-consistency
+          path: results/rcms_protocol18_channel_consistency.json
+          if-no-files-found: error

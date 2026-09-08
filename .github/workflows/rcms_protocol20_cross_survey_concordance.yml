@@ -1,0 +1,53 @@
+name: RCMS Protocol 20 Cross-Survey Concordance
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'tools/run_rcms_protocol17_residual_topology.py'
+      - 'tools/run_rcms_protocol19_redshift_locality.py'
+      - 'tools/run_rcms_protocol20_cross_survey_concordance.py'
+      - 'docs/RCMS/protocols/protocol20_cross_survey_concordance.md'
+      - 'data/rcms/desi_dr2_bao_all_mean.txt'
+      - 'data/rcms/desi_dr2_bao_all_cov.txt'
+      - '.github/workflows/rcms_protocol20_cross_survey_concordance.yml'
+  workflow_dispatch:
+
+jobs:
+  p20:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install numpy
+      - name: Execute preregistered P20 diagnostic
+        run: python tools/run_rcms_protocol20_cross_survey_concordance.py
+      - name: Verify P20 identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('results/rcms_protocol20_cross_survey_concordance.json').read_text())
+          assert d['protocol']=='P20'
+          assert d['status']=='FINAL'
+          assert abs(d['target_redshift']-0.51)<1e-12
+          assert d['secondary_window']==[0.38,0.61]
+          assert d['classification'] in {
+              'EXACT_Z_SURVEY_DISCORDANCE',
+              'EXACT_Z_SURVEY_DIRECTIONAL_TENSION',
+              'EXACT_Z_AMPLITUDE_TENSION',
+              'EXACT_Z_CONCORDANT_WITHIN_DIAGNOSTIC',
+          }
+          assert d['primary_exact_z']['DESI_DR2']['nobs']==2
+          assert d['primary_exact_z']['BOSS_DR12']['nobs']==2
+          print('P20_FINAL_IDENTITY=PASS')
+          print('P20_CLASSIFICATION='+d['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcms-protocol20-cross-survey-concordance
+          path: results/rcms_protocol20_cross_survey_concordance.json
+          if-no-files-found: error
