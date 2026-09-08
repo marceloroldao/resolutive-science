@@ -6,11 +6,13 @@ This repository is the versioned source of truth for the universal mathematical 
 
 ## Release
 
-**Current scientific release:** `v0.3.0` — RCMS Falsification Release, adding Protocols 09–16 under `RSMS-1.0-rc.1` compatibility.
+**Release candidate:** `v0.4.0` — Post-Falsification Diagnostic Release, adding Protocols 17–20 under `RSMS-1.0-rc.1` compatibility.
 
-**Release date:** `2026-09-07`.
+**Target release date:** `2026-09-08`.
 
-**Zenodo DOI (v0.3.0):** `10.5281/zenodo.22643804`.
+**Zenodo DOI (v0.4.0):** pending archival deposition. The assigned DOI will be backfilled without rewriting the frozen scientific record.
+
+**Current public release:** `v0.3.0` — RCMS Falsification Release. Zenodo DOI: `10.5281/zenodo.22643804`.
 
 **Previous release:** `v0.2.0` — RCMS Extended Validation. Zenodo DOI: `10.5281/zenodo.22002018`.
 
@@ -25,16 +27,20 @@ The prior `v0.1.1` release remains the immutable metadata/archive correction of 
 
 Resolutive Science is a research program. Mathematical consistency, software verification, numerical performance, observational agreement, external replication, independent scientific validation, and scientific acceptance are distinct stages.
 
-The v0.3 falsification line deliberately subjects the frozen logarithmic surrogate to stronger adversarial tests without modifying the model in response to unfavorable outcomes. The completed v0.3 protocols show simultaneously that:
+The v0.4 line follows the failed preregistered v0.3 held-out BOSS DR12 prediction and performs diagnosis before any attempted model extension. The frozen one-parameter logarithmic surrogate is not modified.
 
-- the inference pipeline passes null and injection/recovery calibration tests;
-- the positive descriptive direction is not carried by only one previously analyzed dataset family;
-- the logarithmic form is not uniquely selected against equally complex smooth controls;
-- fitted amplitudes are sensitive to analysis channel/systematics and are not universal across all probes;
-- complexity penalties do not establish model preference over Lambda-CDM; and
-- the preregistered held-out BOSS DR12 positive prediction is not reproduced within the frozen primary domain and instead drives the fit to the negative `A_R=-1` boundary.
+The completed v0.4 diagnostic block shows:
 
-The P16 boundary rule classifies that target fit as `OUT_OF_SAMPLE_INVALID`; the parameter range is not widened post hoc. The failed quantitative and directional predictions remain part of the scientific record.
+- P17: `DIFFUSE_RESIDUAL_STRUCTURE` — no preregistered strong post-fit channel or redshift residual topology;
+- P18: `SURVEY_SPECIFIC_CHANNEL_TENSION` — the DESI radial/transverse amplitude sign reversal is not independently replicated by BOSS;
+- P19: `NO_REDSHIFT_LOCALITY_EVIDENCE` — preregistered split scans with look-elsewhere calibration do not support a redshift change-point;
+- P20: `EXACT_Z_SURVEY_DISCORDANCE` — at exactly `z=0.51`, DESI and BOSS pull the unchanged surrogate in opposite directions with non-overlapping local profiles, with BOSS boundary-limited.
+
+Because no stable cross-survey organizing structure emerges, the preregistered development decision is:
+
+`DIAGNOSTIC_STOP_NO_EXTENSION`
+
+P21–P24 are not activated. No new redshift term, channel coefficient, survey offset, or other cosmological free parameter is introduced from the same residuals.
 
 Publication of this repository does not imply that Resolutive Physics is established physics.
 
@@ -42,9 +48,9 @@ Publication of this repository does not imply that Resolutive Physics is establi
 
 The repository preserves model definitions, protocol preregistrations, data provenance/manifests, analysis runners, numerical gates, workflows, frozen scientific reports, and unfavorable outcomes where applicable. Third-party datasets are referenced or acquired under their original terms and are not relicensed by this repository.
 
-For v0.3.0 see [`RELEASE_NOTES_v0.3.0.md`](RELEASE_NOTES_v0.3.0.md), [`docs/releases/v0.3.0_EVIDENCE_MATRIX.md`](docs/releases/v0.3.0_EVIDENCE_MATRIX.md), and [`docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md`](docs/releases/v0.3.0_PUBLICATION_CHECKLIST.md).
+For v0.4.0 see [`RELEASE_NOTES_v0.4.0.md`](RELEASE_NOTES_v0.4.0.md), [`docs/releases/v0.4.0_EVIDENCE_MATRIX.md`](docs/releases/v0.4.0_EVIDENCE_MATRIX.md), [`docs/releases/v0.4.0_DIAGNOSTIC_GATE.md`](docs/releases/v0.4.0_DIAGNOSTIC_GATE.md), and [`docs/releases/v0.4.0_PUBLICATION_CHECKLIST.md`](docs/releases/v0.4.0_PUBLICATION_CHECKLIST.md).
 
-Historical v0.2.0 materials remain available in [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md) and [`docs/releases/v0.2.0_EVIDENCE_MATRIX.md`](docs/releases/v0.2.0_EVIDENCE_MATRIX.md).
+Historical v0.3.0 materials remain available in [`RELEASE_NOTES_v0.3.0.md`](RELEASE_NOTES_v0.3.0.md) and [`docs/releases/v0.3.0_EVIDENCE_MATRIX.md`](docs/releases/v0.3.0_EVIDENCE_MATRIX.md).
 
 ## Licensing
 
@@ -78,6 +84,8 @@ Because commercial use is restricted, this project should be described as **publ
 
 Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
 
+Zenodo DOI for `v0.4.0`: pending archival deposition.
+
 Zenodo DOI for `v0.3.0`: **10.5281/zenodo.22643804**.
 
 Zenodo DOI for `v0.2.0`: **10.5281/zenodo.22002018**.
@@ -91,6 +99,6 @@ ORCID: 0009-0003-6075-4680
 
 ## Status
 
-**Scientific snapshot:** `v0.3.0`.  
-**Frozen scope:** RCMS Protocols 01–16, with v0.3.0 adding the adversarial falsification suite P09–P16.  
+**Release candidate:** `v0.4.0`.  
+**Frozen diagnostic scope:** RCMS Protocols 17–20; P21–P24 not activated by preregistered stop gate.  
 **RSMS compatibility baseline:** `RSMS-1.0-rc.1`.
