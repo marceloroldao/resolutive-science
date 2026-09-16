@@ -1,0 +1,29 @@
+{
+  "title": "Resolutive Science: Post-Falsification Diagnostic Release",
+  "version": "0.4.0",
+  "publication_date": "2026-09-16",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Matos, Marcelo Roldão",
+      "orcid": "0009-0003-6075-4680"
+    }
+  ],
+  "description": "Resolutive Science v0.4.0 is a post-falsification diagnostic negative release. It preserves the frozen v0.3 RCMS surrogate and adds Protocols 17–20, which find diffuse residual structure, survey-specific channel tension, no redshift-locality evidence, and exact-redshift DESI/BOSS discordance. The preregistered decision is DIAGNOSTIC_STOP_NO_EXTENSION. The release also preserves the fundamental reconstruction audit of the old RSMS formulation: the current Master Equation is not uniquely derived, the audited 4pi half-angle behavior is parametrization-only, and principle-selector tests P-A through P-E remain underdetermined. No discovery or experimental-validation claim is made.",
+  "keywords": [
+    "resolutive science",
+    "cosmology",
+    "RCMS",
+    "RSMS",
+    "falsification",
+    "post-falsification diagnosis",
+    "preregistration",
+    "reproducible science",
+    "model comparison"
+  ],
+  "repository": "https://github.com/marceloroldao/resolutive-science",
+  "parent_release_doi": "10.5281/zenodo.22643804",
+  "doi": null,
+  "doi_status": "pending",
+  "licensing_note": "Repository-owned software is under PolyForm Noncommercial 1.0.0; project-owned scientific specifications/documentation are under CC BY-NC-SA 4.0 unless otherwise stated. Third-party data retain their original terms."
+}
