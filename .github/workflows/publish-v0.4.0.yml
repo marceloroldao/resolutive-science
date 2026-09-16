@@ -1,0 +1,59 @@
+name: Publish Resolutive Science v0.4.0
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v0.4.0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen release metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'version: "0.4.0"' CITATION.cff
+          grep -q 'date-released: "2026-09-16"' CITATION.cff
+          grep -q 'Resolutive Science v0.4.0 — Post-Falsification Diagnostic Release' docs/releases/v0.4.0_GITHUB_RELEASE_BODY.md
+          grep -q 'DIAGNOSTIC_STOP_NO_EXTENSION' docs/releases/v0.4.0_GITHUB_RELEASE_BODY.md
+          grep -q 'NOT_UNIQUELY_DERIVED_FROM_CURRENT_RSMS' docs/releases/v0.4.0_GITHUB_RELEASE_BODY.md
+          test -f docs/releases/v0.4.0_ZENODO_METADATA.json
+
+      - name: Create GitHub Release and immutable tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v0.4.0 >/dev/null 2>&1; then
+            echo 'v0.4.0 already exists; refusing to move or recreate tag.'
+            git fetch --tags origin
+            test "$(git rev-list -n 1 v0.4.0)" = "$GITHUB_SHA"
+          else
+            gh release create v0.4.0 \
+              --target "$GITHUB_SHA" \
+              --title 'Resolutive Science v0.4.0 — Post-Falsification Diagnostic Release' \
+              --notes-file docs/releases/v0.4.0_GITHUB_RELEASE_BODY.md \
+              --latest
+          fi
+
+      - name: Verify publication identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --tags origin
+          test "$(git rev-list -n 1 v0.4.0)" = "$GITHUB_SHA"
+          gh release view v0.4.0 --json tagName,name,isDraft,isPrerelease,url,targetCommitish
+          echo "V040_RELEASE_TARGET=$GITHUB_SHA"
