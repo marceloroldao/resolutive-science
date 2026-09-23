@@ -95,12 +95,6 @@ def run_parent(n, parent_seed):
         if proposal_seq == current_seq:
             continue
 
-        proposal = decode_degree_matched_prufer(
-            degrees,
-            seed=0,
-        )
-        # decode_degree_matched_prufer shuffles internally, so for T41 decode the
-        # explicit proposed Prüfer sequence directly.
         proposal = decode_explicit_prufer(proposal_seq, n)
         proposal_h = topology_vector(proposal)
         proposal_cag = cag(proposal_h, mean, sd)
