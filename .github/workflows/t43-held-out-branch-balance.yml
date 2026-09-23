@@ -1,0 +1,44 @@
+name: T43 held-out branch-balance entropy
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t43_held_out_branch_balance_entropy.py'
+      - 'src/v05/t41_higher_order_matched_tree_null.py'
+      - 'src/v05/t39_higher_order_topology_source.py'
+      - 'src/v05/t38_degree_matched_tree_null.py'
+      - 'src/v05/t25_endogenous_dimension_scan.py'
+      - '.github/workflows/t43-held-out-branch-balance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t43:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Execute frozen T43
+        run: |
+          set -euo pipefail
+          python src/v05/t43_held_out_branch_balance_entropy.py > t43_result.json
+          cat t43_result.json
+
+      - name: Preserve raw T43 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: t43-held-out-branch-balance
+          path: t43_result.json
+          if-no-files-found: error
