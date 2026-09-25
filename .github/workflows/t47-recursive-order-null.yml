@@ -1,0 +1,43 @@
+name: T47 degree-preserving recursive-order null
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t47_degree_preserving_recursive_order_null.py'
+      - 'src/v05/t39_higher_order_topology_source.py'
+      - 'src/v05/t38_degree_matched_tree_null.py'
+      - 'src/v05/t25_endogenous_dimension_scan.py'
+      - '.github/workflows/t47-recursive-order-null.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t47:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Execute frozen T47
+        run: |
+          set -euo pipefail
+          python src/v05/t47_degree_preserving_recursive_order_null.py > t47_result.json
+          cat t47_result.json
+
+      - name: Preserve raw T47 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: t47-recursive-order-null
+          path: t47_result.json
+          if-no-files-found: error
