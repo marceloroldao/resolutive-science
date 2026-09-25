@@ -1,0 +1,45 @@
+name: T46 direct PB-matched intervention
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t46_direct_pb_matched_intervention.py'
+      - 'src/v05/t45_held_out_branch_core_pair_connectivity.py'
+      - 'src/v05/t41_higher_order_matched_tree_null.py'
+      - 'src/v05/t39_higher_order_topology_source.py'
+      - 'src/v05/t38_degree_matched_tree_null.py'
+      - 'src/v05/t25_endogenous_dimension_scan.py'
+      - '.github/workflows/t46-direct-pb-matched-intervention.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t46:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Execute frozen T46
+        run: |
+          set -euo pipefail
+          python src/v05/t46_direct_pb_matched_intervention.py > t46_result.json
+          cat t46_result.json
+
+      - name: Preserve raw T46 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: t46-direct-pb-matched-intervention
+          path: t46_result.json
+          if-no-files-found: error
