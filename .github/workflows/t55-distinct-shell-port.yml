@@ -1,0 +1,37 @@
+name: T55 distinct-shell ordinary port feasibility
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t55_equal_degree_distinct_shell_port.py'
+      - '.github/workflows/t55-distinct-shell-port.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t55:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute T55 classical feasibility gate
+        run: |
+          set -euo pipefail
+          python src/v05/t55_equal_degree_distinct_shell_port.py > t55_result.json
+          cat t55_result.json
+      - name: Preserve raw T55 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t55-distinct-shell-port
+          path: t55_result.json
+          if-no-files-found: error
