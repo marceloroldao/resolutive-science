@@ -1,0 +1,37 @@
+name: T70 larger N joint accounting replication
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t70_larger_n_joint_accounting_replication.py'
+      - '.github/workflows/t70-larger-n-joint-accounting.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t70:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T70 larger-N replication
+        run: |
+          set -euo pipefail
+          python src/v05/t70_larger_n_joint_accounting_replication.py > t70_result.json
+          cat t70_result.json
+      - name: Preserve raw T70 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t70-larger-n-joint-accounting
+          path: t70_result.json
+          if-no-files-found: error
