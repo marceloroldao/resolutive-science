@@ -1,0 +1,37 @@
+name: T71 multichain larger N accounting replication
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t71_multichain_larger_n_accounting_replication.py'
+      - '.github/workflows/t71-multichain-larger-n-accounting.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t71:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T71 multichain replication
+        run: |
+          set -euo pipefail
+          python src/v05/t71_multichain_larger_n_accounting_replication.py > t71_result.json
+          cat t71_result.json
+      - name: Preserve raw T71 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t71-multichain-larger-n-accounting
+          path: t71_result.json
+          if-no-files-found: error
