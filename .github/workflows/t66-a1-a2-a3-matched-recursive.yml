@@ -1,0 +1,37 @@
+name: T66 A1 A2 A3 matched recursive intervention
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t66_a1_a2_a3_matched_recursive_intervention.py'
+      - '.github/workflows/t66-a1-a2-a3-matched-recursive.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t66:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T66 A1+A2+A3 matched intervention
+        run: |
+          set -euo pipefail
+          python src/v05/t66_a1_a2_a3_matched_recursive_intervention.py > t66_result.json
+          cat t66_result.json
+      - name: Preserve raw T66 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t66-a1-a2-a3-matched-recursive
+          path: t66_result.json
+          if-no-files-found: error
