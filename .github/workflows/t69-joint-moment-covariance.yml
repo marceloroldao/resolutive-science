@@ -1,0 +1,37 @@
+name: T69 joint moment covariance intervention
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t69_joint_moment_covariance_intervention.py'
+      - '.github/workflows/t69-joint-moment-covariance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t69:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T69 joint intervention
+        run: |
+          set -euo pipefail
+          python src/v05/t69_joint_moment_covariance_intervention.py > t69_result.json
+          cat t69_result.json
+      - name: Preserve raw T69 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t69-joint-moment-covariance
+          path: t69_result.json
+          if-no-files-found: error
