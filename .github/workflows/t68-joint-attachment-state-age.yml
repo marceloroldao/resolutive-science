@@ -1,0 +1,37 @@
+name: T68 joint attachment state parent age
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t68_joint_attachment_state_parent_age.py'
+      - '.github/workflows/t68-joint-attachment-state-age.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t68:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T68 joint test
+        run: |
+          set -euo pipefail
+          python src/v05/t68_joint_attachment_state_parent_age.py > t68_result.json
+          cat t68_result.json
+      - name: Preserve raw T68 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t68-joint-attachment-state-age
+          path: t68_result.json
+          if-no-files-found: error
