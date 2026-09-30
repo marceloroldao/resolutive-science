@@ -1,0 +1,37 @@
+name: T72 local feasible cone audit
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t72_local_feasible_cone.py'
+      - '.github/workflows/t72-local-feasible-cone.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t72:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T72 local cone audit
+        run: |
+          set -euo pipefail
+          python src/v05/t72_local_feasible_cone.py > t72_result.json
+          cat t72_result.json
+      - name: Preserve raw T72 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t72-local-feasible-cone
+          path: t72_result.json
+          if-no-files-found: error
