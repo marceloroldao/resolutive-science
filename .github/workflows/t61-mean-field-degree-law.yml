@@ -1,0 +1,35 @@
+name: T61 mean-field degree law
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t61_mean_field_degree_law.py'
+      - '.github/workflows/t61-mean-field-degree-law.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t61:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute frozen T61 analytic holdout
+        run: |
+          set -euo pipefail
+          python src/v05/t61_mean_field_degree_law.py > t61_result.json
+          cat t61_result.json
+      - name: Preserve raw T61 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t61-mean-field-degree-law
+          path: t61_result.json
+          if-no-files-found: error
