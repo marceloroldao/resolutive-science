@@ -1,0 +1,37 @@
+name: T73 exact transition drift audit
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t73_transition_drift_audit.py'
+      - '.github/workflows/t73-transition-drift-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t73:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T73 transition-drift audit
+        run: |
+          set -euo pipefail
+          python src/v05/t73_transition_drift_audit.py > t73_result.json
+          cat t73_result.json
+      - name: Preserve raw T73 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t73-transition-drift-audit
+          path: t73_result.json
+          if-no-files-found: error
