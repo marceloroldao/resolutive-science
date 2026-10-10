@@ -1,4 +1,4 @@
-"""T78 entropy-balanced reweighting of the exact T77 candidate ensembles.
+"""T78 entropy-balanced reweighting of the exact T77 candidate ensembles.\n\nWorkflow trigger note: scientific protocol unchanged.
 
 Regenerates the deterministic 99-state T77 ensemble for each parent and
 calibrates strictly positive exponential-tilting weights so the weighted
