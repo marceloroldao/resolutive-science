@@ -1,0 +1,37 @@
+name: T78 entropy balanced reweighting
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t78_entropy_balanced_reweighting.py'
+      - '.github/workflows/t78-entropy-balanced-reweighting.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t78:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T78 entropy balancing
+        run: |
+          set -euo pipefail
+          python src/v05/t78_entropy_balanced_reweighting.py > t78_result.json
+          cat t78_result.json
+      - name: Preserve raw T78 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t78-entropy-balanced-reweighting
+          path: t78_result.json
+          if-no-files-found: error
