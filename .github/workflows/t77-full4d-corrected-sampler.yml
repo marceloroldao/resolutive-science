@@ -1,0 +1,37 @@
+name: T77 full 4D corrected sampler validation
+
+on:
+  push:
+    branches:
+      - work/v0.5-relational-ontology
+    paths:
+      - 'src/v05/t77_full4d_entropy_corrected_sampler.py'
+      - '.github/workflows/t77-full4d-corrected-sampler.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  t77:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Execute frozen T77 full 4D sampler validation
+        run: |
+          set -euo pipefail
+          python src/v05/t77_full4d_entropy_corrected_sampler.py > t77_result.json
+          cat t77_result.json
+      - name: Preserve raw T77 output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t77-full4d-corrected-sampler
+          path: t77_result.json
+          if-no-files-found: error
