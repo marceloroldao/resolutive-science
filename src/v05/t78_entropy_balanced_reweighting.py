@@ -162,7 +162,7 @@ def run_parent(seed):
     y = (values - targets[None, :]) / limits[None, :]
     inside_box = bool(np.all(np.abs(y) <= 1.0 + 1e-12))
     bracket = [
-        float(np.min(values[:, i])) <= targets[i] <= float(np.max(values[:, i]))
+        bool(float(np.min(values[:, i])) <= float(targets[i]) <= float(np.max(values[:, i])))
         for i in range(4)
     ]
 
